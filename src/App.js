@@ -1,8 +1,12 @@
-
+import Topbar from "./components/topbar/Topbar"
+import Sidebar from "./components/sidebar/Sidebar"
 
 function App() {
   return (
-    <div>Hello World</div>
+    <div>
+      <Topbar/>
+      <Sidebar/>
+      </div>
   );
 }
 
