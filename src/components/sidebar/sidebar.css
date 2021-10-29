@@ -1,0 +1,26 @@
+.sidebar{
+    flex:1;
+    background-color:#fff;
+    height: calc(100vh);
+    position: sticky;
+    top: 0px;
+    border-right: 1px solid #BEC7C9;
+}
+
+.sidebarMenu{
+    margin-top:30px;
+    margin-left: 50px;
+}
+
+.logo img{
+    width:200px;
+    margin-bottom:20px;
+}
+
+.sidebarList{
+    margin-top:30px;
+}
+
+.sidebarList li{
+    list-style-type:none
+}
