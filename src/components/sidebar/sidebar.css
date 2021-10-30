@@ -1,15 +1,21 @@
 .sidebar{
+    display: flex;
     flex:1;
     background-color:#fff;
     height: calc(100vh);
     position: sticky;
     top: 0px;
-    border-right: 1px solid #BEC7C9;
+    border-right: 1px solid #0F5F96;
+    justify-content: center;
 }
 
 .sidebarMenu{
     margin-top:30px;
-    margin-left: 50px;
+    width: 100%; 
+}
+
+sidebarMenu .textField{
+    color:  #0F5F96; 
 }
 
 .logo img{
@@ -18,9 +24,50 @@
 }
 
 .sidebarList{
-    margin-top:30px;
+    margin-top: 15px;
 }
 
-.sidebarList li{
-    list-style-type:none
+.sidebarList nav div{
+    color:#0F5F96;
+    font-size: 1.2rem; 
+    border-radius: 10px ;
+}
+
+
+.sidebarList nav div.active{
+     background-color:#95E1D3;
+}
+
+.dropdownMenu{
+    margin-left: 20px;
+    /* display:none; */
+}
+
+.settings{
+    position: absolute;
+    bottom: 100px;
+    width: 80%
+}
+.profile{
+    width: 70%;
+    border-top: 1px solid #0F5F96;
+    position: absolute;
+    bottom:30px;
+}
+
+.profileWrapper{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+      
+}
+
+.userInfo{
+    margin-left: 20px;
+}
+
+.userInfo h6{
+    color:#0F5F96;
+    font-size: 0.8rem;
+    font-family: 'Source Sans Pro', sans-serif;;
 }
