@@ -1,6 +1,9 @@
 
 import Sidebar from "./components/sidebar/Sidebar"
+import Header from "./components/Header"
 import "./app.css"
+import {makeStyles, CssBaseline} from "@material-ui/core"
+
 
 function App() {
   return (
@@ -9,9 +12,10 @@ function App() {
       <div className="container">
          <Sidebar/>
          <div className="others">
-           other stuffs
+           <Header/>
          </div>
       </div>
+      <CssBaseline />
     </div>
   );
 }

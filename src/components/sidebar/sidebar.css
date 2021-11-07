@@ -14,7 +14,7 @@
     width: 100%; 
 }
 
-sidebarMenu .textField{
+.sidebarMenu .textField{
     color:  #0F5F96; 
 }
 
@@ -35,22 +35,24 @@ sidebarMenu .textField{
 
 
 .sidebarList nav div.active{
-     background-color:#95E1D3;
+    background-color:#95E1D3;
 }
 
-.dropdownMenu{
-    margin-left: 20px;
-    /* display:none; */
+ul .settings {
+border-radius: 10px ;
+}
+ul .settings div{
+    color:#0F5F96;
+    font-size: 1.2rem;    
+   
 }
 
-.settings{
-    position: absolute;
-    bottom: 100px;
-    width: 80%
-}
+
 .profile{
+     color:#0F5F96;
+    font-size: 1.2rem; 
+    border-radius: 10px ;
     width: 70%;
-    border-top: 1px solid #0F5F96;
     position: absolute;
     bottom:30px;
 }
@@ -58,16 +60,19 @@ sidebarMenu .textField{
 .profileWrapper{
     display: flex;
     align-items: center;
-    margin-top: 20px;
-      
+    padding-top: 10px;
+    border-top: 1px solid #0F5F96; 
 }
 
 .userInfo{
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
-.userInfo h6{
+.userInfo p, .logout button{
     color:#0F5F96;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-family: 'Source Sans Pro', sans-serif;;
+}
+.profileWrapper .logout{
+    margin-left: 15px;;
 }

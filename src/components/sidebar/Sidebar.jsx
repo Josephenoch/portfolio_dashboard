@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import "./sidebar.css"
 import { ExpandMore, ExpandLess, Search, SettingsOutlined, InfoOutlined, WorkOutlineOutlined, DeveloperMode, FavoriteBorderOutlined, VerifiedUserOutlined, AssessmentOutlined, HomeOutlined, SchoolOutlined, LibraryBooksOutlined, ExitToAppOutlined} from "@material-ui/icons"
 import logo from "../../assets/Webfolio.jpg"
+import userImg from "../../assets/cropped.png"
 import {Collapse, IconButton, InputAdornment, TextField, Avatar, List, ListItem, ListItemIcon, ListItemText, } from "@material-ui/core";
 
 
@@ -87,55 +88,65 @@ const Sidebar=(() =>{
                                 <ListItemText primary="Content" />
                                 {open ? <ExpandLess /> : <ExpandMore />}
                             </ListItem>
-                                <Collapse in={open} timeout="auto" unmountOnExit>
-                                    <List component="div" disablePadding>
-                                        <ListItem button sx={{ pl: 4 }}>
+                            <Collapse in={open} timeout="auto" unmountOnExit>
+                                <List component="div" disablePadding>
+                                    <ListItem button sx={{ pl: 4 }}>
+                                        <ListItemIcon>
+                                            <InfoOutlined />
+                                        </ListItemIcon>
+                                        <ListItemText primary="About" />
+                                    </ListItem>
+                                    <ListItem button sx={{ pl: 4 }}>
+                                        <ListItemIcon>
+                                            <WorkOutlineOutlined />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Experience"/>
+                                    </ListItem>
+                                    <ListItem button sx={{ pl: 4 }}>
+                                        <ListItemIcon>
+                                            <SchoolOutlined />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Education" />
+                                    </ListItem>
+                                    <ListItem button sx={{ pl: 4 }}>
+                                        <ListItemIcon>
+                                            <DeveloperMode />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Skills" />
+                                    </ListItem>
+                                    <ListItem button sx={{ pl: 4 }}>
+                                        <ListItemIcon>
+                                            <FavoriteBorderOutlined />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Interests" />
+                                    </ListItem>
+                                    <ListItem button sx={{ pl: 4 }}>
                                             <ListItemIcon>
-                                                <InfoOutlined />
+                                                <VerifiedUserOutlined />
                                             </ListItemIcon>
-                                            <ListItemText primary="About" />
-                                        </ListItem>
-                                        <ListItem button sx={{ pl: 4 }}>
-                                            <ListItemIcon>
-                                                <WorkOutlineOutlined />
-                                            </ListItemIcon>
-                                            <ListItemText primary="Experience"/>
-                                        </ListItem>
-                                        <ListItem button sx={{ pl: 4 }}>
-                                            <ListItemIcon>
-                                                <SchoolOutlined />
-                                            </ListItemIcon>
-                                            <ListItemText primary="Education" />
-                                        </ListItem>
-                                        <ListItem button sx={{ pl: 4 }}>
-                                            <ListItemIcon>
-                                                <DeveloperMode />
-                                            </ListItemIcon>
-                                            <ListItemText primary="Skills" />
-                                        </ListItem>
-                                        <ListItem button sx={{ pl: 4 }}>
-                                            <ListItemIcon>
-                                                <FavoriteBorderOutlined />
-                                            </ListItemIcon>
-                                            <ListItemText primary="Interests" />
-                                        </ListItem>
-                                        <ListItem button sx={{ pl: 4 }}>
-                                                <ListItemIcon>
-                                                    <VerifiedUserOutlined />
-                                                </ListItemIcon>
-                                                <ListItemText primary="Certificates" />
-                                        </ListItem>
-                                    </List>
-                                </Collapse>
-                            </List>
+                                            <ListItemText primary="Certificates" />
+                                    </ListItem>
+                                </List>
+                            </Collapse>
+                        </List>
+                       
                     <div className= "profile">
+                            <List className="settingsWrapper">
+                                <ListItem button className="settings">
+                                    <ListItemIcon>
+                                        <SettingsOutlined />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Settings" />
+                                </ListItem>
+                            </List>
                         <div className = "profileWrapper">
                             <div className="avatar">
-                                {name === "" ? <Avatar {...stringAvatar('Joseph Enoch')} /> : <Avatar alt="Joseph Enoch" src="/static/images/avatar/1.jpg" />}
+                                {name === "" ? <Avatar {...stringAvatar('Joseph Enoch')} /> : <Avatar alt="Joseph Enoch" src={userImg} />}
                             </div> 
                             <div className="userInfo">
-                                <h6>{name}</h6>
-                                <h6>{email}</h6>
+                               <p> {name}</p>
+                                <p>
+                                {email}</p>
                             </div>
                             <div className="logout">
                                 <IconButton>
