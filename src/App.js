@@ -1,20 +1,25 @@
 
-import Sidebar from "./components/sidebar/Sidebar"
+import Sidebar from "./components/Sidebar"
+import Dashboard from "./components/Dashboard"
 import Header from "./components/Header"
 import "./app.css"
-import {makeStyles, CssBaseline} from "@material-ui/core"
+import {CssBaseline, Grid} from "@material-ui/core"
 
 
 function App() {
   return (
-    <div>
-      
-      <div className="container">
-         <Sidebar/>
-         <div className="others">
-           <Header/>
-         </div>
-      </div>
+    <div> 
+    
+      <Sidebar />
+      <Header />
+      <Grid container>
+        <div className="others">
+          <Grid item>
+              <Dashboard/>
+          </Grid>
+        </div>
+      </Grid>
+     
       <CssBaseline />
     </div>
   );

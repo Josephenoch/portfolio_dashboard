@@ -1,7 +1,9 @@
-.container{
-    display:flex;
 
-}
 .others{
-    flex: 4;
+    position:absolute;
+    left:17%;
+    right:-10%;
+    width:"83%";
+    height: 90vh;
+    background-color:#F5F5F5;
 }
