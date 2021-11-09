@@ -1,9 +1,10 @@
 import React from 'react'
 import logo from "../assets/Webfolio.jpg"
-import {AppBar, Toolbar, Grid, makeStyles, CssBaseline, Button} from "@material-ui/core"
+import {AppBar, Toolbar, Grid, makeStyles, CssBaseline} from "@material-ui/core"
 
 const useStyles = makeStyles({
     logo: {
+        marginTop:"2vh", 
         width: "200px",
         marginBottom: "20px"
     },

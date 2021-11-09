@@ -1,21 +1,20 @@
 import React from 'react'
 import AnalyticsCard from "./AnalyticsCard"
-import{Grid} from "@material-ui/core"
 const Dashboard = () => {
     return (
-        <div > 
-            <Grid container style={{ margin:100}} spacing={2}>
-                <Grid item>
+        // <div styel={{ width: "100%"}}>
+            <div style={{ display: "flex", justifyContent: "space-around", width: "100%"}}>
+                <div>
                     <AnalyticsCard type={1} number={500} percent={20} lg={4} md={6} xs={12}/>
-                </Grid>
-                <Grid item>
+                </div>
+                <div>
                     <AnalyticsCard type={2} number={500} percent={20} />
-                </Grid>
-                <Grid item>
+                </div>
+                <div>
                     <AnalyticsCard type={3} number={500} percent={20} />
-                </Grid>
-            </Grid>
-        </div>
+                </div>
+            </div>
+            // </div>
     )
 }
 

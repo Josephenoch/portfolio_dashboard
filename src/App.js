@@ -3,7 +3,7 @@ import Sidebar from "./components/Sidebar"
 import Dashboard from "./components/Dashboard"
 import Header from "./components/Header"
 import "./app.css"
-import {CssBaseline, Grid} from "@material-ui/core"
+import {CssBaseline} from "@material-ui/core"
 
 
 function App() {
@@ -11,15 +11,10 @@ function App() {
     <div> 
     
       <Sidebar />
-      <Header />
-      <Grid container>
         <div className="others">
-          <Grid item>
-              <Dashboard/>
-          </Grid>
+          <Header />
+          <Dashboard/>
         </div>
-      </Grid>
-     
       <CssBaseline />
     </div>
   );

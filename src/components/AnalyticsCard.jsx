@@ -31,7 +31,7 @@ const AnalyticsCard = (props) => {
         color = "linear-gradient(90deg, rgba(198,148,249,1) 0%, rgba(171,100,244,1) 100%)"
     }
     else if(props.type===2){
-        message = "CV Downloade"
+        message = "CV Downloads"
         icon = <ArrowDownward className={classes.iconStyle} />
         color = "linear-gradient(90deg, rgba(104,102,233,1) 0%, rgba(104,102,233,1) 100%)"
     }

@@ -1,4 +1,4 @@
-import { InfoOutlined, WorkOutlineOutlined, DeveloperMode, FavoriteBorderOutlined, VerifiedUserOutlined, AssessmentOutlined,  SchoolOutlined} from "@material-ui/icons"
+import { InfoOutlined, WorkOutlineOutlined, DeveloperMode, FavoriteBorderOutlined, VerifiedUserOutlined, AssessmentOutlined,  SchoolOutlined, SettingsOutlined} from "@material-ui/icons"
 
 import userImg from "../assets/cropped.png"
 import {Avatar, List, ListItem, ListItemIcon, ListItemText, makeStyles, Grid, Typography} from "@material-ui/core";
@@ -6,13 +6,16 @@ import {Avatar, List, ListItem, ListItemIcon, ListItemText, makeStyles, Grid, Ty
 
 const useStyles = makeStyles({
    root:{
+        display:"flex",
         marginTop:"10vh",
         width:"17%",
         backgroundColor:"#fff",
         height:"90vh",
         position: "fixed",
         top: "0px",
-
+        alignItems: "center",
+        justifyContent: "flex-start",
+        flexDirection:"column"
    },
   
    userDetails:{
@@ -24,8 +27,8 @@ const email = "enochjoseph01@gmail.com"
 const Sidebar=(() =>{
    const  classes = useStyles()
     return (
-        <Grid container className = {classes.root} direction="column" alignItems="center">
-            <Grid item>
+        <div  className = {classes.root} direction="column">
+            <div style={{marginTop:20}}>
                 <Grid container>
                     <Grid item>
                         <Avatar alt="Joseph Enoch" src={userImg} />
@@ -35,9 +38,9 @@ const Sidebar=(() =>{
                         <Typography variant="body2">{email}</Typography>
                     </Grid >
                 </Grid>
-            </Grid>
-            <Grid item style={{marginTop:"30px"}}>
-                <List style={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+            </div>
+            <div style={{marginTop:"30px"}}>
+                <List style={{ width: '100%', bgcolor: 'background.paper' }}
                     component="nav"
                     aria-labelledby="nested-list-subheader"
                         >
@@ -51,7 +54,7 @@ const Sidebar=(() =>{
                         <ListItemIcon>
                             <InfoOutlined />
                         </ListItemIcon>
-                        <ListItemText primary="About" style={{width:"17 0px"}}/>
+                        <ListItemText primary="About" style={{width:"170px"}}/>
                     </ListItem>
                     <ListItem button key="Experience">
                         <ListItemIcon>
@@ -83,9 +86,15 @@ const Sidebar=(() =>{
                         </ListItemIcon>
                         <ListItemText primary="Certificates" />
                     </ListItem>
+                    <ListItem button key="Certificates" style={{ background:"linear-gradient(90deg, rgba(111,227,255,1) 0%, rgba(47,199,245,1) 35%)", color:"white", marginTop:50}}>
+                        <ListItemIcon>
+                            <SettingsOutlined style={{color:"white"}}/>
+                        </ListItemIcon>
+                        <ListItemText primary="Settings" />
+                    </ListItem>
                 </List> 
-            </Grid>
-        </Grid>
+            </div>
+        </div>
     )
 })
 export default Sidebar
