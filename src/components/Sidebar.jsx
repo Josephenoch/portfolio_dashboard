@@ -4,7 +4,7 @@ import userImg from "../assets/cropped.png"
 import {Avatar, List, ListItem, ListItemIcon, ListItemText, makeStyles, Grid, Typography} from "@material-ui/core";
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
    root:{
         display:"flex",
         marginTop:"94px",
@@ -15,13 +15,16 @@ const useStyles = makeStyles({
         top: "0px",
         alignItems: "center",
         justifyContent: "flex-start",
-        flexDirection:"column"
+        flexDirection:"column",
+        [theme.breakpoints.down('md')]:{
+            display:"none"
+        }
    },
-  
+   
    userDetails:{
        marginLeft:10
    } 
-})
+}))
 const name = "Joseph"
 const email = "enochjoseph01@gmail.com"
 const Sidebar=(() =>{
@@ -54,7 +57,7 @@ const Sidebar=(() =>{
                         <ListItemIcon>
                             <InfoOutlined />
                         </ListItemIcon>
-                        <ListItemText primary="About" style={{width:"170px"}}/>
+                        <ListItemText primary="About" style={{width:"120px"}}/>
                     </ListItem>
                     <ListItem button key="Experience">
                         <ListItemIcon>

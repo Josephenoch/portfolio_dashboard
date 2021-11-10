@@ -1,18 +1,19 @@
 import React from 'react'
-import { Card, CardContent, Typography, makeStyles, Grid} from "@material-ui/core"
+import {Paper, Card, CardContent, Typography, makeStyles, Grid} from "@material-ui/core"
 import {Message, ArrowDownward, People} from "@material-ui/icons"
 
 const useStyles = makeStyles({
     root:{
-        height:"320.13px",
-        width:"450.69px",
-        borderRadius: "30px"
+        height:"100%",
+        width:"25%",
+        borderRadius: "30px",
+        minWidth:"250px"
     },
     circles:{
         backgroundColor:"rgba(255, 255, 255, 0.1)",
         position: "absolute", 
-        height: "210px", 
-        width: "210px", 
+        width:200,
+        height:200, 
         borderRadius: "50%",
     },
     iconStyle:{
@@ -41,8 +42,7 @@ const AnalyticsCard = (props) => {
         color = "linear-gradient(90deg, rgba(254,182,131,1) 0%, rgba(255,137,147,1) 100%)"
     }
     return (
-        <div>
-            <Card raised className={classes.root}>
+            <Card raised className={classes.root} component={Paper}>
                 <CardContent style={{width:"100%", height:"100%", paddingLeft:"20px", background:color}}>
                    {icon}
                     <Typography variant="body2" style={{color:"white", fontSize:24}}>
@@ -56,12 +56,11 @@ const AnalyticsCard = (props) => {
                     </Typography>
                     
                 </CardContent>
-                <Grid container style={{ position: "relative" }}>
-                    <Grid item style={{bottom:"20px", left:"330px" }} className={classes.circles}></Grid>
-                    <Grid item style={{ bottom: "-100px", left: "270px" }} className={classes.circles}></Grid>
+                <Grid container style={{ position: "relative", width:"50%" , height:"50%"}}>
+                    <Grid item style={{bottom:"0", left:"150%" }} className={classes.circles}></Grid>
+                    <Grid item style={{ bottom: "-100px", left: "120%" }} className={classes.circles}></Grid>
                 </Grid>
             </Card> 
-        </div>
     )
 }
 
