@@ -8,7 +8,7 @@ import {CssBaseline} from "@material-ui/core"
 
 function App() {
   return (
-    <div> 
+    <div styles={{display:"flex"}}> 
     
       <Sidebar />
         <div className="others">

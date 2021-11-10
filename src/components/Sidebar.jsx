@@ -7,7 +7,7 @@ import {Avatar, List, ListItem, ListItemIcon, ListItemText, makeStyles, Grid, Ty
 const useStyles = makeStyles({
    root:{
         display:"flex",
-        marginTop:"10vh",
+        marginTop:"94px",
         width:"17%",
         backgroundColor:"#fff",
         height:"90vh",
@@ -86,7 +86,7 @@ const Sidebar=(() =>{
                         </ListItemIcon>
                         <ListItemText primary="Certificates" />
                     </ListItem>
-                    <ListItem button key="Certificates" style={{ background:"linear-gradient(90deg, rgba(111,227,255,1) 0%, rgba(47,199,245,1) 35%)", color:"white", marginTop:50}}>
+                    <ListItem button key="Certificates" style={{background:"linear-gradient(90deg, rgba(111,227,255,1) 0%, rgba(47,199,245,1) 35%)", color:"white", marginTop:50,}}>
                         <ListItemIcon>
                             <SettingsOutlined style={{color:"white"}}/>
                         </ListItemIcon>

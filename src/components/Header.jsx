@@ -4,13 +4,13 @@ import {AppBar, Toolbar, Grid, makeStyles, CssBaseline} from "@material-ui/core"
 
 const useStyles = makeStyles({
     logo: {
-        marginTop:"2vh", 
+        marginTop:"25px", 
         width: "200px",
         marginBottom: "20px"
     },
     root:{
         backgroundColor: "#FFFFFF",
-        height:"10vh"
+        height:"94px"
     }
 })
 const Header = () => {
