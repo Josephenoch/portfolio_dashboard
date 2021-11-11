@@ -9,8 +9,8 @@ const useStyles = makeStyles((theme) =>({
         justifyContent: "space-around", 
         width: "100%",
         overflow: "auto",
-        height: "100%"}
-       
+        height: "100%",
+    }
 }))
 const Dashboard = () => {
     const classes = useStyles()

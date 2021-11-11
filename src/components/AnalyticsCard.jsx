@@ -9,11 +9,20 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "30px",
         minWidth:"250px",
         [theme.breakpoints.down("sm")]:{
-            width: "25%",
-            height: "22vh",
-            minWidth: "150px",
+            height: "100%",
+            minWidth: "110px",
         }
     },
+    cardContent: { 
+        width: "100%", 
+        height: "100%", 
+        paddingLeft: "20px",
+        [theme.breakpoints.down("sm")]: {
+            paddingLeft: 0
+        }
+        
+    },
+
     circles:{
         backgroundColor:"rgba(255, 255, 255, 0.1)",
         position: "absolute", 
@@ -32,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: "30px", 
         color: "white",
         [theme.breakpoints.down("sm")]: {
-            fontSize:30,
+            fontSize:20,
             marginTop: "15px",
         }
     },
@@ -40,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
         color: "white", 
         fontSize: 24,
         [theme.breakpoints.down("sm")]: {
-            fontSize: 16,
+            fontSize: 10,
         }
     },
     numberP:{
@@ -48,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 36, 
         marginBottom: "20px",
         [theme.breakpoints.down("sm")]: {
-            fontSize: 24
+            fontSize: 18
        }
     },
 }))
@@ -72,7 +81,7 @@ const AnalyticsCard = (props) => {
     }
     return (
             <Card raised className={classes.root} component={Paper}>
-                <CardContent style={{width:"100%", height:"100%", paddingLeft:"20px", background:color}}>
+                <CardContent style={{ background:color}}>
                    {icon}
                     <Typography variant="body2" className={classes.contentP} >
                       {message}
@@ -80,7 +89,7 @@ const AnalyticsCard = (props) => {
                     <Typography variant="body2" className={classes.numberP}>
                         {props.number}
                     </Typography>
-                <Typography variant="body2" className={classes.contentP} style={{ marginTop: "20px"}}>
+                <Typography variant="body2" className={classes.contentP} style={{ marginTop: "10px"}}>
                         Increased by {props.percent}%
                     </Typography>
                     
