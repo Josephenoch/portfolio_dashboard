@@ -2,12 +2,17 @@ import React from 'react'
 import {Paper, Card, CardContent, Typography, makeStyles, Grid} from "@material-ui/core"
 import {Message, ArrowDownward, People} from "@material-ui/icons"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root:{
         height:"100%",
         width:"25%",
         borderRadius: "30px",
-        minWidth:"250px"
+        minWidth:"250px",
+        [theme.breakpoints.down("md")]:{
+            width: "15%",
+            height: "50%",
+            minWidth: "150px",
+        }
     },
     circles:{
         backgroundColor:"rgba(255, 255, 255, 0.1)",
@@ -22,7 +27,7 @@ const useStyles = makeStyles({
         marginTop: "30px", 
         color: "white"
     }
-})
+}))
 const AnalyticsCard = (props) => {
     const classes = useStyles()
     var message, icon, color
