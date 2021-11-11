@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
         color: "white",
         [theme.breakpoints.down("sm")]: {
             fontSize:20,
-            marginTop: "15px",
+            marginTop: "0px",
         }
     },
     contentP:{
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     numberP:{
         color: "white", 
         fontSize: 36, 
-        marginBottom: "20px",
+        marginBottom: "10px",
         [theme.breakpoints.down("sm")]: {
             fontSize: 18
        }
