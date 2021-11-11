@@ -8,9 +8,9 @@ const useStyles = makeStyles((theme) => ({
         width:"25%",
         borderRadius: "30px",
         minWidth:"250px",
-        [theme.breakpoints.down("md")]:{
-            width: "15%",
-            height: "50%",
+        [theme.breakpoints.down("sm")]:{
+            width: "25%",
+            height: "22vh",
             minWidth: "150px",
         }
     },
@@ -20,13 +20,37 @@ const useStyles = makeStyles((theme) => ({
         width:200,
         height:200, 
         borderRadius: "50%",
+        [theme.breakpoints.down("sm")]: {
+            width: "25%",
+            height: "25vh",
+            minWidth: "150px",
+        }
     },
     iconStyle:{
         fontSize: 40, 
         marginBottom: "10px", 
         marginTop: "30px", 
-        color: "white"
-    }
+        color: "white",
+        [theme.breakpoints.down("sm")]: {
+            fontSize:30,
+            marginTop: "15px",
+        }
+    },
+    contentP:{
+        color: "white", 
+        fontSize: 24,
+        [theme.breakpoints.down("sm")]: {
+            fontSize: 16,
+        }
+    },
+    numberP:{
+        color: "white", 
+        fontSize: 36, 
+        marginBottom: "20px",
+        [theme.breakpoints.down("sm")]: {
+            fontSize: 24
+       }
+    },
 }))
 const AnalyticsCard = (props) => {
     const classes = useStyles()
@@ -50,13 +74,13 @@ const AnalyticsCard = (props) => {
             <Card raised className={classes.root} component={Paper}>
                 <CardContent style={{width:"100%", height:"100%", paddingLeft:"20px", background:color}}>
                    {icon}
-                    <Typography variant="body2" style={{color:"white", fontSize:24}}>
+                    <Typography variant="body2" className={classes.contentP} >
                       {message}
                     </Typography>
-                    <Typography variant="body2" style={{ color: "white", fontSize: 36, marginBottom:"20px" }}>
+                    <Typography variant="body2" className={classes.numberP}>
                         {props.number}
                     </Typography>
-                    <Typography variant="body2" style={{ color: "white", fontSize: 24, marginTop: "20px" }}>
+                <Typography variant="body2" className={classes.contentP} style={{ marginTop: "20px"}}>
                         Increased by {props.percent}%
                     </Typography>
                     
