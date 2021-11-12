@@ -65,7 +65,7 @@ const Header = () => {
                         <img src={smallLogo} alt="logo" className={classes.smallLogo} />
                         <img src={logo} alt="logo" className={classes.logo} />
                     </Grid>
-                    <Grid item sm>
+                    <Grid item xs>
                     </Grid>
                     <Grid item>
                         <IconButton onClick={handleClick} className={classes.menuIcon}> {open ? <Cancel /> : <Menu />} </IconButton>
