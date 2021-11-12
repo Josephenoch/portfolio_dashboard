@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) =>({
         width: "100%",
         overflow: "auto",
         height: "100%",
+        marginBottom:10
     }
 }))
 const Dashboard = () => {
@@ -21,7 +22,7 @@ const Dashboard = () => {
                     <AnalyticsCard type={2} number={500} percent={20} />
                     <AnalyticsCard type={3} number={500} percent={20} />
             </div>
-            <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop:"94px"}}>
+            <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop: "94px" }} eleevation={0}>
                 <BasicTable/>
             </div>
          </div>

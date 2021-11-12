@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) =>({
     },
    smallLogo: {
         width: "50px",
+        marginTop: "12px",
         [theme.breakpoints.up("md")]:{
             display:"none"
         }
@@ -30,6 +31,14 @@ const useStyles = makeStyles((theme) =>({
         display:"none",
         [theme.breakpoints.down("md")]:{
             display:"Grid"
+        }
+    },
+    menuIcon:{
+        [theme.breakpoints.up("lg")]: {
+            display: "none"
+        },
+        [theme.breakpoints.only("md")]: {
+            marginTop:20
         }
     }
 }))
@@ -59,7 +68,7 @@ const Header = () => {
                     <Grid item sm>
                     </Grid>
                     <Grid item>
-                        <IconButton onClick={handleClick}> {open ? <Cancel /> : <Menu />} </IconButton>
+                        <IconButton onClick={handleClick} className={classes.menuIcon}> {open ? <Cancel /> : <Menu />} </IconButton>
                     </Grid>
                 </Grid>
                

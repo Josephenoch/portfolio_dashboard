@@ -80,7 +80,7 @@ const AnalyticsCard = (props) => {
         color = "linear-gradient(90deg, rgba(254,182,131,1) 0%, rgba(255,137,147,1) 100%)"
     }
     return (
-            <Card raised className={classes.root} component={Paper}>
+            <Card raised className={classes.root} component={Paper} elevation={0}>
                 <CardContent style={{ background:color}}>
                    {icon}
                     <Typography variant="body2" className={classes.contentP} >

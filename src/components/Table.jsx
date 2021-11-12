@@ -14,7 +14,7 @@ const rows = [
 
 export default function BasicTable() {
     return (
-        <TableContainer component={Paper} style={{width:"90%"}}>
+        <TableContainer component={Paper} style={{ width: "90%" }} eleevation={0}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
