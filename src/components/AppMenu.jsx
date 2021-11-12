@@ -1,4 +1,4 @@
-import { InfoOutlined, WorkOutlineOutlined, DeveloperMode, FavoriteBorderOutlined, VerifiedUserOutlined, AssessmentOutlined, SchoolOutlined, SettingsOutlined } from "@material-ui/icons"
+import { InfoOutlined, WorkOutlineOutlined, DeveloperMode, FavoriteBorderOutlined, VerifiedUserOutlined, AssessmentOutlined, SchoolOutlined } from "@material-ui/icons"
 import {List, ListItemIcon, ListItemText, ListItem, } from "@material-ui/core/"
 
 
@@ -14,49 +14,43 @@ const AppMenu = () => {
                         <ListItemIcon>
                             <AssessmentOutlined />
                         </ListItemIcon>
-                        <ListItemText primary="Dashboard" />
+                        <ListItemText secondary="Dashboard" />
                     </ListItem>
                     <ListItem button key="About">
                         <ListItemIcon>
                             <InfoOutlined />
                         </ListItemIcon>
-                        <ListItemText primary="About"/>
+                        <ListItemText secondary="About"/>
                     </ListItem>
                     <ListItem button key="Experience">
                         <ListItemIcon>
                             <WorkOutlineOutlined />
                         </ListItemIcon>
-                        <ListItemText primary="Experience" />
+                        <ListItemText secondary="Experience" />
                     </ListItem>
                     <ListItem button key="Education">
                         <ListItemIcon>
                             <SchoolOutlined />
                         </ListItemIcon>
-                        <ListItemText primary="Education" />
+                        <ListItemText secondary="Education" />
                     </ListItem>
                     <ListItem button key="Skills">
                         <ListItemIcon>
                             <DeveloperMode />
                         </ListItemIcon>
-                        <ListItemText primary="Skills" />
+                        <ListItemText secondary="Skills" />
                     </ListItem>
                     <ListItem button key="Interests">
                         <ListItemIcon>
                             <FavoriteBorderOutlined />
                         </ListItemIcon>
-                        <ListItemText primary="Interests" />
+                        <ListItemText secondary="Interests" />
                     </ListItem>
                     <ListItem button key="Certificates">
                         <ListItemIcon>
                             <VerifiedUserOutlined />
                         </ListItemIcon>
-                        <ListItemText primary="Certificates" />
-                    </ListItem>
-                    <ListItem button key="Settings" style={{ background: "linear-gradient(90deg, rgba(111,227,255,1) 0%, rgba(47,199,245,1) 35%)", color: "white", marginTop: 50, }}>
-                        <ListItemIcon>
-                            <SettingsOutlined style={{ color: "white" }} />
-                        </ListItemIcon>
-                        <ListItemText primary="Settings" />
+                        <ListItemText secondary="Certificates" />
                     </ListItem>
                 </List>
            </div>

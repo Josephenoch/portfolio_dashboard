@@ -56,15 +56,18 @@ const Header = () => {
                         <img src={smallLogo} alt="logo" className={classes.smallLogo} />
                         <img src={logo} alt="logo" className={classes.logo} />
                     </Grid>
-                    
+                    <Grid item sm>
+                    </Grid>
+                    <Grid item>
+                        <IconButton onClick={handleClick}> {open ? <Cancel /> : <Menu />} </IconButton>
+                    </Grid>
                 </Grid>
+               
            </Toolbar>
          <CssBaseline/>
             <Grid container className={classes.appMenu} direction="row-reverse">
                 <Grid item>
-                    <div>
-                        <IconButton onClick={handleClick}> {open ? <Cancel /> : <Menu />} </IconButton>
-                    </div>
+
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <AppMenu />
                     </Collapse>
