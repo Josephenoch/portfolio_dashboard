@@ -2,7 +2,7 @@ import { InfoOutlined, WorkOutlineOutlined, DeveloperMode, FavoriteBorderOutline
 
 import userImg from "../assets/cropped.png"
 import {Avatar, List, ListItem, ListItemIcon, ListItemText, makeStyles, Grid, Typography} from "@material-ui/core";
-
+import {Link} from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
    root:{
@@ -47,13 +47,13 @@ const Sidebar=(() =>{
                     component="nav"
                     aria-labelledby="nested-list-subheader"
                         >
-                    <ListItem button key="Dashboard" >
+                    <ListItem button key="Dashboard" component={Link} to={'/'}>   
                         <ListItemIcon>
                             <AssessmentOutlined />
                         </ListItemIcon>
                         <ListItemText primary="Dashboard" />
                     </ListItem>
-                    <ListItem button key="About">
+                    <ListItem button key="About" component={Link} to={'/about'}>
                         <ListItemIcon>
                             <InfoOutlined />
                         </ListItemIcon>

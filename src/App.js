@@ -2,7 +2,9 @@
 import Sidebar from "./components/Sidebar"
 import Dashboard from "./components/Dashboard"
 import Header from "./components/Header"
+import About from "./components/About"
 import {CssBaseline, makeStyles} from "@material-ui/core"
+import { Route, Routes} from "react-router-dom"
 
 const useStyles = makeStyles((theme) =>({
   mainContent:{
@@ -25,16 +27,21 @@ const useStyles = makeStyles((theme) =>({
 function App() {
   const classes = useStyles()
   return (
-    <div styles={{display:"flex"}}> 
     
-      <Sidebar />
-        <div className={classes.mainContent}>
-          <Header />
-          <Dashboard/>
-        </div>
-      <CssBaseline />
-    </div>
+    <div styles={{display:"flex"}}>  
+        <Sidebar />
+          <div className={classes.mainContent}>
+            <Header />
+            <Routes>
+                <Route index element={<Dashboard/>}/>
+                <Route path="/about" element={<About/>}/> 
+            </Routes>
+          </div>
+        <CssBaseline />        
+      </div>  
+    
   );
 }
 
-export default App;
+
+export default App 
