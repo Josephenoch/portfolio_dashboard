@@ -1,4 +1,4 @@
-import { InfoOutlined, WorkOutlineOutlined, DeveloperMode, FavoriteBorderOutlined, VerifiedUserOutlined, AssessmentOutlined, SchoolOutlined } from "@material-ui/icons"
+import {WorkOutlineOutlined, DeveloperMode, FavoriteBorderOutlined, VerifiedUserOutlined, AssessmentOutlined, SchoolOutlined } from "@material-ui/icons"
 import {List, ListItemIcon, ListItemText, ListItem, } from "@material-ui/core/"
 import { Link } from "react-router-dom"
 
@@ -11,17 +11,11 @@ const AppMenu = () => {
                     component="nav"
                     aria-labelledby="nested-list-subheader"
                 >
-                    <ListItem button key="Dashboard" component={Link} to={'/'}>
+                    <ListItem button key="/Dashboard" component={Link} to={'/'}>
                         <ListItemIcon>
                             <AssessmentOutlined />
                         </ListItemIcon>
                         <ListItemText secondary="Dashboard" />
-                    </ListItem>
-                    <ListItem button key="About" component={Link} to={'/about'}>
-                        <ListItemIcon>
-                            <InfoOutlined />
-                        </ListItemIcon>
-                         <ListItemText secondary="About"/> 
                     </ListItem>
                     <ListItem button key="Experience">
                         <ListItemIcon>

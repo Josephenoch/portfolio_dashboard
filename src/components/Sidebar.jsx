@@ -1,4 +1,4 @@
-import { InfoOutlined, WorkOutlineOutlined, DeveloperMode, FavoriteBorderOutlined, VerifiedUserOutlined, AssessmentOutlined,  SchoolOutlined, SettingsOutlined} from "@material-ui/icons"
+import {WorkOutlineOutlined, DeveloperMode, FavoriteBorderOutlined, VerifiedUserOutlined, AssessmentOutlined,  SchoolOutlined, SettingsOutlined} from "@material-ui/icons"
 
 import userImg from "../assets/cropped.png"
 import {Avatar, List, ListItem, ListItemIcon, ListItemText, makeStyles, Grid, Typography} from "@material-ui/core";
@@ -7,6 +7,7 @@ import {Link} from "react-router-dom"
 const useStyles = makeStyles((theme) => ({
    root:{
         display:"flex",
+        zIndex:99,
         marginTop:"94px",
         width:"17%",
         backgroundColor:"#fff",
@@ -52,12 +53,6 @@ const Sidebar=(() =>{
                             <AssessmentOutlined />
                         </ListItemIcon>
                         <ListItemText primary="Dashboard" />
-                    </ListItem>
-                    <ListItem button key="About" component={Link} to={'/about'}>
-                        <ListItemIcon>
-                            <InfoOutlined />
-                        </ListItemIcon>
-                        <ListItemText primary="About" style={{width:"120px"}}/>
                     </ListItem>
                     <ListItem button key="Experience">
                         <ListItemIcon>

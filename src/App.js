@@ -1,8 +1,7 @@
 
 import Sidebar from "./components/Sidebar"
-import Dashboard from "./components/Dashboard"
+import Dashboard from "./components/Dashboard/Dashboard"
 import Header from "./components/Header"
-import About from "./components/About"
 import {CssBaseline, makeStyles} from "@material-ui/core"
 import { Route, Routes} from "react-router-dom"
 
@@ -15,6 +14,7 @@ const useStyles = makeStyles((theme) =>({
     width: "100%",
     backgroundColor:"#F5F5F5",
     zIndex: "-1",
+    overflowX: "hidden",
     [theme.breakpoints.down("md")]:{
       paddingLeft:"0" 
     },
@@ -34,7 +34,6 @@ function App() {
             <Header />
             <Routes>
                 <Route index element={<Dashboard/>}/>
-                <Route path="/about" element={<About/>}/> 
             </Routes>
           </div>
         <CssBaseline />        

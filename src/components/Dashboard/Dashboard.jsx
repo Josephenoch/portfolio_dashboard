@@ -1,18 +1,20 @@
 import React from 'react'
 import AnalyticsCard from "./AnalyticsCard"
-import BasicTable from "./Table"
+import BasicTable from "../Table"
 import {makeStyles} from "@material-ui/core"
 import UserImage from './UserImage'
+import About from "./About"
 
 const useStyles = makeStyles((theme) =>({
-    root:{
+    general:{
         display: "flex", 
         justifyContent: "space-around", 
         width: "100%",
         overflow: "auto",
         height: "100%",
         marginBottom:10
-    }
+    },
+   
 }))
 const Dashboard = () => {
     const classes = useStyles()
@@ -22,7 +24,10 @@ const Dashboard = () => {
             <div>
                 <UserImage/>        
             </div>
-            <div className={classes.root}> 
+            <div className={classes.general}> 
+                <About/>
+            </div>
+            <div className={classes.general}> 
                     <AnalyticsCard type={1} number={500} percent={20} />
                     <AnalyticsCard type={2} number={500} percent={20} />
                     <AnalyticsCard type={3} number={500} percent={20} />
