@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) =>({
         backgroundColor: "#FFFFFF",
        
         [theme.breakpoints.up("lg")]: {
-            height: "94px",
+            height: "80px",
         }
     },
    smallLogo: {

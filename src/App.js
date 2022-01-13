@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) =>({
   mainContent:{
     paddingLeft: "17%",
     justifyContent: "center",
-    marginTop: "94px",
+    marginTop: "75px",
     paddingTop: "2vh",
     width: "100%",
     backgroundColor:"#F5F5F5",

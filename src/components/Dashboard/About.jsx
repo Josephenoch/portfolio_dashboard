@@ -8,7 +8,7 @@ const About = () =>{
     const inputDiv = useRef()
     
     const saveAbout = () =>{
-        if (pDiv.current && inputDiv){
+        if (pDiv.current && inputDiv.current){
             if (pDiv.current.style.display === "none"){
                 pDiv.current.style.display = "block"
                 inputDiv.current.style.display = "none"

@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
    root:{
         display:"flex",
         zIndex:99,
-        marginTop:"94px",
+        marginTop:"80px",
         width:"17%",
         backgroundColor:"#fff",
         height:"90vh",
