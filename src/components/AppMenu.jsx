@@ -17,7 +17,7 @@ const AppMenu = () => {
                         </ListItemIcon>
                         <ListItemText secondary="Dashboard" />
                     </ListItem>
-                    <ListItem button key="Experience">
+                    <ListItem button key="Experience" component={Link} to={'/Experience'}>
                         <ListItemIcon>
                             <WorkOutlineOutlined />
                         </ListItemIcon>

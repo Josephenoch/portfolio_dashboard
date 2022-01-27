@@ -54,7 +54,7 @@ const Sidebar=(() =>{
                         </ListItemIcon>
                         <ListItemText primary="Dashboard" />
                     </ListItem>
-                    <ListItem button key="Experience">
+                    <ListItem button key="Experience" component={Link} to={'/Experience'}>
                         <ListItemIcon>
                             <WorkOutlineOutlined />
                         </ListItemIcon>
