@@ -1,22 +1,37 @@
 import React from "react"
 import {makeStyles, Typography} from "@material-ui/core"
 
+
 const useStyles = makeStyles((theme) => ({
     headerDiv:{
-        height:200,
-        backgroundColor:"#ffffff"
-    }
+        position:"relative",
+        display:"flex",
+        height:80,
+        maxHeight:100,
+        backgroundColor:"#ffffff",
+        overflow:"visible",
+ 
+    },
+    text:{
+        position:"absolute",
+        marginLeft:50,
+        color: "#aaa"
+    },
+    
 }))
 
 const ExperienceHeader = () =>{
     const styles = useStyles()
     return (
         <div>
-            List of Experience
-            <div className={styles.headerDiv}>
-                <Typography>
+            <div className = {styles.headerDiv}>
+                <Typography
+                    variant="h3"
+                    className = {styles.text}
+                >
                     List of Experience
                 </Typography>
+                
             </div>
         </div>
     )

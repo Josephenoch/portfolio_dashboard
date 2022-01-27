@@ -28,15 +28,13 @@ const useStyles = makeStyles((theme) =>({
 function App() {
   const classes = useStyles()
   return (
-    
     <div styles={{display:"flex"}}>  
         <Sidebar />
           <div className={classes.mainContent}>
-            <Header />
-            
+            <Header />   
             <Routes>
                 <Route index element={<Dashboard/>}/>
-                <Route element={<Experience/>}/>
+                <Route path="Experience" element={<Experience/>}/>
             </Routes>
           </div>
         <CssBaseline />        
