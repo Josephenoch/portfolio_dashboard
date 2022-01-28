@@ -4,8 +4,9 @@ import WebFont from 'webfontloader';
 import Dashboard from "./components/Dashboard/Dashboard"
 import Experience from "./components/Experience/Experience"
 import Header from "./components/Header"
-import {CssBaseline, makeStyles, createTheme, ThemeProvider} from "@material-ui/core"
+import {CssBaseline, makeStyles, createTheme, ThemeProvider, responsiveFontSizes} from "@material-ui/core"
 import { Route, Routes} from "react-router-dom"
+import { red } from "@material-ui/core/colors";
 
 WebFont.load({  
   google: {
@@ -13,13 +14,23 @@ WebFont.load({
   }
 });
 
-const LightTheme = createTheme({
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
+let LightTheme = createTheme({
   typography: {
+    color:"red",
     fontFamily: [
       'Playfair Display'
     ].join(','),
   },
 });
+
+LightTheme = responsiveFontSizes(LightTheme)
+
 const useStyles = makeStyles((theme) =>({
   mainContent:{
     fontFamily: "'Playfair Display', serif",
@@ -33,10 +44,10 @@ const useStyles = makeStyles((theme) =>({
     overflowX: "hidden",
     [theme.breakpoints.down("md")]:{
       paddingLeft:"0",
-      marginTop:"82px"
+      marginTop:"60px"
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "40px",
+      marginTop: "30px",
     }
   }
 }))

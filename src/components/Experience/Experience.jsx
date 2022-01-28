@@ -9,12 +9,9 @@ const useStyles = makeStyles((theme) =>({
         top:"16.5vh",
         right:100,
         marginBottom:0,
-        [theme.breakpoints.only("md")]:{
-            top:"22.5vh",
+        [theme.breakpoints.down("md")]:{
+            top:"7.5vh",
         },
-        [theme.breakpoints.down("sm")]: {
-            top:"18.5vh",
-          }
     }
     
 }))
