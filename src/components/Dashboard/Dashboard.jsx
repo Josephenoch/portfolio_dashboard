@@ -7,12 +7,12 @@ import About from "./About"
 
 const useStyles = makeStyles((theme) =>({
     general:{
-        display: "flex", 
-        justifyContent: "space-around", 
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "space-around",
+        alignItems:"center", 
         width: "100%",
-        overflow: "auto",
         height: "100%",
-        marginBottom:10
     },
    
 }))
@@ -27,7 +27,7 @@ const Dashboard = () => {
             <div className={classes.general}> 
                 <About/>
             </div>
-            <div className={classes.general}> 
+            <div className={classes.general} style={{overflow:"auto"}}> 
                     <AnalyticsCard type={1} number={500} percent={20} />
                     <AnalyticsCard type={2} number={500} percent={20} />
                     <AnalyticsCard type={3} number={500} percent={20} />

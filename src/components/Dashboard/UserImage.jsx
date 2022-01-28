@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) =>({
         height:"40vh", 
         width:"100%",
         background:"linear-gradient(0deg, rgba(255, 0, 150, 0.3), rgba(255, 0, 150, 0.3)), url("+userImg+")",
+        backgroundAttachment:"fixed",
         backgroundSize:"cover",
         marginBottom:50,
         borderRadius:"0px 0px 50px 0px",

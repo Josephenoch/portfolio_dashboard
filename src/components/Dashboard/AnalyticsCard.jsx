@@ -5,12 +5,13 @@ import {Message, ArrowDownward, People} from "@material-ui/icons"
 const useStyles = makeStyles((theme) => ({
     root:{
         height:"100%",
-        width:"25%",
+        width:"30%",
+        margin:"0 15px",
         borderRadius: "30px",
         minWidth:"250px",
         [theme.breakpoints.down("sm")]:{
-            height: "100%",
-            minWidth: "110px",
+            marginTop:"35px",
+            // minWidth: "110px",
         }
     },
     cardContent: { 
@@ -80,7 +81,7 @@ const AnalyticsCard = (props) => {
         color = "linear-gradient(90deg, rgba(254,182,131,1) 0%, rgba(255,137,147,1) 100%)"
     }
     return (
-            <Card raised className={classes.root} component={Paper} elevation={0}>
+            <Card raised className={classes.root}   elevation={0}>
                 <CardContent style={{ background:color}}>
                    {icon}
                     <Typography variant="body2" className={classes.contentP} >

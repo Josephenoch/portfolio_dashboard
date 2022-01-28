@@ -6,8 +6,8 @@ import {AddCircle} from "@material-ui/icons/";
 const useStyles = makeStyles((theme) =>({
     addIcon:{
         position:"absolute", 
-        top:145,
-        right:30,
+        top:132,
+        right:100,
         marginBottom:0,
     }
 }))
@@ -18,7 +18,7 @@ const Experience = ()=>{
         <div>
             <ExperienceHeader/>
             <div className = {styles.addIcon}>
-                <AddCircle/>     
+                <AddCircle style={{color:"rgba(111,227,255,1)", fontSize:50}}/>     
             </div> 
         </div>
     )
