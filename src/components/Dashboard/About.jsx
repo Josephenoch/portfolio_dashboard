@@ -1,12 +1,21 @@
 import React, {useRef, useState, useEffect} from "react"
-import { Button,TextField, Typography } from "@material-ui/core"
+import {makeStyles, Button,TextField, Typography } from "@material-ui/core"
 
+const useStyles= makeStyles((theme) =>({
+    buttonStyle:{
+        marginTop:"20px",
+        left:"90%",
+        [theme.breakpoints.down("sm")]: {
+            left:"80%"
+        }
+    }
+}))
 
 const About = () =>{
     const [aboutText, setAboutText] = useState("")
     const pDiv = useRef()
     const inputDiv = useRef()
-    
+    const style = useStyles()
     const saveAbout = () =>{
         if (pDiv.current && inputDiv.current){
             if (pDiv.current.style.display === "none"){
@@ -74,10 +83,7 @@ const About = () =>{
                 />
                 <Button 
                     variant="outlined"
-                    style={{
-                        marginTop:"20px",
-                        left:"90%"
-                    }}
+                    className={style.buttonStyle}
                     onClick={saveAbout}
                     >
                         Save

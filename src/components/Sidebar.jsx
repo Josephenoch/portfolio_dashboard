@@ -23,10 +23,11 @@ const useStyles = makeStyles((theme) => ({
    },
    
    userDetails:{
-       marginLeft:10
+       marginLeft:5
    } 
 }))
-const name = "Joseph"
+const fname = "Joseph"
+const lname = "Enoch"
 const email = "enochjoseph01@gmail.com"
 const Sidebar=(() =>{
    const  classes = useStyles()
@@ -38,13 +39,14 @@ const Sidebar=(() =>{
                         <Avatar alt="Joseph Enoch" src={userImg} />
                     </Grid >
                     <Grid item className={classes.userDetails}>
-                        <Typography variant="body2">{name}</Typography>
+                        <Typography variant="body2" display="inline">{fname}</Typography>
+                        <Typography variant="body2" display="inline"> {lname}</Typography>
                         <Typography variant="body2">{email}</Typography>
                     </Grid >
                 </Grid>
             </div>
             <div style={{marginTop:"30px"}}>
-                <List style={{ width: '100%', bgcolor: 'background.paper' }}
+                <List style={{ width: '120%', bgcolor: 'background.paper', marginLeft:-20}}
                     component="nav"
                     aria-labelledby="nested-list-subheader"
                         >

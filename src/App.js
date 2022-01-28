@@ -1,13 +1,28 @@
 
 import Sidebar from "./components/Sidebar"
+import WebFont from 'webfontloader';
 import Dashboard from "./components/Dashboard/Dashboard"
 import Experience from "./components/Experience/Experience"
 import Header from "./components/Header"
-import {CssBaseline, makeStyles} from "@material-ui/core"
+import {CssBaseline, makeStyles, createTheme, ThemeProvider} from "@material-ui/core"
 import { Route, Routes} from "react-router-dom"
 
+WebFont.load({  
+  google: {
+    families: ['Playfair Display:300,400,700', 'serif']
+  }
+});
+
+const LightTheme = createTheme({
+  typography: {
+    fontFamily: [
+      'Playfair Display'
+    ].join(','),
+  },
+});
 const useStyles = makeStyles((theme) =>({
   mainContent:{
+    fontFamily: "'Playfair Display', serif",
     paddingLeft: "17%",
     justifyContent: "center",
     marginTop: "65px",
@@ -17,10 +32,11 @@ const useStyles = makeStyles((theme) =>({
     zIndex: "-1",
     overflowX: "hidden",
     [theme.breakpoints.down("md")]:{
-      paddingLeft:"0" 
+      paddingLeft:"0",
+      marginTop:"82px"
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "60px",
+      marginTop: "40px",
     }
   }
 }))
@@ -28,7 +44,8 @@ const useStyles = makeStyles((theme) =>({
 function App() {
   const classes = useStyles()
   return (
-    <div styles={{display:"flex"}}>  
+    <div styles={{display:"flex"}}> 
+      <ThemeProvider theme={LightTheme}> 
         <Sidebar />
           <div className={classes.mainContent}>
             <Header />   
@@ -37,7 +54,8 @@ function App() {
                 <Route path="Experience" element={<Experience/>}/>
             </Routes>
           </div>
-        <CssBaseline />        
+        <CssBaseline /> 
+      </ThemeProvider>       
       </div>  
     
   );

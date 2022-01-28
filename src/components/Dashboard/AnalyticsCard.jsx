@@ -10,7 +10,9 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "30px",
         minWidth:"250px",
         [theme.breakpoints.down("sm")]:{
-            marginTop:"35px",
+            marginTop:"15px",
+
+            height:"20vh",
             // minWidth: "110px",
         }
     },
@@ -19,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
         height: "100%", 
         paddingLeft: "20px",
         [theme.breakpoints.down("sm")]: {
-            paddingLeft: 0
+            paddingTop:"40px"
         }
         
     },
@@ -82,7 +84,7 @@ const AnalyticsCard = (props) => {
     }
     return (
             <Card raised className={classes.root}   elevation={0}>
-                <CardContent style={{ background:color}}>
+                <CardContent className= {classes.cardContent}style={{ background:color, height:"100%"}}>
                    {icon}
                     <Typography variant="body2" className={classes.contentP} >
                       {message}

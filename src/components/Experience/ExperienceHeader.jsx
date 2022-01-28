@@ -10,10 +10,9 @@ const useStyles = makeStyles((theme) => ({
         maxHeight:100,
         backgroundColor:"#ffffff",
         overflow:"visible",
- 
+        
     },
     text:{
-        position:"absolute",
         marginLeft:50,
         color: "#aaa"
     },
