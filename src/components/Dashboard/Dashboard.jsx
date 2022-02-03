@@ -1,6 +1,6 @@
 import React from 'react'
 import AnalyticsCard from "./AnalyticsCard"
-import BasicTable from "../Table"
+import BasicTable from "./BasicTable"
 import {makeStyles} from "@material-ui/core"
 import UserImage from './UserImage'
 import About from "./About"

@@ -22,7 +22,6 @@ const darkTheme = createTheme({
 
 let LightTheme = createTheme({
   typography: {
-    color:"red",
     fontFamily: [
       'Playfair Display'
     ].join(','),
@@ -44,7 +43,7 @@ const useStyles = makeStyles((theme) =>({
     overflowX: "hidden",
     [theme.breakpoints.down("md")]:{
       paddingLeft:"0",
-      marginTop:"60px"
+      marginTop:"55px"
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: "30px",
