@@ -7,7 +7,6 @@ import { Menu, Cancel} from "@material-ui/icons"
 const useStyles = makeStyles((theme) =>({ 
     root:{
         backgroundColor: "#FFFFFF",
-       
         [theme.breakpoints.up("lg")]: {
             height: "80px",
         }

@@ -9,11 +9,10 @@ const useStyles = makeStyles((theme) => ({
         margin:"0 15px",
         borderRadius: "30px",
         minWidth:"250px",
-        [theme.breakpoints.down("sm")]:{
-            marginTop:"15px",
-
-            height:"20vh",
-            // minWidth: "110px",
+        [theme.breakpoints.down("md")]:{
+            marginTop:"30px",
+            height:"100%",
+            width:"70%",
         }
     },
     cardContent: { 

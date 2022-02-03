@@ -6,6 +6,9 @@ import {AddCircle} from "@material-ui/icons/";
 import DataTable from "../DataTable";
 
 const useStyles = makeStyles((theme) =>({
+    rootContainer:{
+        height:"88vh"
+    },
     addIcon:{
         position:"absolute", 
         top:"16.5vh",
@@ -28,7 +31,7 @@ const useStyles = makeStyles((theme) =>({
 const Experience = ()=>{    
     const classes= useStyles()
     return(
-        <div>
+        <div className={classes.rootContainer} >
             <ExperienceHeader/>
             <div className = {classes.addIcon}>
             <IconButton>

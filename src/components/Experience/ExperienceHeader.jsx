@@ -4,13 +4,12 @@ import {makeStyles, Typography} from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
     headerDiv:{
-        position:"relative",
         display:"flex",
+        width:"100%",
         height:80,
         maxHeight:100,
         backgroundColor:"#ffffff",
         overflow:"visible",
-        
     },
     text:{
         marginLeft:50,

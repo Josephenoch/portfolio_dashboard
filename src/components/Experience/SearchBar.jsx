@@ -1,14 +1,23 @@
 import {React, useState} from 'react';
-import { IconButton, Typography, MenuItem, FormControl, InputLabel, Select } from '@material-ui/core';
+import { IconButton, Typography, MenuItem, FormControl, InputLabel, Select, makeStyles } from '@material-ui/core';
 import {Search} from "@material-ui/icons"
 
+const useStyles = makeStyles((theme) =>({
+    rootContainer:{
+        display:"flex",
+        alignItems:"center",
+        width:"94%",
+        marginTop:"7vh",
+    }
+}))
 const SearchBar = () => {
+    const classes = useStyles()
     const [status, setStatus] = useState('');
     const handleChange = (event) => {
         setStatus(event.target.value);
     };
     return (
-        <div style={{display:"flex", alignItems:"center", width:"94%", marginTop:"7vh"}}>
+        <div className={classes.rootContainer}>
             <IconButton>
                 <Search/>
             </IconButton>
@@ -24,7 +33,7 @@ const SearchBar = () => {
             >
                 List
             </Typography>
-            <div style={{position:"absolute",left:"90%"}}>
+            <div style={{position:"absolute",right:"7.5%"}}>
                 <FormControl variant="standard"  size="small">
                     <InputLabel id="demo-simple-select-standard-label" shrink>Status</InputLabel>
                     <Select
