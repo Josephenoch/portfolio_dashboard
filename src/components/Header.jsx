@@ -47,7 +47,6 @@ const Header = () => {
     const handleClick = () => {
         if (open) {
             appBar.current.height = "500px"
-            console.log(appBar.current.height)
         }
         else {
             appBar.current.height = "50px"
@@ -76,9 +75,9 @@ const Header = () => {
             <Grid container className={classes.appMenu} direction="row-reverse">
                 <Grid item>
 
-                    <Collapse in={open} timeout="auto" unmountOnExit>
+                    {/* <Collapse in={open} timeout="auto" unmountOnExit>
                         <AppMenu />
-                    </Collapse>
+                    </Collapse> */}
                 </Grid>
             </Grid>
        </AppBar>
