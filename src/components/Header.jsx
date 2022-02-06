@@ -43,20 +43,13 @@ const useStyles = makeStyles((theme) =>({
 }))
 const Header = () => {
     const [open, setOpen] = useState(false);
-    const appBar = useRef()
     const handleClick = () => {
-        if (open) {
-            appBar.current.height = "500px"
-        }
-        else {
-            appBar.current.height = "50px"
-        }
         setOpen(!open);
         
     };
     const classes = useStyles()
     return (
-        <AppBar color="primary" className={classes.root} position="fixed" elevation={0} ref={appBar}>
+        <AppBar color="primary" className={classes.root} position="fixed" elevation={0}>
             <Toolbar>
                 <Grid container>
                     <Grid item>
@@ -75,9 +68,9 @@ const Header = () => {
             <Grid container className={classes.appMenu} direction="row-reverse">
                 <Grid item>
 
-                    {/* <Collapse in={open} timeout="auto" unmountOnExit>
+                    <Collapse in={open} timeout="auto" unmountOnExit>
                         <AppMenu />
-                    </Collapse> */}
+                    </Collapse>
                 </Grid>
             </Grid>
        </AppBar>

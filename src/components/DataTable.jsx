@@ -1,6 +1,6 @@
 import {React, useState} from "react";
-import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton} from "@material-ui/core";
-import {Event, MoreHoriz} from "@material-ui/icons";
+import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse} from "@material-ui/core";
+import {Event, MoreHoriz, Delete, Edit, Publish, Cancel} from "@material-ui/icons";
 
 
 const useStyles = makeStyles((theme) =>({
@@ -21,7 +21,50 @@ const useStyles = makeStyles((theme) =>({
         '&:hover': {
             opacity: [0.9, 0.8, 0.7],
             boxShadow: "0 5px 10px rgba(0,0,0,0.12), 0 10px 10px rgba(0,0,0,0.12)",
-          },
+        },
+    },
+    avatarContainer:{
+        marginLeft:"20px",
+        width:"5%",
+        [theme.breakpoints.down("md")]:{
+            width:"20%",
+        }
+    },
+    roleText:{
+        display:"inline-block",
+        width:"10%",
+        marginRight:"50px",
+        fontWeight:"bold",
+        [theme.breakpoints.down("md")]:{
+            marginLeft:"20px",
+        }
+    },
+    date:{
+        display:"flex",
+        alignItems:"center",
+        width: "25%",
+        [theme.breakpoints.down("md")]:{
+            display:"none"
+        }
+    },
+    companyBox:{
+        width:"10%",
+        marginLeft:50,
+        display:"flex",
+        alignItems:"center",
+    },
+    statusContainer:{
+        marginLeft:100,
+        display:"flex",
+        alignItems:"center",
+        borderRadius:20,
+    },
+    optionsBox:{
+        display:"flex",
+        marginLeft:"12%",
+        [theme.breakpoints.down("md")]:{
+            marginLeft:"13%",   
+        }
     }
 }))
 
@@ -30,86 +73,56 @@ const roleName = "CEO"
 const company = "TPS"
 const startDate = "10/20/2022"
 const endDate = "10/20/2022"
-const active = false
+const active = true
 
 
 const DataTable = () => {
     const [openOptions, setOpenOptions] = useState(false)
-    const styles = useStyles()
+    const handleClick = () => {
+        setOpenOptions(!openOptions);
+    };
+   const classes = useStyles()
     return (
-        <div className={styles.rootContainer}>
-            <Box className={styles.dataContainer} boxShadow={1}>
-                <Grid 
-                    container  
-                    style={{
-                        marginLeft:"20px",
-                        width:"5%"}}>
+        <div className={classes.rootContainer}>
+            <Box className={classes.dataContainer} boxShadow={1}>
+                <Grid container className={classes.avatarContainer}>
                     <Grid item>
                         <Avatar>{roleName[0]}</Avatar>
                     </Grid >
                 </Grid> 
-                <Typography
-                    variant="body1"
-                    style={{
-                        display:"inline-block",
-                        width:"160px",
-                        marginRight:"50px",
-                        fontWeight:"bold"
-                    }}
-                >
-                    {roleName.length<20 ? roleName : roleName+"..."}
+                <Typography variant="body1" className={classes.roleText}>
+                    {roleName.length<7 ? roleName : roleName+"..."}
                 </Typography>
-                <Box 
-                    style={{
-                        display:"flex",
-                        alignItems:"center",
-                        width: "25%"
-                    }}
-                >
+                <Box className={classes.date}>
                     <Event fontSize="small" />
-                    <Typography
-                        style={{
-                            margin:"0px 0px 2px 5px"
-                        }}
-                        variant="body1"
-                    >
+                    <Typography variant="body1" style={{margin:"0px 0px 2px 5px",}}>
                         {startDate+ " - "+endDate}
                     </Typography>
                 </Box>
-                <Box 
-                    style={{
-                        width:"10%",
-                        marginLeft:50,
-                        display:"flex",
-                        alignItems:"center",
-                    }}
-                >
-                    <Typography
-                        style={{
-                            margin:"0px 0px 2px 5px"
-                        }}
-                        variant="body1"
-                    >
+                <Box className={classes.companyBox}>
+                    <Typography style={{margin:"0px 0px 2px 5px"}} variant="body1">
                         {company}
                     </Typography>
                 </Box>
-                <Box 
-                    style={{
-                        marginLeft:50,
-                        display:"flex",
-                        alignItems:"center",
-                        borderRadius:20,
-                    }}
-                >
-                    <Chip label={active ? "active" : "inactive" } color={active ? "primary": "secondary"} />    
+                <Box className={classes.statusContainer}>
+                    <Chip label={active ? "active" : "inactive" } color={active ? "primary": "textSecondary"} />    
                 </Box>
-                <IconButton>
-                    <MoreHoriz/>
-
-                </IconButton>
-                {/* <Collapse in={open} timeout="auto" unmountOnExit>
-                    
-                </Collapse> */}
+                <Box className={classes.optionsBox}>
+                    <Collapse in={openOptions} timeout="auto" >
+                        <IconButton>
+                            <Delete fontSize="small"/>
+                        </IconButton>
+                        <IconButton>
+                            <Edit fontSize="small"/>
+                        </IconButton>
+                        <IconButton>
+                            <Publish fontSize="small"/>
+                        </IconButton>
+                    </Collapse>
+                    <IconButton onClick={handleClick}>
+                        {openOptions ? <Cancel fontSize="small"/> : <MoreHoriz fontSize="small"/> }
+                    </IconButton>
+                </Box>
             </Box>        
         </div>
     );
