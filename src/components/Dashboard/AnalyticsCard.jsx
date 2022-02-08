@@ -1,5 +1,5 @@
 import React from 'react'
-import {Paper, Card, CardContent, Typography, makeStyles, Grid} from "@material-ui/core"
+import {Card, CardContent, Typography, makeStyles, Grid} from "@material-ui/core"
 import {Message, ArrowDownward, People} from "@material-ui/icons"
 
 const useStyles = makeStyles((theme) => ({

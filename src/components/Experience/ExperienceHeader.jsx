@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor:"#ffffff",
         overflow:"visible",
         [theme.breakpoints.down("md")]:{
-            marginTop:"1.8vh",
+            marginTop:"1.4vh",
             maxHeight:"7vh",
         }
     },

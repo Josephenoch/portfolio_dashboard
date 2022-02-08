@@ -1,4 +1,4 @@
-import {useState, useRef} from 'react'
+import {useState} from 'react'
 import logo from "../assets/Webfolio.jpg"
 import smallLogo from "../assets/Webfolio - Small.jpg"
 import AppMenu from "./AppMenu"

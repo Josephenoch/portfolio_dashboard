@@ -1,5 +1,5 @@
 import {React, useState} from "react";
-import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse} from "@material-ui/core";
+import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse, Input, Modal, TextField, Backdrop} from "@material-ui/core";
 import {Event, MoreHoriz, Delete, Edit, Publish, Cancel} from "@material-ui/icons";
 
 
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) =>({
         width: "100%",
         backgroundColor: 'white',
         marginTop:"20px",
-        transition: "all 5s cubic-bezier(.25,.8,.25,1)",
+        transition: "all 1s cubic-bezier(.25,.8,.25,1)",
         '&:hover': {
             opacity: [0.9, 0.8, 0.7],
             boxShadow: "0 5px 10px rgba(0,0,0,0.12), 0 10px 10px rgba(0,0,0,0.12)",
@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) =>({
     avatarContainer:{
         marginLeft:"20px",
         width:"5%",
-        [theme.breakpoints.down("md")]:{
-            width:"20%",
+        [theme.breakpoints.down("sm")]:{
+            display:"none"
         }
     },
     roleText:{
@@ -49,22 +49,48 @@ const useStyles = makeStyles((theme) =>({
     },
     companyBox:{
         width:"10%",
-        marginLeft:50,
+        marginLeft:"50px",
         display:"flex",
         alignItems:"center",
+        [theme.breakpoints.down("sm")]:{
+            marginLeft:"30px",
+        }
     },
     statusContainer:{
         marginLeft:100,
         display:"flex",
         alignItems:"center",
         borderRadius:20,
+        [theme.breakpoints.down("sm")]:{
+            display:"none"
+        }
     },
     optionsBox:{
         display:"flex",
         marginLeft:"12%",
         [theme.breakpoints.down("md")]:{
-            marginLeft:"13%",   
+            marginLeft:"0%",   
         }
+    },
+    modal:{
+        position: 'absolute',
+        top: "50%",
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: "60vw",
+        backgroundColor: 'white',
+        border: '1px solid #777',
+        boxShadow: 24,
+        padding: "20px 40px 60px",
+        [theme.breakpoints.down("sm")]:{
+            width: "100vw",
+            padding: "20px 10px 30px",
+        }
+    },
+    inputContainer:{
+        marginBottom:"20px",
+        display:"flex",
+        justifyContent:"space-between"
     }
 }))
 
@@ -73,10 +99,14 @@ const roleName = "CEO"
 const company = "TPS"
 const startDate = "10/20/2022"
 const endDate = "10/20/2022"
-const active = true
+const active = false
 
 
-const DataTable = () => {
+const ExperienceDataTable = () => {
+    const [experienceText, setExperienceText] = useState("")
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     const [openOptions, setOpenOptions] = useState(false)
     const handleClick = () => {
         setOpenOptions(!openOptions);
@@ -112,20 +142,72 @@ const DataTable = () => {
                         <IconButton>
                             <Delete fontSize="small"/>
                         </IconButton>
-                        <IconButton>
+                        <IconButton onClick={handleOpen}>
                             <Edit fontSize="small"/>
                         </IconButton>
-                        <IconButton>
+                        {active ? "": <IconButton>
                             <Publish fontSize="small"/>
-                        </IconButton>
+                        </IconButton>}
                     </Collapse>
                     <IconButton onClick={handleClick}>
                         {openOptions ? <Cancel fontSize="small"/> : <MoreHoriz fontSize="small"/> }
                     </IconButton>
                 </Box>
+                <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+                >
+                
+                <Box className={classes.modal}>
+                    <IconButton 
+                        onClick={handleClose}
+                        style={{
+                            marginLeft:"95%",
+                            marginBottom:"20px"
+                        }}
+                        >
+                        <Cancel fontSize="small"/>
+                    </IconButton>
+                    <Box className={classes.inputContainer}>
+                        <TextField placeholder="Position" variant="filled" />
+                        <TextField placeholder="Company" variant="filled" />
+                    </Box>
+                    <Box className={classes.inputContainer}>
+                        <TextField 
+                            placeholder="Position" 
+                            type="date" 
+                            label="Start Date" 
+                            InputLabelProps={{shrink: true,}} />
+                        <TextField 
+                            placeholder="Position" 
+                            type="date" 
+                            label="End Date" 
+                            InputLabelProps={{shrink: true,}} />
+                    </Box>
+                    <TextField
+                        style={{
+                            width:"100%",
+                            
+                        }}
+                        id="outlined-basic" 
+                        variant="outlined"
+                        multiline={true}
+                        onChange={(e) =>{setExperienceText(e.target.value)}}
+                    />
+                        <Typography id="modal-modal-description" style={{ mt: 2 }}>
+                        </Typography>
+                    </Box>
+                </Modal>
             </Box>        
         </div>
     );
 }
 
-export default DataTable
+export default ExperienceDataTable

@@ -1,5 +1,6 @@
 import React, {useRef, useState, useEffect} from "react"
-import {makeStyles, Button,TextField, Typography } from "@material-ui/core"
+import {makeStyles, Button,TextField, Typography, Modal, Backdrop, Box, IconButton } from "@material-ui/core"
+import {Cancel, Edit} from "@material-ui/icons"
 
 const useStyles= makeStyles((theme) =>({
     buttonStyle:{
@@ -8,27 +9,33 @@ const useStyles= makeStyles((theme) =>({
         [theme.breakpoints.down("sm")]: {
             left:"80%"
         }
-    }
+    },
+    modal:{
+        position: 'absolute',
+        top: "50%",
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: "60vw",
+        backgroundColor: 'white',
+        overflowY:"auto",
+        border: '1px solid #777',
+        boxShadow: 24,
+        padding: "20px 40px 60px",
+        [theme.breakpoints.down("sm")]:{
+            width: "100vw",
+            padding: "20px 10px 30px",
+        }
+    },
 }))
 
 const About = () =>{
     const [aboutText, setAboutText] = useState("")
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     const pDiv = useRef()
     const inputDiv = useRef()
-    const style = useStyles()
-    const saveAbout = () =>{
-        if (pDiv.current && inputDiv.current){
-            if (pDiv.current.style.display === "none"){
-                pDiv.current.style.display = "block"
-                inputDiv.current.style.display = "none"
-            }
-            else{
-                pDiv.current.style.display = "none"
-                inputDiv.current.style.display = "block"
-             
-            }
-        }
-    }
+    const classes = useStyles()
 
     return (
         <div 
@@ -51,13 +58,11 @@ const About = () =>{
             </div>
             <div 
                 ref={pDiv}
-                onClick={saveAbout}  
                 style={{
                     cursor:"pointer",
                     padding: "5px 3px",
                     border:"1px solid grey",
                     borderRadius:"5px",
-                    display:"none"
                     }}>
                 <Typography
                     style={{
@@ -69,25 +74,58 @@ const About = () =>{
                 >
                     {aboutText}
                 </Typography>
+                
             </div>
-            <div ref={inputDiv} > 
-                <TextField
-                    style={{
-                        width:"100%",
-                        
-                    }}
-                    id="outlined-basic" 
-                    variant="outlined"
-                    multiline={true}
-                    onChange={(e) =>{setAboutText(e.target.value)}}
-                />
-                <Button 
-                    variant="outlined"
-                    className={style.buttonStyle}
-                    onClick={saveAbout}
-                    >
-                        Save
-                </Button>
+            <Button 
+                variant="outlined"
+                className={classes.buttonStyle}
+                onClick={handleOpen}
+                >
+                    Edit <Edit style={{color:"grey", fontSize:"15px"}}/>
+            </Button>
+            <div ref={inputDiv} >
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+                >
+                
+                <Box className={classes.modal}>
+                    <IconButton 
+                        onClick={handleClose}
+                        style={{
+                            marginLeft:"95%",
+                            marginBottom:"20px"
+                        }}
+                        >
+                        <Cancel fontSize="small"/>
+                    </IconButton> 
+                    <TextField
+                        style={{
+                            width:"100%",
+                            
+                        }}
+                        id="outlined-basic" 
+                        variant="outlined"
+                        value={aboutText}
+                        multiline={true}
+                        onChange={(e) =>{setAboutText(e.target.value)}}
+                    />
+                    <Button 
+                        variant="outlined"
+                        className={classes.buttonStyle}
+                        onClick={handleClose}
+                        >
+                            Save
+                    </Button>
+                </Box>
+            </Modal>
             </div>
         </div>)
 }

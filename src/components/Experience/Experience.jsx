@@ -1,9 +1,9 @@
 import React from "react"
 import ExperienceHeader from "./ExperienceHeader"
 import SearchBar from "./SearchBar";
-import { makeStyles, IconButton, Typography } from "@material-ui/core"
+import { makeStyles, IconButton, Button, Modal, Box, Typography} from "@material-ui/core"
 import {AddCircle} from "@material-ui/icons/";
-import DataTable from "../DataTable";
+import ExperienceDataTable from "./ExperienceDataTable";
 
 const useStyles = makeStyles((theme) =>({
     rootContainer:{
@@ -32,11 +32,12 @@ const useStyles = makeStyles((theme) =>({
         alignItems:"center",
         width:"94%",
         justifyContent:"center",
-    }
+    },
     
 }))
 
 const Experience = ()=>{    
+    
     const classes= useStyles()
     return(
         <div className={classes.rootContainer} >
@@ -48,7 +49,7 @@ const Experience = ()=>{
             </div>
             <div className={classes.mainSection}>
                 <SearchBar fontSize="small"/>
-                <DataTable/>   
+                <ExperienceDataTable/>   
             </div> 
             
 
