@@ -187,16 +187,16 @@ const EducationDataTable = () => {
                         <TextField placeholder="Course of Study"  variant="filled" />
                     </Box>
                     <Box className={classes.inputContainer}>
-                        <FormControl>
+                        <FormControl    >
                             <InputLabel id="demo-simple-select-label">Age</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
                                 label="Age"
                             >
-                                <MenuItem value={10}>Ten</MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
+                                <MenuItem value={10}>BSc.</MenuItem>
+                                <MenuItem value={20}>BA.</MenuItem>
+                                <MenuItem value={30}>MSc.</MenuItem>
                             </Select>
                         </FormControl>
                         <TextField placeholder="Grade"  variant="filled" />
