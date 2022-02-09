@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) =>({
         marginRight:"50px",
         fontWeight:"bold",
         overflow:"hidden",
-        textOverflow:"ellipse",
+        textOverflow:"ellipsis",
         [theme.breakpoints.down("md")]:{
             marginLeft:"20px",
         }

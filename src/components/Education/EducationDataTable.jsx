@@ -1,5 +1,5 @@
 import {React, useState} from "react";
-import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse, Modal, TextField, Backdrop, Button} from "@material-ui/core";
+import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse, Modal, TextField, Backdrop, Button, InputLabel, Select, FormControl, MenuItem} from "@material-ui/core";
 import {Event, MoreHoriz, Delete, Edit, Publish, Cancel} from "@material-ui/icons";
 
 
@@ -185,6 +185,21 @@ const EducationDataTable = () => {
                     <Box className={classes.inputContainer}>
                         <TextField placeholder="Institution's Name" variant="filled" />
                         <TextField placeholder="Course of Study"  variant="filled" />
+                    </Box>
+                    <Box className={classes.inputContainer}>
+                        <FormControl>
+                            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                label="Age"
+                            >
+                                <MenuItem value={10}>Ten</MenuItem>
+                                <MenuItem value={20}>Twenty</MenuItem>
+                                <MenuItem value={30}>Thirty</MenuItem>
+                            </Select>
+                        </FormControl>
+                        <TextField placeholder="Grade"  variant="filled" />
                     </Box>
                     <Box className={classes.inputContainer}>
                         <TextField 
