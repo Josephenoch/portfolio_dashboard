@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) =>({
         marginTop:"7vh",
     }
 }))
-const SearchBar = () => {
+const ExperienceSearchBar = () => {
     const classes = useStyles()
     const [status, setStatus] = useState('');
     const handleChange = (event) => {
@@ -51,4 +51,4 @@ const SearchBar = () => {
         </div>
     )
 }
-export default SearchBar
+export default ExperienceSearchBar

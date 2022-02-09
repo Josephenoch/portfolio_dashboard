@@ -35,13 +35,13 @@ const useStyles = makeStyles((theme) =>({
             display:"none"
         }
     },
-    roleText:{
+    schoolName:{
         display:"inline-block",
         width:"10%",
         marginRight:"50px",
         fontWeight:"bold",
         overflow:"hidden",
-        textOverflow:"ellipse",
+        textOverflow: "ellipsis",
         [theme.breakpoints.down("md")]:{
             marginLeft:"20px",
         }
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) =>({
             display:"none"
         }
     },
-    companyBox:{
+    degreeBox:{
         width:"10%",
         marginLeft:"50px",
         display:"flex",
@@ -102,15 +102,15 @@ const useStyles = makeStyles((theme) =>({
 }))
 
 //dummy data for the data table
-const roleName = "CEO"
-const company = "TPS"
-const startDate = "10/20/2022"
-const endDate = "10/20/2022"
+const schoolName = "Anchor University Lagos"
+const degree = "BSc."
+const startDate = "10-20-2022"
+const endDate = "10-20-2022"
 const active = false
 
 
-const ExperienceDataTable = () => {
-    const [experienceText, setExperienceText] = useState("")
+const EducationDataTable = () => {
+    const [educationText, setEducationText] = useState("")
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -124,11 +124,11 @@ const ExperienceDataTable = () => {
             <Box className={classes.dataContainer} boxShadow={1}>
                 <Grid container className={classes.avatarContainer}>
                     <Grid item>
-                        <Avatar>{roleName[0]}</Avatar>
+                        <Avatar>{schoolName[0]}</Avatar>
                     </Grid >
                 </Grid> 
-                <Typography variant="body1" className={classes.roleText}>
-                    {roleName}
+                <Typography variant="body1" className={classes.schoolName}>
+                    {schoolName}
                 </Typography>
                 <Box className={classes.date}>
                     <Event fontSize="small" />
@@ -136,9 +136,9 @@ const ExperienceDataTable = () => {
                         {startDate+ " - "+endDate}
                     </Typography>
                 </Box>
-                <Box className={classes.companyBox}>
+                <Box className={classes.degreeBox}>
                     <Typography style={{margin:"0px 0px 2px 5px"}} variant="body1">
-                        {company}
+                        {degree}
                     </Typography>
                 </Box>
                 <Box className={classes.statusContainer}>
@@ -183,8 +183,8 @@ const ExperienceDataTable = () => {
                         <Cancel fontSize="small"/>
                     </IconButton>
                     <Box className={classes.inputContainer}>
-                        <TextField placeholder="Position" variant="filled" />
-                        <TextField placeholder="Company" variant="filled" />
+                        <TextField placeholder="Institution's Name" variant="filled" />
+                        <TextField placeholder="Course of Study"  variant="filled" />
                     </Box>
                     <Box className={classes.inputContainer}>
                         <TextField 
@@ -192,6 +192,7 @@ const ExperienceDataTable = () => {
                             label="Start Date" 
                             InputLabelProps={{shrink: true,}} />
                         <TextField 
+                            
                             type="date" 
                             label="End Date" 
                             InputLabelProps={{shrink: true,}} />
@@ -202,10 +203,10 @@ const ExperienceDataTable = () => {
                             
                         }}
                         id="outlined-basic"
-                        value={experienceText} 
+                        value={educationText} 
                         variant="outlined"
                         multiline={true}
-                        onChange={(e) =>{setExperienceText(e.target.value)}}
+                        onChange={(e) =>{setEducationText(e.target.value)}}
                     />
                     
                         <Typography id="modal-modal-description" style={{ mt: 2 }}>
@@ -224,4 +225,4 @@ const ExperienceDataTable = () => {
     );
 }
 
-export default ExperienceDataTable
+export default EducationDataTable

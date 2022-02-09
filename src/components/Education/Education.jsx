@@ -1,10 +1,9 @@
-import React from "react"
-import ExperienceHeader from "../PageHeader"
-import ExperienceSearchBar from "./ExperienceSearchBar";
-import ExperienceDataTable from "./ExperienceDataTable";
+import React from 'react';
+import PageHeader from '../PageHeader';
+import EducationDataTable from './EducationDataTable';
+import EducationSearchBar from './EducationSearchBar';
 import { makeStyles, IconButton,} from "@material-ui/core"
 import {AddCircle} from "@material-ui/icons/";
-
 
 const useStyles = makeStyles((theme) =>({
     rootContainer:{
@@ -37,26 +36,24 @@ const useStyles = makeStyles((theme) =>({
     
 }))
 
-const Experience = ()=>{    
-    
-    const classes= useStyles()
-    return(
+
+const Education = () => {
+    const classes = useStyles()
+    return (
         <div className={classes.rootContainer} >
-            <ExperienceHeader title="Experience"/>
+            <PageHeader title="Education"/>
             <div className = {classes.addIconDiv}>
                 <IconButton>
                     <AddCircle className={classes.addIcon}/>  
                 </IconButton>   
             </div>
             <div className={classes.mainSection}>
-                <ExperienceSearchBar fontSize="small"/>
-                <ExperienceDataTable/>   
+                <EducationSearchBar fontSize="small"/>
+                <EducationDataTable/>   
             </div> 
             
 
         </div>
-    )
+    );
 }
-
-export default Experience
-
+export default Education

@@ -11,7 +11,7 @@ const AppMenu = () => {
                     component="nav"
                     aria-labelledby="nested-list-subheader"
                 >
-                    <ListItem button key="/Dashboard" component={Link} to={'/'}>
+                    <ListItem button key="Dashboard" component={Link} to={'/'}>
                         <ListItemIcon>
                             <AssessmentOutlined />
                         </ListItemIcon>
@@ -23,13 +23,13 @@ const AppMenu = () => {
                         </ListItemIcon>
                         <ListItemText secondary="Experience" />
                     </ListItem>
-                    <ListItem button key="Education">
+                    <ListItem button key="Education" component={Link} to={'/Education'}>
                         <ListItemIcon>
                             <SchoolOutlined />
                         </ListItemIcon>
                         <ListItemText secondary="Education" />
                     </ListItem>
-                    <ListItem button key="Skills">
+                    <ListItem button key="Skills" component={Link} to={'/Skill'}>
                         <ListItemIcon>
                             <DeveloperMode />
                         </ListItemIcon>

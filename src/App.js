@@ -3,6 +3,8 @@ import Sidebar from "./components/Sidebar"
 import WebFont from 'webfontloader';
 import Dashboard from "./components/Dashboard/Dashboard"
 import Experience from "./components/Experience/Experience"
+import Education from "./components/Education/Education";
+import SKill from "./components/Skill/Skill";
 import Header from "./components/Header"
 import {CssBaseline, makeStyles, createTheme, ThemeProvider, responsiveFontSizes} from "@material-ui/core"
 import { Route, Routes} from "react-router-dom"
@@ -62,6 +64,8 @@ function App() {
             <Routes>
                 <Route index element={<Dashboard/>}/>
                 <Route path="Experience" element={<Experience/>}/>
+                <Route path="Education" element={<Education/>}/>
+                <Route path="Skill" element={<SKill/>}/>
             </Routes>
           </div>
         <CssBaseline /> 

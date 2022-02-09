@@ -62,13 +62,13 @@ const Sidebar=(() =>{
                         </ListItemIcon>
                         <ListItemText primary="Experience" />
                     </ListItem>
-                    <ListItem button key="Education">
+                    <ListItem button key="Education" component={Link} to={'/Education'}>
                         <ListItemIcon>
                             <SchoolOutlined />
                         </ListItemIcon>
                         <ListItemText primary="Education" />
                     </ListItem>
-                    <ListItem button key="Skills">
+                    <ListItem button key="Skill" component={Link} to={'/Skill'}>
                         <ListItemIcon>
                             <DeveloperMode />
                         </ListItemIcon>

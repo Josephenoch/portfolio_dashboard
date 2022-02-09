@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     
 }))
 
-const ExperienceHeader = () =>{
+const PageHeader = (props) =>{
     const styles = useStyles()
     return (
         <div>
@@ -31,7 +31,7 @@ const ExperienceHeader = () =>{
                     variant="h3"
                     className = {styles.text}
                 >
-                    List of Experience
+                    List of {props.title}
                 </Typography>
                 
             </div>
@@ -39,4 +39,4 @@ const ExperienceHeader = () =>{
     )
 }
 
-export default ExperienceHeader
+export default PageHeader
