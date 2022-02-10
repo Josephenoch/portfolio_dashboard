@@ -80,11 +80,13 @@ const useStyles = makeStyles((theme) =>({
         }
     },
     modal:{
-        position: 'absolute',
+        position: 'fixed',
         top: "50%",
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: "60vw",
+        height:"70vh",
+        overflowY:"scroll",
         backgroundColor: 'white',
         border: '1px solid #777',
         boxShadow: 24,
@@ -187,19 +189,8 @@ const EducationDataTable = () => {
                         <TextField placeholder="Course of Study"  variant="filled" />
                     </Box>
                     <Box className={classes.inputContainer}>
-                        <FormControl    >
-                            <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                label="Age"
-                            >
-                                <MenuItem value={10}>BSc.</MenuItem>
-                                <MenuItem value={20}>BA.</MenuItem>
-                                <MenuItem value={30}>MSc.</MenuItem>
-                            </Select>
-                        </FormControl>
-                        <TextField placeholder="Grade"  variant="filled" />
+                    <TextField placeholder="Degree Eg. Bachelor" variant="filled" />
+                    <TextField placeholder="Grade"  variant="filled" />
                     </Box>
                     <Box className={classes.inputContainer}>
                         <TextField 
