@@ -59,7 +59,6 @@ const About = () =>{
             <div 
                 ref={pDiv}
                 style={{
-                    cursor:"pointer",
                     padding: "5px 3px",
                     border:"1px solid grey",
                     borderRadius:"5px",

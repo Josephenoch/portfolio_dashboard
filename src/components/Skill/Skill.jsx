@@ -1,22 +1,30 @@
 import {React, useEffect, useState} from 'react';
+import raw from "./fa.json"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import PageHeader from '../PageHeader';
 
 const Skill = () => {
-  const [datas, setData] = useState([])
-  useEffect(() =>{
-    fetch("https://reqres.in/api/users")
-    .then(response => response.json() )
-    .then(data => setData(data.data))
-  },[]);
+  const [datas, setData] = useState(raw[0])
+  var array = Object.values(datas)
+  console.log(array)
   return (
     <div>
         <PageHeader title="Skills"/>
+        hello
         {
-          datas.map((data)=>{
-          {console.log(data.email)}
+          
+          array.map((data => {
+              return <FontAwesomeIcon icon={"fa-brands fa-" + data.name }/>
           })
+          )
         }
+          
+
     </div>
     );
 }
-export default Skill
+export default Skill 
+
+
+
