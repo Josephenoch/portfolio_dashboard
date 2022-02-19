@@ -12,6 +12,9 @@ const useStyles = makeStyles((theme) => ({
         height:"70%",
         padding:"20px",
         borderRadius:"30px"
+    },
+    icons:{
+
     }
 }))
 const TechSkills = () => {
@@ -27,7 +30,7 @@ const TechSkills = () => {
   return (
     <div className={classes.techSkills}>
         <Autocomplete
-        id="free-solo-demo"
+        id="techSkills"
         options={datas.filter((data)=>{return data.type.includes("fab")})}
         getOptionLabel={(option) => option.name}
         onChange={handleChange }
@@ -38,7 +41,11 @@ const TechSkills = () => {
 
         {
           usedIcons.map((icon => {
-            return  <FontAwesomeIcon key={icon.unicode} icon={"fa-brands fa-" + icon.name }/>
+            return  <FontAwesomeIcon 
+                      key={icon.unicode} 
+                      icon={"fa-brands fa-" + icon.name } 
+                      size="2x" 
+                      style={{margin:"20px 0 0 20px"}}/>
           })
           )
         }

@@ -86,7 +86,7 @@ const Sidebar=(() =>{
                         </ListItemIcon>
                         <ListItemText primary="Certificates" />
                     </ListItem>
-                    <ListItem button key="Settinfs" style={{background:"linear-gradient(90deg, rgba(111,227,255,1) 0%, rgba(47,199,245,1) 35%)", color:"white", marginTop:50,}}>
+                    <ListItem button key="Settinfs" style={{background:"linear-gradient(90deg, rgb(111,227,255) 0%, rgb(47,199,245) 35%)", color:"white", marginTop:50,}}>
                         <ListItemIcon>
                             <SettingsOutlined style={{color:"white"}}/>
                         </ListItemIcon>
