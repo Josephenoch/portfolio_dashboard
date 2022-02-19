@@ -1,24 +1,33 @@
 import {React, useEffect, useState} from 'react';
-import raw from "./fa.json"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import TechSkills from './TechSkills';
+import { makeStyles } from '@material-ui/core';
+
+import OtherSkills from './OtherSkills';
 import PageHeader from '../PageHeader';
 
+const useStyles =makeStyles((theme) =>({
+  skillContainer:{
+    display:"flex",
+    marginTop:"7vh",
+    height:"72vh",
+    width:"100%",
+    justifyContent:"space-around"
+
+  }
+}))
 const Skill = () => {
-  const [datas, setData] = useState(raw[0])
-  var array = Object.values(datas)
-  console.log(array)
+  const classes = useStyles() 
+
+  
   return (
     <div>
         <PageHeader title="Skills"/>
-        hello
-        {
-          
-          array.map((data => {
-              return <FontAwesomeIcon icon={"fa-brands fa-" + data.name }/>
-          })
-          )
-        }
+        <div className={classes.skillContainer}>
+          <TechSkills/>
+          <OtherSkills/>
+        </div>
+        
           
 
     </div>
