@@ -9,6 +9,7 @@ import PageHeader from '../PageHeader';
 const useStyles =makeStyles((theme) =>({
   skillContainer:{
     display:"flex",
+    flexWrap:"wrap",
     marginTop:"7vh",
     height:"72vh",
     width:"100%",

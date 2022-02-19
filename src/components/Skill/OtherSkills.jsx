@@ -9,6 +9,10 @@ const useStyles = makeStyles((theme) =>({
         padding:"30px",
         borderRadius:"30px",
         height:"70%",
+        [theme.breakpoints.down("sm")]:{
+              width:"80%",  
+              marginTop:"30px"
+          }
     },
     allSkills:{
         padding:"20px",

@@ -11,8 +11,11 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "white",
         height:"70%",
         padding:"20px",
-        borderRadius:"30px"
-    },
+        borderRadius:"30px",
+        [theme.breakpoints.down("sm")]:{
+            width:"80%",
+          }
+    }
   
 }))
 const TechSkills = () => {
@@ -34,7 +37,7 @@ const TechSkills = () => {
         getOptionLabel={(option) => option.name}
         onChange={handleChange }
         renderInput={(params) => (
-          <TextField {...params} label="Icons" margin="normal" variant="outlined"  />
+          <TextField {...params} label="Skill Icon" margin="normal" variant="outlined"  />
         )}
       />
 
