@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) =>({
         borderRadius:"30px",
         height:"70%",
     },
+    allSkills:{
+        padding:"20px",
+    },
     newSkill:{
         display:"inline-block",
         backgroundColor:"rgba(111,227,255,0.5)",
@@ -24,18 +27,24 @@ const useStyles = makeStyles((theme) =>({
 }))
 const OtherSkills = () => {
     const classes = useStyles()
-    const [newSkill, setNewSkill] = useState()
+    const [newSkill, setNewSkill] = useState("")
     const [uniqueID, setUniqueID] = useState(0)
     const [skills, setSkills] = useState([])
 
     const handleClick = () => {
-        setUniqueID(uniqueID+1)
+        if( newSkill != ""){
+            setUniqueID(uniqueID+1)
 
-        setSkills([...skills, {
-            "name":newSkill,
-            "id": uniqueID
-        }])
-        setNewSkill("")
+            setSkills([...skills, {
+                "name":newSkill,
+                "id": uniqueID
+            }])
+            setNewSkill("")
+        }
+    }
+    const handleBtnClick = (id) =>{
+        
+
     }
 
   return (
@@ -46,34 +55,38 @@ const OtherSkills = () => {
             style={{
                 width:"100%",
             }}
+            disabled={skills.length >= 15 ? true : false}
             label="Add Skills"
             value = {newSkill}
             onChange={(e) =>{setNewSkill(e.target.value)}}
             InputProps={{endAdornment: <Button
                                             onClick={handleClick}
+                                            disabled={skills.length >= 15 ? true : false}
                                         >
                                             Add
                                         </Button>}}
         />
-        {
-            skills.map((skill => {
-                return (
-                    <div className={classes.newSkill}>
-                        <Typography
-                            className={classes.skillText}
-                        >{skill.name}
-                        <IconButton 
-                            size="small"
-                            onClick = ""
-                        >
-                            <CancelOutlined style={{fontSize:"15px"}}/>
-                        </IconButton>
-                        </Typography>
-                    </div>
-                    )
-            })
-            )
-        }
+        <div className={classes.allSkills}>
+            {
+                skills.map((skill => {
+                    return (
+                        <div className={classes.newSkill}>
+                            <Typography
+                                className={classes.skillText}
+                            >{skill.name}
+                            <IconButton 
+                                size="small"
+                                onClick = {() => setSkills(skills.filter(skil => skil.id !== skill.id))}
+                            >
+                                <CancelOutlined style={{fontSize:"15px"}}/>
+                            </IconButton>
+                            </Typography>
+                        </div>
+                        )
+                })
+                )
+            }
+        </div>
     </div>
   )
 }
