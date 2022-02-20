@@ -8,14 +8,14 @@ const useStyles = makeStyles((theme) =>({
         backgroundColor: "white",
         padding:"30px",
         borderRadius:"30px",
-        height:"70%",
+        height:"49vh",
         [theme.breakpoints.down("sm")]:{
               width:"80%",  
               marginTop:"30px"
           }
     },
     allSkills:{
-        padding:"20px",
+        padding:"20px 20px 20px 0",
     },
     newSkill:{
         display:"inline-block",
@@ -63,6 +63,10 @@ const OtherSkills = () => {
             InputProps={{endAdornment: <Button
                                             onClick={handleClick}
                                             disabled={skills.length >= 15 ? true : false}
+                                            style={{
+                                                backgroundColor:"rgb(47,199,245)",
+                                                color:"white"
+                                            }}
                                         >
                                             Add
                                         </Button>}}

@@ -13,7 +13,6 @@ const useStyles =makeStyles((theme) =>({
     display:"flex",
     flexWrap:"wrap",
     marginTop:"7vh",
-    height:"72vh",
     width:"100%",
     justifyContent:"space-around"
 

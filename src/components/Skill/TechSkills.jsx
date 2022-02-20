@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     techSkills:{
         width:"40%",
         backgroundColor: "white",
-        height:"70%",
+        height:"49vh",
         padding:"20px",
         borderRadius:"30px",
         [theme.breakpoints.down("sm")]:{
