@@ -3,7 +3,7 @@ import AnalyticsCard from "./AnalyticsCard"
 import BasicTable from "./BasicTable"
 import {makeStyles} from "@material-ui/core"
 import UserImage from './UserImage'
-import About from "./About"
+import Details from "./Details"
 
 const useStyles = makeStyles((theme) =>({
     general:{
@@ -13,8 +13,7 @@ const useStyles = makeStyles((theme) =>({
         alignItems:"center", 
         width: "100%",
         height: "100%",
-    },
-   
+    }
 }))
 const Dashboard = () => {
     const classes = useStyles()
@@ -25,13 +24,17 @@ const Dashboard = () => {
                 <UserImage/>        
             </div>
             <div className={classes.general}> 
-                <About/>
+                <Details name="About"/>
             </div>
             <div className={classes.general} style={{overflow:"auto"}}> 
                     <AnalyticsCard type={1} number={500} percent={20} />
                     <AnalyticsCard type={2} number={500} percent={20} />
                     <AnalyticsCard type={3} number={500} percent={20} />
             </div>
+            <div className={classes.general} style={{ marginTop:"10vh",}}> 
+                <Details name="Interest"/>
+            </div>
+
             <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop: "94px" }} elevation={0}>
                 <BasicTable/>
             </div>

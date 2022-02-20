@@ -6,6 +6,9 @@ const useStyles= makeStyles((theme) =>({
     buttonStyle:{
         marginTop:"20px",
         left:"90%",
+        backgroundColor:"rgb(47,199,245)",
+        color:"white",
+        borderColor:"white",
         [theme.breakpoints.down("sm")]: {
             left:"80%"
         }
@@ -28,7 +31,7 @@ const useStyles= makeStyles((theme) =>({
     },
 }))
 
-const About = () =>{
+const Details = (props) =>{
     const [aboutText, setAboutText] = useState("")
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -53,7 +56,7 @@ const About = () =>{
                 <Typography
                     variant="h2"
                 >
-                    About
+                    {props.name}
                 </Typography>
             </div>
             <div 
@@ -80,7 +83,7 @@ const About = () =>{
                 className={classes.buttonStyle}
                 onClick={handleOpen}
                 >
-                    Edit <Edit style={{color:"grey", fontSize:"15px"}}/>
+                    Edit <Edit style={{color:"white", fontSize:"15px"}}/>
             </Button>
             <div ref={inputDiv} >
             <Modal
@@ -129,4 +132,4 @@ const About = () =>{
         </div>)
 }
 
-export default About
+export default Details

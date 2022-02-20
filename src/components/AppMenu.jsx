@@ -35,12 +35,6 @@ const AppMenu = () => {
                         </ListItemIcon>
                         <ListItemText secondary="Skills" />
                     </ListItem>
-                    <ListItem button key="Interests">
-                        <ListItemIcon>
-                            <FavoriteBorderOutlined />
-                        </ListItemIcon>
-                        <ListItemText secondary="Interests" />
-                    </ListItem>
                     <ListItem button key="Certificates">
                         <ListItemIcon>
                             <VerifiedUserOutlined />

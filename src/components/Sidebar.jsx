@@ -74,12 +74,6 @@ const Sidebar=(() =>{
                         </ListItemIcon>
                         <ListItemText primary="Skills" />
                     </ListItem>
-                    <ListItem button key="Interests">
-                        <ListItemIcon>
-                            <FavoriteBorderOutlined />
-                        </ListItemIcon>
-                        <ListItemText primary="Interests" />
-                    </ListItem>
                     <ListItem button key="Certificates">
                         <ListItemIcon>
                             <VerifiedUserOutlined />
