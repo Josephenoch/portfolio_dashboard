@@ -1,9 +1,11 @@
-import {React, useEffect, useState} from 'react';
+import {React} from 'react';
 
 import TechSkills from './TechSkills';
+import OtherSkills from './OtherSkills';
+import WorkFlow from './WorkFlow';
 import { makeStyles } from '@material-ui/core';
 
-import OtherSkills from './OtherSkills';
+
 import PageHeader from '../PageHeader';
 
 const useStyles =makeStyles((theme) =>({
@@ -27,6 +29,7 @@ const Skill = () => {
         <div className={classes.skillContainer}>
           <TechSkills/>
           <OtherSkills/>
+          <WorkFlow/>
         </div>
         
           

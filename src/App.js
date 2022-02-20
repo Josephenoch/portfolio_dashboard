@@ -8,7 +8,7 @@ import SKill from "./components/Skill/Skill";
 import Header from "./components/Header"
 import {CssBaseline, makeStyles, createTheme, ThemeProvider, responsiveFontSizes} from "@material-ui/core"
 import { Route, Routes} from "react-router-dom"
-import { red } from "@material-ui/core/colors";
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -21,11 +21,6 @@ WebFont.load({
   }
 });
 
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
 
 let LightTheme = createTheme({
   typography: {

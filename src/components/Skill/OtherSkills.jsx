@@ -36,21 +36,18 @@ const OtherSkills = () => {
     const [skills, setSkills] = useState([])
 
     const handleClick = () => {
-        if( newSkill != ""){
+        if( newSkill !== ""){
             setUniqueID(uniqueID+1)
 
             setSkills([...skills, {
                 "name":newSkill,
                 "id": uniqueID
-            }])
+            }
+        ])
             setNewSkill("")
-        }
+        } 
     }
-    const handleBtnClick = (id) =>{
-        
-
-    }
-
+    
   return (
     <div className={classes.container}>
         <TextField
@@ -74,7 +71,7 @@ const OtherSkills = () => {
             {
                 skills.map((skill => {
                     return (
-                        <div className={classes.newSkill}>
+                        <div className={classes.newSkill} key={skill.id}>
                             <Typography
                                 className={classes.skillText}
                             >{skill.name}

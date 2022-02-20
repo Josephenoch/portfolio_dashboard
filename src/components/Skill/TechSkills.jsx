@@ -1,6 +1,6 @@
 import {React, useState} from 'react'
 import raw from "../../assets/fa.json"
-import { makeStyles, TextField, InputProps, Button, IconButton } from '@material-ui/core'
+import { makeStyles, TextField } from '@material-ui/core'
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -32,7 +32,7 @@ const TechSkills = () => {
     <div className={classes.techSkills}>
         <Autocomplete
         id="techSkills"
-        disabled={usedIcons.length >=15 ? true : false}
+        disabled={usedIcons.length >=5 ? true : false}
         options={datas.filter((data)=>{return data.type.includes("fab")})}
         getOptionLabel={(option) => option.name}
         onChange={handleChange }
