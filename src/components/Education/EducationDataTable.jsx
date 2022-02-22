@@ -31,9 +31,9 @@ const useStyles = makeStyles((theme) =>({
     avatarContainer:{
         marginLeft:"20px",
         width:"5%",
-        [theme.breakpoints.down("sm")]:{
-            display:"none"
-        }
+        // [theme.breakpoints.down("sm")]:{
+        //     display:"none"
+        // }
     },
     schoolName:{
         display:"inline-block",
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) =>({
         overflow:"hidden",
         textOverflow: "ellipsis",
         [theme.breakpoints.down("md")]:{
-            marginLeft:"20px",
+            display:"none"
         }
     },
     date:{
@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) =>({
         display:"flex",
         alignItems:"center",
         [theme.breakpoints.down("sm")]:{
-            marginLeft:"30px",
+            marginLeft:"100px",
         }
     },
     statusContainer:{
@@ -108,7 +108,7 @@ const schoolName = "Anchor University Lagos"
 const degree = "BSc."
 const startDate = "10-20-2022"
 const endDate = "10-20-2022"
-const active = false
+const active = true
 
 
 const EducationDataTable = () => {
@@ -126,7 +126,7 @@ const EducationDataTable = () => {
             <Box className={classes.dataContainer} boxShadow={1}>
                 <Grid container className={classes.avatarContainer}>
                     <Grid item>
-                        <Avatar>{schoolName[0]}</Avatar>
+                        <Avatar>AUL</Avatar>
                     </Grid >
                 </Grid> 
                 <Typography variant="body1" className={classes.schoolName}>
@@ -144,7 +144,7 @@ const EducationDataTable = () => {
                     </Typography>
                 </Box>
                 <Box className={classes.statusContainer}>
-                    <Chip label={active ? "active" : "inactive" } color={active ? "primary": "textSecondary"} />    
+                    <Chip label={active ? "active" : "inactive" } color={active ? "primary": "secondary"} />    
                 </Box>
                 <Box className={classes.optionsBox}>
                     <Collapse in={openOptions} timeout="auto" >

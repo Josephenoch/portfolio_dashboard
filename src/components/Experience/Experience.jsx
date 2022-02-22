@@ -8,12 +8,13 @@ import {AddCircle} from "@material-ui/icons/";
 
 const useStyles = makeStyles((theme) =>({
     rootContainer:{
-        height:"88vh"
+        height:"88vh",
+        width: "100%"
     },
     addIconDiv:{
         position:"absolute", 
         top:"16.5vh",
-        right:"7%",
+        right:"1.5%",
         marginBottom:0,
         [theme.breakpoints.down("md")]:{
             right:"5%",
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) =>({
         display:"flex",
         flexDirection:"column",
         alignItems:"center",
-        width:"94%",
+        width:"100%",
         justifyContent:"center",
     },
     

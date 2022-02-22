@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react"
+import React, {useState} from "react"
 import {makeStyles, Button,TextField, Typography, Modal, Backdrop, Box, IconButton } from "@material-ui/core"
 import {Cancel, Edit} from "@material-ui/icons"
 
@@ -32,12 +32,10 @@ const useStyles= makeStyles((theme) =>({
 }))
 
 const Details = (props) =>{
-    const [aboutText, setAboutText] = useState("")
+    const [detailsText, setDetailsText] = useState("")
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const pDiv = useRef()
-    const inputDiv = useRef()
     const classes = useStyles()
 
     return (
@@ -59,8 +57,7 @@ const Details = (props) =>{
                     {props.name}
                 </Typography>
             </div>
-            <div 
-                ref={pDiv}
+            <div
                 style={{
                     padding: "5px 3px",
                     border:"1px solid grey",
@@ -74,7 +71,7 @@ const Details = (props) =>{
                     }}
                     variant="body1"
                 >
-                    {aboutText}
+                    {detailsText}
                 </Typography>
                 
             </div>
@@ -85,7 +82,7 @@ const Details = (props) =>{
                 >
                     Edit <Edit style={{color:"white", fontSize:"15px"}}/>
             </Button>
-            <div ref={inputDiv} >
+            <div >
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -115,9 +112,9 @@ const Details = (props) =>{
                         }}
                         id="outlined-basic" 
                         variant="outlined"
-                        value={aboutText}
+                        value={detailsText}
                         multiline={true}
-                        onChange={(e) =>{setAboutText(e.target.value)}}
+                        onChange={(e) =>{setDetailsText(e.target.value)}}
                     />
                     <Button 
                         variant="outlined"

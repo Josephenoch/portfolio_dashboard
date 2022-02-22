@@ -33,7 +33,7 @@ const ExperienceSearchBar = () => {
             >
                 List
             </Typography>
-            <div style={{position:"absolute",right:"7.5%"}}>
+            <div style={{position:"absolute",right:"3.2%"}}>
                 <FormControl variant="standard"  size="small">
                     <InputLabel id="demo-simple-select-standard-label" shrink>Status</InputLabel>
                     <Select

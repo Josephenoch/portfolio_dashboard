@@ -1,6 +1,7 @@
 import {React, useState} from "react";
-import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse, Modal, TextField, Backdrop, Button} from "@material-ui/core";
+import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse, Modal, Backdrop} from "@material-ui/core";
 import {Event, MoreHoriz, Delete, Edit, Publish, Cancel} from "@material-ui/icons";
+import EditExperience from "./EditExperience";
 
 
 const useStyles = makeStyles((theme) =>({
@@ -31,9 +32,7 @@ const useStyles = makeStyles((theme) =>({
     avatarContainer:{
         marginLeft:"20px",
         width:"5%",
-        [theme.breakpoints.down("sm")]:{
-            display:"none"
-        }
+
     },
     roleText:{
         display:"inline-block",
@@ -42,9 +41,6 @@ const useStyles = makeStyles((theme) =>({
         fontWeight:"bold",
         overflow:"hidden",
         textOverflow:"ellipsis",
-        [theme.breakpoints.down("md")]:{
-            marginLeft:"20px",
-        }
     },
     date:{
         display:"flex",
@@ -60,7 +56,7 @@ const useStyles = makeStyles((theme) =>({
         display:"flex",
         alignItems:"center",
         [theme.breakpoints.down("sm")]:{
-            marginLeft:"30px",
+            marginLeft:"0px",
         }
     },
     statusContainer:{
@@ -78,44 +74,51 @@ const useStyles = makeStyles((theme) =>({
         [theme.breakpoints.down("md")]:{
             marginLeft:"0%",   
         }
-    },
-    modal:{
-        position: 'absolute',
-        top: "50%",
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: "60vw",
-        height:"70vh",
-        overflowY:"scroll",
-        backgroundColor: 'white',
-        border: '1px solid #777',
-        boxShadow: 24,
-        padding: "20px 40px 60px",
-        [theme.breakpoints.down("sm")]:{
-            width: "100vw",
-            padding: "20px 10px 30px",
-        }
-    },
-    inputContainer:{
-        marginBottom:"20px",
-        display:"flex",
-        justifyContent:"space-between"
     }
+    
 }))
 
-//dummy data for the data table
-const roleName = "CEO"
-const company = "TPS"
-const startDate = "10/20/2022"
-const endDate = "10/20/2022"
-const active = false
-
-
 const ExperienceDataTable = () => {
-    const [experienceText, setExperienceText] = useState("")
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    
+    const [experienceData, setExperienceData] = useState([{
+        "roleName" : "CEO",
+        "id" : "1",
+        "company" : "TPS",
+        "startDate" : "10/20/2022",
+        "endDate" : "10/20/2022",
+        "active" : false
+    },
+      {
+        "roleName" : "Developer",
+        "id" : "2",
+        "company" : "TPS",
+        "startDate" : "10/20/2022",
+        "endDate" : "10/20/2022",
+        "active" : true
+      },
+      {
+        "roleName" : "Thief",
+        "id" : "3",
+        "company" : "HiiT",
+        "startDate" : "10/20/2022",
+        "endDate" : "10/20/2022",
+        "active" : true
+      }  
+    ])
+    const open = experienceData.map((data ) => {return {"id": data.id, "optionsOpen":false, "modalOpen":false}} )
+    const [modal, setModal] = useState(open);
+    const handleModal = ((id) => {
+
+        setModal(modal.map((mod) =>{ 
+             if (mod.id===id) { 
+                 return { ...mod, "modalOpen":!mod.modalOpen} 
+            }
+            return mod
+        }))
+            
+    });
+
+
     const [openOptions, setOpenOptions] = useState(false)
     const handleClick = () => {
         setOpenOptions(!openOptions);
@@ -123,105 +126,65 @@ const ExperienceDataTable = () => {
    const classes = useStyles()
     return (
         <div className={classes.rootContainer}>
-            <Box className={classes.dataContainer} boxShadow={1}>
-                <Grid container className={classes.avatarContainer}>
-                    <Grid item>
-                        <Avatar>{roleName[0]}</Avatar>
-                    </Grid >
-                </Grid> 
-                <Typography variant="body1" className={classes.roleText}>
-                    {roleName}
-                </Typography>
-                <Box className={classes.date}>
-                    <Event fontSize="small" />
-                    <Typography variant="body1" style={{margin:"0px 0px 2px 5px",}}>
-                        {startDate+ " - "+endDate}
-                    </Typography>
-                </Box>
-                <Box className={classes.companyBox}>
-                    <Typography style={{margin:"0px 0px 2px 5px"}} variant="body1">
-                        {company}
-                    </Typography>
-                </Box>
-                <Box className={classes.statusContainer}>
-                    <Chip label={active ? "active" : "inactive" } color={active ? "primary": "textSecondary"} />    
-                </Box>
-                <Box className={classes.optionsBox}>
-                    <Collapse in={openOptions} timeout="auto" >
-                        <IconButton>
-                            <Delete fontSize="small"/>
-                        </IconButton>
-                        <IconButton onClick={handleOpen}>
-                            <Edit fontSize="small"/>
-                        </IconButton>
-                        {active ? "": <IconButton>
-                            <Publish fontSize="small"/>
-                        </IconButton>}
-                    </Collapse>
-                    <IconButton onClick={handleClick}>
-                        {openOptions ? <Cancel fontSize="small"/> : <MoreHoriz fontSize="small"/> }
-                    </IconButton>
-                </Box>
-                <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                closeAfterTransition
-                BackdropComponent={Backdrop}
-                BackdropProps={{
-                    timeout: 500,
-                }}
-                >
-                
-                <Box className={classes.modal}>
-                    <IconButton 
-                        onClick={handleClose}
-                        style={{
-                            marginLeft:"95%",
-                            marginBottom:"20px"
-                        }}
-                        >
-                        <Cancel fontSize="small"/>
-                    </IconButton>
-                    <Box className={classes.inputContainer}>
-                        <TextField placeholder="Position" variant="filled" />
-                        <TextField placeholder="Company" variant="filled" />
-                    </Box>
-                    <Box className={classes.inputContainer}>
-                        <TextField 
-                            type="date" 
-                            label="Start Date" 
-                            InputLabelProps={{shrink: true,}} />
-                        <TextField 
-                            type="date" 
-                            label="End Date" 
-                            InputLabelProps={{shrink: true,}} />
-                    </Box>
-                    <TextField
-                        style={{
-                            width:"100%",
-                            
-                        }}
-                        id="outlined-basic"
-                        value={experienceText} 
-                        variant="outlined"
-                        multiline={true}
-                        onChange={(e) =>{setExperienceText(e.target.value)}}
-                    />
-                    
-                        <Typography id="modal-modal-description" style={{ mt: 2 }}>
-                        </Typography>
-                        <Button
-                            variant="outlined"
-                            className={classes.buttonStyle}
-                            onClick={handleClose}
-                        >
-                            Save
-                        </Button>
-                    </Box>
-                </Modal>
-            </Box>        
+            {
+                experienceData.map(data =>{
+                    return( <Box className={classes.dataContainer} boxShadow={1}>
+                            <Grid container className={classes.avatarContainer}>
+                                <Grid item>
+                                    <Avatar>CEO</Avatar>
+                                </Grid >
+                            </Grid> 
+                            <Typography variant="body1" className={classes.roleText}>
+                                {data.roleName}
+                            </Typography>
+                            <Box className={classes.date}>
+                                <Event fontSize="small" />
+                                <Typography variant="body1" style={{margin:"0px 0px 2px 5px",}}>
+                                    {data.startDate+ " - "+data.endDate}
+                                </Typography>
+                            </Box>
+                            <Box className={classes.companyBox}>
+                                <Typography style={{margin:"0px 0px 2px 5px"}} variant="body1">
+                                    {data.company}
+                                </Typography>
+                            </Box>
+                            <Box className={classes.statusContainer}>
+                                <Chip label={data.active ? "active" : "inactive" } color={data.active ? "primary": "secondary"} />    
+                            </Box>
+                            <Box className={classes.optionsBox}>
+                                <Collapse in={openOptions} timeout="auto" >
+                                    <IconButton onClick={() => {setExperienceData(experienceData.filter( dat => dat.id !== data.id ))}}>
+                                        <Delete fontSize="small" />
+                                    </IconButton>
+                                    <IconButton onClick={handleModal.bind(null, data.id)}>
+                                        <Edit fontSize="small"/>
+                                    </IconButton>
+                                    {data.active ? "": <IconButton>
+                                        <Publish fontSize="small"/>
+                                    </IconButton>}
+                                </Collapse>
+                                <IconButton onClick={handleClick}>
+                                    {openOptions ? <Cancel fontSize="small"/> : <MoreHoriz fontSize="small"/> }
+                                </IconButton>
+                            </Box>
+                            <Modal
+                            open={modal.modalOpen}
+                            onClose={handleModal.bind(null, data.id)}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                            closeAfterTransition
+                            BackdropComponent={Backdrop}
+                            BackdropProps={{
+                                timeout: 500,
+                            }}
+                            >
+                             <EditExperience data={data} handleModal={handleModal.bind(null, data.id)}/>
+                                     
+                            </Modal>
+                        </Box>
+                    )
+                }) 
+            }       
         </div>
     );
 }

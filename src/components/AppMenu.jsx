@@ -1,4 +1,4 @@
-import {WorkOutlineOutlined, DeveloperMode, FavoriteBorderOutlined, VerifiedUserOutlined, AssessmentOutlined, SchoolOutlined } from "@material-ui/icons"
+import {WorkOutlineOutlined, DeveloperMode, VerifiedUserOutlined, AssessmentOutlined, SchoolOutlined } from "@material-ui/icons"
 import {List, ListItemIcon, ListItemText, ListItem, } from "@material-ui/core/"
 import { Link } from "react-router-dom"
 
