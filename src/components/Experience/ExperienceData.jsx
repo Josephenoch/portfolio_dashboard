@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         backgroundColor: 'white',
         marginTop:"20px",
-        transition: "all 1s cubic-bezier(.25,.8,.25,1)",
+        transition: "all 0.2s cubic-bezier(.25,.8,.25,1)",
         '&:hover': {
             opacity: [0.9, 0.8, 0.7],
             boxShadow: "0 5px 10px rgba(0,0,0,0.12), 0 10px 10px rgba(0,0,0,0.12)",
@@ -87,7 +87,7 @@ const ExperienceData = (props) => {
                 </Grid >
             </Grid> 
             <Typography variant="body1" className={classes.roleText}>
-                {props.data.roleName}
+                {props.data.position}
             </Typography>
             <Box className={classes.date}>
                 <Event fontSize="small" />
@@ -119,7 +119,7 @@ const ExperienceData = (props) => {
                     {options ? <Cancel fontSize="small"/> : <MoreHoriz fontSize="small"/> }
                 </IconButton>
             </Box>
-            <EditExperience data={props.data} handleModal={handleModal} modal={modal}/>
+            <EditExperience data={props.data} handleModal={handleModal} modal={modal} handleChange={props.handleChange}/>
         </Box>
 
   )

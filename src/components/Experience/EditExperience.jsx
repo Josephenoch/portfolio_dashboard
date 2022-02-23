@@ -1,5 +1,5 @@
 import {React} from 'react';
-import { Box, IconButton, TextField, makeStyles, Typography, Button, Modal, Backdrop} from '@material-ui/core';
+import { Box, IconButton, TextField, makeStyles,Switch, Button, Modal, Backdrop, FormControlLabel} from '@material-ui/core';
 import { Cancel } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) =>({
@@ -62,21 +62,45 @@ const EditExperience = (props)=> {
                 <Cancel fontSize="small"/>
             </IconButton>
             <Box className={classes.inputContainer}>
-                <TextField placeholder="Position" variant="filled" value={props.data.roleName} />
-                <TextField placeholder="Company" variant="filled" value={props.data.company} />
+                <TextField 
+                    placeholder="Position" 
+                    variant="filled" 
+                    onChange={props.handleChange}
+                    value={props.data.position} 
+                    name="position"/>
+                <TextField 
+                    placeholder="Company" 
+                    variant="filled" 
+                    onChange={props.handleChange}
+                    value={props.data.company} 
+                    name="company"/>
             </Box>
             <Box className={classes.inputContainer}>
                 <TextField 
                     type="date" 
                     label="Start Date" 
+                    onChange={props.handleChange}
                     value={props.data.startDate} 
+                    name="startDate"
                     InputLabelProps={{shrink: true,}} />
                 <TextField 
                     type="date" 
                     label="End Date"
+                    onChange={props.handleChange}
                     value={props.data.endDate}
+                    name="endDate"
                     InputLabelProps={{shrink: true,}} />
             </Box>
+            <FormControlLabel 
+                control={
+                    <Switch  
+                        color="primary" 
+                        onChange={props.handleChange}
+                        checked={props.data.active} 
+                        name="active"
+                    />
+                } 
+            label="Active" />
             <TextField
                 style={{
                     width:"100%",
@@ -85,11 +109,11 @@ const EditExperience = (props)=> {
                 id="outlined-basic"
                 value={props.data.experienceText} 
                 variant="outlined"
+                onChange={props.handleChange}
+                name= "experienceText"
                 multiline={true}
             />
-            
-                <Typography id="modal-modal-description" style={{ mt: 2 }}>
-                </Typography>
+             
                 <Button
                     variant="outlined"
                     className={classes.buttonStyle}

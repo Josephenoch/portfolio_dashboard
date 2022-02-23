@@ -16,24 +16,24 @@ const useStyles = makeStyles((theme) =>({
 const ExperienceDataTable = () => {
     
     const [experienceData, setExperienceData] = useState([{
-        "roleName" : "CEO",
-        "id" : "1",
+        "position" : "CEO",
+        "id" : "0",
         "company" : "TPS",
         "startDate" : "2022-10-20",
         "endDate" : "2022-10-20",
         "active" : false
     },
       {
-        "roleName" : "Developer",
-        "id" : "2",
+        "position" : "Developer",
+        "id" : "1",
         "company" : "TPS",
         "startDate" : "2022-10-20",
         "endDate" : "2022-10-20",
         "active" : true
       },
       {
-        "roleName" : "Thief",
-        "id" : "3",
+        "position" : "Thief",
+        "id" : "2",
         "company" : "HiiT",
         "startDate" : "2022-10-20",
         "endDate" : "2022-10-20",
@@ -41,21 +41,30 @@ const ExperienceDataTable = () => {
       }  
     ])
 
-    const handleDelete = (id) => {
-        setExperienceData(experienceData.filter( dat => dat.id !== id))
-    
+    const handleDelete =  id => {
+        setExperienceData(experienceData.filter(data => data.id !==id))
     }
+
+    const handleChange = index => e => {
+            const value = e.target.value
+        
+            var newArray = [...experienceData]
+            e.target.name!=="active"? newArray[index] = {...newArray[index],
+                [e.target.name]:value
+            }:newArray[index] = {...newArray[index],
+                [e.target.name]:e.target.checked
+            }
+            setExperienceData(newArray)
+        }
     
 
    const classes = useStyles()
     return (
         <div className={classes.rootContainer}>
             {
-                experienceData.map(data =>{
+                experienceData.map((data, index) =>{
                     return( 
-                        <div>
-                        <ExperienceData data={data} handleDelete={handleDelete.bind(this, data.id)}/>
-                        </div>
+                        <ExperienceData key={data.id} data={data} handleDelete={handleDelete.bind(this, data.id)} handleChange={handleChange(index)}/>
                     )
                 }) 
             }       
