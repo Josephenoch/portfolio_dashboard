@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) =>({
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: "60vw",
-    height:"60vh",
+    height:"70vh",
     overflowY:"scroll",
     backgroundColor: 'white',
     border: '1px solid #777',
