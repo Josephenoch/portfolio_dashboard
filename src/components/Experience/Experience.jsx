@@ -74,7 +74,7 @@ const Experience = ()=>{
         "active" : true
       },
       {
-        "position" : "Thief",
+        "position" : "Course Instructor",
         "id" : 2,
         "company" : "HiiT",
         "startDate" : "2022-10-20",
@@ -120,13 +120,13 @@ const Experience = ()=>{
     const createData =  e => {
         // this function handles the change when the user makes click on the add icon, that is to create a new experience
 
-         // collecting the input name and value in two variables, name and value
+        // collecting the input name and value in two variables, name and value
         const value = e.target.value
         const name = e.target.name
 
-         // 
+        // 
         
-        var newArray =newExperience
+        var newArray ={...newExperience}
         name!=="active"?
         newArray = {...newArray,[name]:value }
         :

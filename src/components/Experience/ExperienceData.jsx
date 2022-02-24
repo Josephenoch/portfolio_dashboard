@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
         marginRight:"50px",
         fontWeight:"bold",
         overflow:"hidden",
+        [theme.breakpoints.down("md")]:{
+            display:"none"
+        }    
       
     },
     date:{
@@ -45,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
         display:"flex",
         alignItems:"center",
         [theme.breakpoints.down("sm")]:{
-            marginLeft:"0px",
+            marginLeft:"100px",
         }
     },
     statusContainer:{
@@ -62,6 +65,13 @@ const useStyles = makeStyles((theme) => ({
         marginLeft:"12%",
         [theme.breakpoints.down("md")]:{
             marginLeft:"0%",   
+        }
+    },
+    optionsBox2:{
+        display:"flex",
+        marginLeft:"16%",
+        [theme.breakpoints.down("md")]:{
+            marginLeft:"13%",   
         }
     }
     
@@ -83,7 +93,7 @@ const ExperienceData = (props) => {
         <Box className={classes.dataContainer} boxShadow={1}>
             <Grid container className={classes.avatarContainer}>
                 <Grid item>
-                    <Avatar>CEO</Avatar>
+                    <Avatar>{ props.data.position[0]}</Avatar>
                 </Grid >
             </Grid> 
             <Typography variant="body1" className={classes.roleText}>
@@ -103,7 +113,7 @@ const ExperienceData = (props) => {
             <Box className={classes.statusContainer}>
                 <Chip label={props.data.active ? "active" : "inactive" } color={props.data.active ? "primary": "secondary"} />    
             </Box>
-            <Box className={classes.optionsBox}>
+            <Box className={!props.data.active ? classes.optionsBox : classes.optionsBox2}>
                 <Collapse in={options} timeout="auto" >
                     <IconButton onClick={props.handleDelete}>
                         <Delete fontSize="small" />

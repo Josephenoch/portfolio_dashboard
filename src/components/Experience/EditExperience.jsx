@@ -9,14 +9,14 @@ const useStyles = makeStyles((theme) =>({
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: "60vw",
-    height:"60vh",
+    height:"70vh",
     overflowY:"scroll",
     backgroundColor: 'white',
     border: '1px solid #777',
     boxShadow: 24,
     padding: "20px 40px 60px",
     [theme.breakpoints.down("sm")]:{
-        width: "100vw",
+        width: "90vw",
         padding: "20px 10px 30px",
     }
 },
@@ -55,7 +55,7 @@ const EditExperience = (props)=> {
             <IconButton 
                 onClick={props.handleModal}
                 style={{
-                    marginLeft:"95%",
+                    marginLeft:"90%",
                     marginBottom:"20px"
                 }}
                 >

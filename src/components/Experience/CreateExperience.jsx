@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) =>({
     boxShadow: 24,
     padding: "20px 40px 60px",
     [theme.breakpoints.down("sm")]:{
-        width: "100vw",
+        width: "90vw",
         padding: "20px 10px 30px",
     }
 },
@@ -55,7 +55,7 @@ const CreateExperience = (props)=> {
             <IconButton 
                 onClick={props.handleModal}
                 style={{
-                    marginLeft:"95%",
+                    marginLeft:"90%",
                     marginBottom:"20px"
                 }}
                 >
