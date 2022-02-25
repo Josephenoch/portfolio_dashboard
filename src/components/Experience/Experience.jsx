@@ -1,10 +1,16 @@
+// imports
 import {React, useState} from "react"
-import ExperienceHeader from "../PageHeader"
+
+//Child Component imports
+import PageHeader from "../PageHeader"
 import ExperienceSearchBar from "./ExperienceSearchBar";
 import ExperienceDataTable from "./ExperienceDataTable";
+import CreateExperience from "./CreateExperience";
+
+//material-ui component imports
 import { makeStyles, IconButton,} from "@material-ui/core"
 import {AddCircle} from "@material-ui/icons/";
-import CreateExperience from "./CreateExperience";
+
 
 
 const useStyles = makeStyles((theme) =>({
@@ -44,7 +50,7 @@ const useStyles = makeStyles((theme) =>({
 
 const Experience = ()=>{ 
     var emptyDataObj = {
-        // initializing an empty object that serves as the defualt state for every new experience data
+        // initializing an object with empty values that serves as the defualt state for every new experience data
         "position" : "",
         "company" : "",
         "startDate" : "",
@@ -52,9 +58,10 @@ const Experience = ()=>{
         "experienceText":"",
         "active" : false
       }  
+    
     const [createModal, setCreateModal] = useState(false) //a state variable for the create new experince modal
     const [newExperience, setNewExperience] = useState(emptyDataObj) //a state variable for all the new experience data
-    const [editExperience, setEditExperience] = useState(emptyDataObj)
+    const [editExperience, setEditExperience] = useState(emptyDataObj) // this is a state variable that stores the concurrent value of an edit
     const [experienceData, setExperienceData] = useState([{
         "position" : "CEO",
         "id" : 0,
@@ -84,6 +91,7 @@ const Experience = ()=>{
       }  
     ])// dummy data for testting the app. In productionmode, api's would be used
     const [uniqueID, setUniqueID] = useState(experienceData[experienceData.length-1].id+1) //creating a unique ID for every experienceData
+
     const handleDelete =  id => {
         // code to delete data using it's unique id
         setExperienceData(experienceData.filter(data => data.id !==id))
@@ -124,21 +132,32 @@ const Experience = ()=>{
         const value = e.target.value
         const name = e.target.name
 
-        // 
+        // this next line collects the newExperience into an array called newArray using ES6 spread function
         
         var newArray ={...newExperience}
+
+        // this line checks if the target input is a radio button or anyother type and then changes its value
+        // to  the corresponding value of the users input 
         name!=="active"?
         newArray = {...newArray,[name]:value }
         :
         newArray = {...newArray,[name]:e.target.checked}
 
-        
+        // this next line sets the newArray to the state variable new experience so as to validate that no field is empty
+        // before adding it to the experience data
         setNewExperience(newArray)
     }
     const handleSave = (e) =>{
-        const name = e !== undefined ? e.target.name : "null"
-        console.log(name)
+        // this function runs for both the create and edit modals as such, the next line is used to check which it is for.
+        // the handleSave for edit is called in another functio as such, it cannot have an e
+        const name = e !== undefined ? e.target.name : ""
+        
+        // this variable is used to check if any field is empty. We loop through all the fields which are objects values and check
+        // if any is empty. if anyone is, then, the functions ends and the value of the found becomes true 
+        // the next code block after the for only runs if found is false
         var found = false
+        
+        // this if else statement checks if the function is for create or edit
         if(name==="create"){
             for (var i in Object.values(newExperience)) {
                 if(Object.values(newExperience)[i] === ""){
@@ -148,16 +167,27 @@ const Experience = ()=>{
                 }
             }
             if (found === false){
+
+                // as early said, this code block only runs if found is false
+                // we run the setUniqueID by incrementing its value by 1. then we add the new key of id and set its value to the new value 
+                // of the uniqueID state variable
                 setUniqueID(uniqueID+1)
                 var newArray =newExperience
                 newArray = {...newArray,
                     id:uniqueID
                 }
+
+                // next, we set the add the data from the newExperience to the experience data only after we've validated that no field is empty
+                // then we set the value of the newExperience state variable to the object with empty values we instantiated in the beginning
                 setExperienceData([...experienceData,newArray])
                 setNewExperience(emptyDataObj)
+
+                // then we close the create modal. if the data is not validated, then the modal persists after hitting the save button
                 setCreateModal(!createModal)
             }
         }
+
+        // this else is for the edit modal
         else{
             for (var i in Object.values(editExperience)) {
                 if(Object.values(editExperience)[i] === ""){
@@ -168,13 +198,21 @@ const Experience = ()=>{
             }
             if (found === false){
                 var editArray =editExperience
+                
+                // everything up untill here is the same as the create 
+                // however, from here, we find the exact list item we edited, and replace it with its updated version
+                // we do this using a variable called data which we get from the experience data
                 var data = experienceData
                 for( var i in data){
                     if (data[i].id ===editArray.id){
                         data[i] = editArray
                     }
                 }
+
+                // we lastly set the validated and updated data to the experienceData array
                 setExperienceData(data)
+
+                // lastly we set the editExperience state variable to the object with empty values we instantiated in the beginning 
                 setEditExperience(emptyDataObj)
             }
         }
@@ -185,21 +223,28 @@ const Experience = ()=>{
     const classes= useStyles()
     return(
         <div className={classes.rootContainer} >
-            <ExperienceHeader title="Experience"/>
+            <PageHeader title="Experience"/>
+
             <div className = {classes.addIconDiv}>
+
                 <IconButton onClick={handleModal}>
                     <AddCircle className={classes.addIcon}/> 
                 </IconButton> 
+
                 <CreateExperience 
                     createData={createData} 
                     data={newExperience} 
                     createModal={createModal}
                     handleModal={handleModal}
                     handleSave={handleSave}
-                />  
+                />
+
             </div>
+
             <div className={classes.mainSection}>
-                <ExperienceSearchBar fontSize="small"/>
+
+                <ExperienceSearchBar/>
+
                 <ExperienceDataTable 
                     experienceData={experienceData} 
                     editExperience={editExperience}
@@ -208,6 +253,7 @@ const Experience = ()=>{
                     handleChange={handleChange} 
                     handleSave={handleSave}
                 />   
+
             </div> 
             
 

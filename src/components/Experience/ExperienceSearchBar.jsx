@@ -43,6 +43,7 @@ const ExperienceSearchBar = () => {
                         onChange={handleChange}
                         label="status" 
                     >
+                        <MenuItem value="all">All</MenuItem>
                         <MenuItem value="active">Active</MenuItem>
                         <MenuItem value="inactive">Inactive</MenuItem>
                     </Select>
