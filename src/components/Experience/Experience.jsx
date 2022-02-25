@@ -53,15 +53,15 @@ const Experience = ()=>{
         "active" : false
       }  
     const [createModal, setCreateModal] = useState(false) //a state variable for the create new experince modal
-     
     const [newExperience, setNewExperience] = useState(emptyDataObj) //a state variable for all the new experience data
+    const [editExperience, setEditExperience] = useState(emptyDataObj)
     const [experienceData, setExperienceData] = useState([{
         "position" : "CEO",
         "id" : 0,
         "company" : "TPS",
         "startDate" : "2022-10-20",
         "endDate" : "2022-10-20",
-        "experienceText":"",
+        "experienceText":"Holla",
         "active" : false
     }, 
       {
@@ -70,7 +70,7 @@ const Experience = ()=>{
         "company" : "TPS",
         "startDate" : "2022-10-20",
         "endDate" : "2022-10-20",
-        "experienceText":"",
+        "experienceText":"Hollala",
         "active" : true
       },
       {
@@ -79,7 +79,7 @@ const Experience = ()=>{
         "company" : "HiiT",
         "startDate" : "2022-10-20",
         "endDate" : "2022-10-20",
-        "experienceText":"",
+        "experienceText":"Hoe",
         "active" : true
       }  
     ])// dummy data for testting the app. In productionmode, api's would be used
@@ -135,25 +135,48 @@ const Experience = ()=>{
         
         setNewExperience(newArray)
     }
-    const handleSave = () =>{
+    const handleSave = (e) =>{
+        const name = e !== undefined ? e.target.name : "null"
+        console.log(name)
         var found = false
-        for (var i in Object.values(newExperience)) {
-            console.log(newExperience)  
-            if(Object.values(newExperience)[i] === ""){
-                found = true    
-                break
-                
+        if(name==="create"){
+            for (var i in Object.values(newExperience)) {
+                if(Object.values(newExperience)[i] === ""){
+                    found = true    
+                    break
+                    
+                }
+            }
+            if (found === false){
+                setUniqueID(uniqueID+1)
+                var newArray =newExperience
+                newArray = {...newArray,
+                    id:uniqueID
+                }
+                setExperienceData([...experienceData,newArray])
+                setNewExperience(emptyDataObj)
+                setCreateModal(!createModal)
             }
         }
-        if (found === false){
-            setUniqueID(uniqueID+1)
-            var newArray =newExperience
-            newArray = {...newArray,
-                id:uniqueID
+        else{
+            for (var i in Object.values(editExperience)) {
+                if(Object.values(editExperience)[i] === ""){
+                    found = true    
+                    break
+                    
+                }
             }
-            setExperienceData([...experienceData,newArray])
-            setNewExperience(emptyDataObj)
-            setCreateModal(!createModal)
+            if (found === false){
+                var editArray =editExperience
+                var data = experienceData
+                for( var i in data){
+                    if (data[i].id ===editArray.id){
+                        data[i] = editArray
+                    }
+                }
+                setExperienceData(data)
+                setEditExperience(emptyDataObj)
+            }
         }
         
     }
@@ -177,7 +200,14 @@ const Experience = ()=>{
             </div>
             <div className={classes.mainSection}>
                 <ExperienceSearchBar fontSize="small"/>
-                <ExperienceDataTable experienceData={experienceData} handleDelete={handleDelete} handleChange={handleChange}/>   
+                <ExperienceDataTable 
+                    experienceData={experienceData} 
+                    editExperience={editExperience}
+                    setEditExperience={setEditExperience} 
+                    handleDelete={handleDelete} 
+                    handleChange={handleChange} 
+                    handleSave={handleSave}
+                />   
             </div> 
             
 

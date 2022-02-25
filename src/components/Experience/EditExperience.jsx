@@ -9,9 +9,10 @@ const useStyles = makeStyles((theme) =>({
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: "60vw",
-    height:"70vh",
+    height:"80vh",
     overflowY:"scroll",
     backgroundColor: 'white',
+    borderRadius:20,
     border: '1px solid #777',
     boxShadow: 24,
     padding: "20px 40px 60px",
@@ -19,11 +20,13 @@ const useStyles = makeStyles((theme) =>({
         width: "90vw",
         padding: "20px 10px 30px",
     }
+    // styling for the edit experience modal
 },
 inputContainer:{
     marginBottom:"20px",
     display:"flex",
     justifyContent:"space-between"
+    // styling for the input container class
 },
 buttonStyle:{
     top:"17%",
@@ -34,26 +37,28 @@ buttonStyle:{
     [theme.breakpoints.down("sm")]: {
         left:"80%"
     }
+    // styling for the button
 },
 }))
 
 const EditExperience = (props)=> {
   const classes = useStyles()
-  return (<div>
+  //   assigning  the useStyles(the jss styles) to the classes variable
+  return (
        <Modal
-            open={props.modal}
-            onClose={props.handleModal}
+            open={props.modal}// this sets the modal to open when the data in the parent component is true
+            onClose={props.handleModal} // this runs the handleModal function in the parent component when the modal is closed
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
-            closeAfterTransition
             BackdropComponent={Backdrop}
             BackdropProps={{
-                timeout: 500,
+                timeout: 1000,
             }}
             >
+        
         <Box className={classes.modal}>
             <IconButton 
-                onClick={props.handleModal}
+                onClick={props.handleModal}// this runs the handleModal function in the parent component when the cancle button is clicked
                 style={{
                     marginLeft:"90%",
                     marginBottom:"20px"
@@ -65,64 +70,68 @@ const EditExperience = (props)=> {
                 <TextField 
                     placeholder="Position" 
                     variant="filled" 
-                    onChange={props.handleChange}
-                    value={props.data.position} 
-                    name="position"/>
+                    onChange={props.handleChange} //onchange, a general function for handling input change is run
+                    value={props.editExperience.position} // the name is the same as the object name in the parent data
+                    name="position"  // the name is the same as the object name in the parent data
+                />
                 <TextField 
                     placeholder="Company" 
                     variant="filled" 
-                    onChange={props.handleChange}
-                    value={props.data.company} 
-                    name="company"/>
+                    onChange={props.handleChange} //onchange, a general function for handling input change is run
+                    value={props.editExperience.company}  // the name is the same as the object name in the parent data
+                    name="company" // the name is the same as the object name in the parent data
+                />
             </Box>
             <Box className={classes.inputContainer}>
                 <TextField 
                     type="date" 
                     label="Start Date" 
-                    onChange={props.handleChange}
-                    value={props.data.startDate} 
-                    name="startDate"
-                    InputLabelProps={{shrink: true,}} />
+                    onChange={props.handleChange}//onchange, a general function for handling input change is run
+                    value={props.editExperience.startDate}  // the name is the same as the object name in the parent data
+                    name="startDate"  // the name is the same as the object name in the parent data
+                    InputLabelProps={{shrink: true,}} 
+                    />
                 <TextField 
                     type="date" 
                     label="End Date"
-                    onChange={props.handleChange}
-                    value={props.data.endDate}
-                    name="endDate"
-                    InputLabelProps={{shrink: true,}} />
+                    onChange={props.handleChange}//onchange, a general function for handling input change is run
+                    value={props.editExperience.endDate} // the name is the same as the object name in the parent data
+                    name="endDate"  // the name is the same as the object name in the parent data
+                    InputLabelProps={{shrink: true,}}
+                />
             </Box>
             <FormControlLabel 
                 control={
                     <Switch  
                         color="primary" 
-                        onChange={props.handleChange}
-                        checked={props.data.active} 
-                        name="active"
+                        onChange={props.handleChange} //onchange, a general function for handling input change is run
+                        checked={props.editExperience.active}  // the name is the same as the object name in the parent data
+                        name="active"  // the name is the same as the object name in the parent data
                     />
                 } 
-            label="Active" />
+                label="Active" />
             <TextField
                 style={{
-                    width:"100%",
-                    
+                    width:"100%",  
                 }}
                 id="outlined-basic"
-                value={props.data.experienceText} 
+                value={props.editExperience.experienceText}  // the name is the same as the object name in the parent data
                 variant="outlined"
-                onChange={props.handleChange}
-                name= "experienceText"
+                onChange={props.handleChange}//onchange, a general function for handling input change is run
+                name= "experienceText"  // the name is the same as the object name in the parent data
                 multiline={true}
             />
              
                 <Button
                     variant="outlined"
                     className={classes.buttonStyle}
+                    name="save"
                     onClick={props.handleModal}
                 >
                     Save
                 </Button>
             </Box>
         </Modal>
-  </div>);
+  );
 }
 export default EditExperience

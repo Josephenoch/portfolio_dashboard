@@ -21,16 +21,21 @@ const useStyles = makeStyles((theme) => ({
     avatarContainer:{
         marginLeft:"20px",
         width:"5%",
-
+        [theme.breakpoints.down("md")]:{
+            width:"10%",
+            marginLeft:"10px",
+        }  
     },
     roleText:{
         display:"inline-block",
-        width:"10%",
+        width:"15%",
         marginRight:"50px",
         fontWeight:"bold",
-        overflow:"hidden",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
         [theme.breakpoints.down("md")]:{
-            display:"none"
+            marginRight:"0px",
+            marginLeft:"25px",
         }    
       
     },
@@ -46,9 +51,12 @@ const useStyles = makeStyles((theme) => ({
         width:"10%",
         marginLeft:"50px",
         display:"flex",
+        overflow:"hidden",
         alignItems:"center",
-        [theme.breakpoints.down("sm")]:{
-            marginLeft:"100px",
+        [theme.breakpoints.down("md")]:{
+            paddingRight:"40px",
+            marginLeft:"40px",
+            // marginRight:"20px",
         }
     },
     statusContainer:{
@@ -62,16 +70,17 @@ const useStyles = makeStyles((theme) => ({
     },
     optionsBox:{
         display:"flex",
-        marginLeft:"12%",
+        marginLeft:"11.3%",
         [theme.breakpoints.down("md")]:{
-            marginLeft:"0%",   
+            marginLeft:"-13px", 
+              
         }
     },
     optionsBox2:{
         display:"flex",
         marginLeft:"16%",
         [theme.breakpoints.down("md")]:{
-            marginLeft:"13%",   
+            marginLeft:"30px",   
         }
     }
     
@@ -80,14 +89,45 @@ const useStyles = makeStyles((theme) => ({
 const ExperienceData = (props) => {
     const classes = useStyles()
     const [options, setOptions] = useState(false)
+    
     const [modal, setModal] = useState(false);
 
     const handleOptions = () => {
         setOptions(!options)    
     };
-    const handleModal = () => {
-        setModal(!modal)    
+    const handleModal = (data) => {
+        if(!modal){
+            props.setEditExperience(data)
+            setModal(!modal)
+        }
+        else{
+            props.handleSave()
+            setModal(!modal)
+        }    
     };
+
+    const handleChange = e =>{
+   // this function handles the change when the user makes an edit to an existing experience
+
+            // collecting the input name and value in two variables, name and value
+            const value = e.target.value
+            const name = e.target.name
+
+            // using the spread operator to get the values of the experienceData and put it in a list called newArray
+            var newArray = props.editExperience
+
+            // beginning of a ternary operation that checks if the type of the input caaling this function is a radio
+            // if it is, then set the value of its corresponding active state to its opposite
+            // if it is not, then set the value of the corresponding input of the corresponding data item to its value 
+            // this change is done to the newArray 
+            name!=="active"? 
+            newArray = {...newArray,[name]:value}
+            :
+            newArray = {...newArray,[name]:e.target.checked}
+
+            // setting the value of the experienceData to the value of the newArray
+            props.setEditExperience(newArray)
+    }
 
     return (
         <Box className={classes.dataContainer} boxShadow={1}>
@@ -118,7 +158,7 @@ const ExperienceData = (props) => {
                     <IconButton onClick={props.handleDelete}>
                         <Delete fontSize="small" />
                     </IconButton>
-                    <IconButton onClick={handleModal}>
+                    <IconButton onClick={handleModal.bind(this, props.data)}>
                         <Edit fontSize="small"/>
                     </IconButton>
                     {props.data.active ? "": <IconButton>
@@ -129,7 +169,14 @@ const ExperienceData = (props) => {
                     {options ? <Cancel fontSize="small"/> : <MoreHoriz fontSize="small"/> }
                 </IconButton>
             </Box>
-            <EditExperience data={props.data} handleModal={handleModal} modal={modal} handleChange={props.handleChange}/>
+            <EditExperience 
+                data={props.data} 
+                handleModal={handleModal} 
+                handleSave={props.handleSave}
+                modal={modal} 
+                handleChange={handleChange} 
+                editExperience={props.editExperience}
+            />
         </Box>
 
   )

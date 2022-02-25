@@ -116,6 +116,7 @@ const CreateExperience = (props)=> {
              
                 <Button
                     variant="outlined"
+                    name="create"
                     className={classes.buttonStyle}
                     onClick={props.handleSave}
                 >
