@@ -9,6 +9,12 @@ const useStyles = makeStyles((theme) =>({
         alignItems:"center",
         width:"94%",
         marginTop:"7vh",
+    },
+    autoComplete:{
+        width:"40%",
+        [theme.breakpoints.down("md")]:{
+            width:"80%"
+        }
     }
 }))
 const ExperienceSearchBar = (props) => {
@@ -20,12 +26,10 @@ const ExperienceSearchBar = (props) => {
     return (
         <div className={classes.rootContainer}>
             <Autocomplete
+                className={classes.autoComplete}
                 id="experienceAutoComplete"
-                style={{
-                    width:"40%"
-                }}
                 options={props.data}
-                getOptionLabel={(option) => option.position}
+                getOptionLabel={(option) => option.position + " at " + option.company}
                 // onChange={handleChange }
                 renderInput={(params) => (
                 <TextField {...params} label="Search Experiences" margin="normal" variant="outlined"  />
