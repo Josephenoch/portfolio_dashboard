@@ -223,17 +223,21 @@ const Experience = ()=>{
     const classes= useStyles()
     return(
         <div className={classes.rootContainer} >
+            {/* the next line is a component called pageheader that shows the title of the pageb */}
             <PageHeader title="Experience"/>
 
             <div className = {classes.addIconDiv}>
-
+                
+                {/* The next line is the add button that can be used to add new experience*/}
                 <IconButton onClick={handleModal}>
                     <AddCircle className={classes.addIcon}/> 
                 </IconButton> 
 
-                <CreateExperience 
-                    createData={createData} 
+                {/* The CreateExperience component that is used to add new experience it takes in the newExperience state variable as props called data,
+                    it takes in the createData, createModal, handleModal and handleSave function as props with their corresponding names*/}
+                <CreateExperience   
                     data={newExperience} 
+                    createData={createData} 
                     createModal={createModal}
                     handleModal={handleModal}
                     handleSave={handleSave}
@@ -243,8 +247,10 @@ const Experience = ()=>{
 
             <div className={classes.mainSection}>
 
-                <ExperienceSearchBar/>
-
+                <ExperienceSearchBar data={experienceData}/>
+                
+                 {/* The ExperienceDataTable component that is used to add new experience it takes in the newExperience state variable as props called data,
+                    it takes in the createData, createModal, handleModal and handleSave function as props with their corresponding names*/}
                 <ExperienceDataTable 
                     experienceData={experienceData} 
                     editExperience={editExperience}

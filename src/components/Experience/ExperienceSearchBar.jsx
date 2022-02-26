@@ -1,6 +1,7 @@
 import {React, useState} from 'react';
-import { IconButton, Typography, MenuItem, FormControl, InputLabel, Select, makeStyles } from '@material-ui/core';
-import {Search} from "@material-ui/icons"
+import { IconButton, Typography, TextField, MenuItem, FormControl, InputLabel, Select, makeStyles, } from '@material-ui/core';
+import {Autocomplete } from '@material-ui/lab'
+// import {Search} from "@material-ui/icons"
 
 const useStyles = makeStyles((theme) =>({
     rootContainer:{
@@ -10,7 +11,7 @@ const useStyles = makeStyles((theme) =>({
         marginTop:"7vh",
     }
 }))
-const ExperienceSearchBar = () => {
+const ExperienceSearchBar = (props) => {
     const classes = useStyles()
     const [status, setStatus] = useState('');
     const handleChange = (event) => {
@@ -18,21 +19,18 @@ const ExperienceSearchBar = () => {
     };
     return (
         <div className={classes.rootContainer}>
-            <IconButton>
-                <Search/>
-            </IconButton>
-            <Typography
-                variant="h6"
-                style={{borderBottom:"2px solid black", marginLeft:15}}
-            >
-                List
-            </Typography>
-            <Typography
-                variant="h6"
-                style={{marginLeft:15}}
-            >
-                List
-            </Typography>
+            <Autocomplete
+                id="experienceAutoComplete"
+                style={{
+                    width:"40%"
+                }}
+                options={props.data}
+                getOptionLabel={(option) => option.position}
+                // onChange={handleChange }
+                renderInput={(params) => (
+                <TextField {...params} label="Search Experiences" margin="normal" variant="outlined"  />
+                )}
+            />
             <div style={{position:"absolute",right:"3.2%"}}>
                 <FormControl variant="standard"  size="small">
                     <InputLabel id="demo-simple-select-standard-label" shrink>Status</InputLabel>
