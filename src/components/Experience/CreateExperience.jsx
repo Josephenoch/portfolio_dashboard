@@ -1,6 +1,7 @@
 import {React, useState} from 'react';
 import { Box, IconButton, TextField, makeStyles,Switch, Button, Modal, Backdrop, FormControlLabel} from '@material-ui/core';
 import { Cancel } from '@material-ui/icons';
+import { useEffect } from 'react';
 
 const useStyles = makeStyles((theme) =>({
   modal:{
@@ -49,7 +50,6 @@ const CreateExperience = (props)=> {
     // this next line collects the newExperience into an array called newArray using ES6 spread function
     
     var newArray ={...props.newExperience}
-    console.table(newArray )
 
     // this line checks if the target input is a radio button or anyother type and then changes its value
     // to  the corresponding value of the users input 
@@ -62,9 +62,15 @@ const CreateExperience = (props)=> {
     // before adding it to the experience data
     props.setNewExperience(newArray)
     
-    var found 
+    
+}
+
+  useEffect(() => {
+    var found = false
+    console.log(props.createBtnDisabled)
     for (var i in Object.values(props.newExperience)) {
         if(Object.values(props.newExperience)[i] === ""){
+            console.log(Object.values(props.newExperience)[i])
             found = true    
             break
             
@@ -75,15 +81,10 @@ const CreateExperience = (props)=> {
         // as early said, this code block only runs if found is false
         // we run the setUniqueID by incrementing its value by 1. then we add the new key of id and set its value to the new value 
         // of the uniqueID state variable
-        props.setUniqueID(props.uniqueID+1)
-        var newArray =props.newExperience
-        newArray = {...newArray,
-            id:props.uniqueID
-        }
+      
         props.setCreateBtnDisabled(false)
     }
-    
-}
+  },[props.newExperience])
   return (<div>
        <Modal
             open={props.createModal}
@@ -166,6 +167,7 @@ const CreateExperience = (props)=> {
                     onClick={props.handleSave}
                     disabled={props.createBtnDisabled}
                 >
+                    {/* {console.log(props.createBtnDisabled)} */}
                     Save
                 </Button>
             </Box>

@@ -139,32 +139,23 @@ const Experience = ()=>{
         
         // this if else statement checks if the function is for create or edit
         if(name==="create"){
-            for (var i in Object.values(newExperience)) {
-                if(Object.values(newExperience)[i] === ""){
-                    found = true    
-                    break
-                    
-                }
-            }
-            if (found === false){
 
-                // as early said, this code block only runs if found is false
-                // we run the setUniqueID by incrementing its value by 1. then we add the new key of id and set its value to the new value 
-                // of the uniqueID state variable
-                setUniqueID(uniqueID+1)
-                var newArray =newExperience
-                newArray = {...newArray,
-                    id:uniqueID
-                }
-                setCreateBtnDisabled(false)
-                // next, we set the add the data from the newExperience to the experience data only after we've validated that no field is empty
-                // then we set the value of the newExperience state variable to the object with empty values we instantiated in the beginning
-                setExperienceData([...experienceData,newArray])
-                setNewExperience(emptyDataObj)
-
-                // then we close the create modal. if the data is not validated, then the modal persists after hitting the save button
-                setCreateModal(!createModal)
+            // as early said, this code block only runs if found is false
+            // we run the setUniqueID by incrementing its value by 1. then we add the new key of id and set its value to the new value 
+            // of the uniqueID state variable
+            setUniqueID(uniqueID+1)
+            var newArray =newExperience
+            newArray = {...newArray,
+                id:uniqueID
             }
+            // next, we set the add the data from the newExperience to the experience data only after we've validated that no field is empty
+            // then we set the value of the newExperience state variable to the object with empty values we instantiated in the beginning
+            setExperienceData([...experienceData,newArray])
+            setNewExperience(emptyDataObj)
+
+            // then we close the create modal. if the data is not validated, then the modal persists after hitting the save button
+            setCreateModal(!createModal)
+
         }
 
         // this else is for the edit modal
@@ -219,10 +210,13 @@ const Experience = ()=>{
                     data={newExperience} 
                     newExperience={newExperience}
                     setNewExperience={setNewExperience}
+                    uniqueID={uniqueID}
+                    setUniqueID={setUniqueID}
                     createModal={createModal}
                     handleModal={handleModal}
                     handleSave={handleSave}
                     createBtnDisabled={createBtnDisabled}
+                    setCreateBtnDisabled={setCreateBtnDisabled}
                 />
 
             </div>
