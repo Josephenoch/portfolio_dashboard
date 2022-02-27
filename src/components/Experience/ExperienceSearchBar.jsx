@@ -26,7 +26,7 @@ const ExperienceSearchBar = (props) => {
     return (
         <div className={classes.rootContainer}>
             <Autocomplete
-                className={classes.autoComplete}
+                className={classes.autoComplete }
                 id="experienceAutoComplete"
                 options={props.data}
                 getOptionLabel={(option) => option.position + " at " + option.company}
