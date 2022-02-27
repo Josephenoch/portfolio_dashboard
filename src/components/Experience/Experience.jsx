@@ -62,6 +62,7 @@ const Experience = ()=>{
     const [createModal, setCreateModal] = useState(false) //a state variable for the create new experince modal
     const [newExperience, setNewExperience] = useState(emptyDataObj) //a state variable for all the new experience data
     const [editExperience, setEditExperience] = useState(emptyDataObj) // this is a state variable that stores the concurrent value of an edit
+    const [createBtnDisabled, setCreateBtnDisabled] = useState(true)
     const [experienceData, setExperienceData] = useState([{
         "position" : "CEO",
         "id" : 0,
@@ -125,28 +126,7 @@ const Experience = ()=>{
     }
 
     
-    const createData =  e => {
-        // this function handles the change when the user makes click on the add icon, that is to create a new experience
 
-        // collecting the input name and value in two variables, name and value
-        const value = e.target.value
-        const name = e.target.name
-
-        // this next line collects the newExperience into an array called newArray using ES6 spread function
-        
-        var newArray ={...newExperience}
-
-        // this line checks if the target input is a radio button or anyother type and then changes its value
-        // to  the corresponding value of the users input 
-        name!=="active"?
-        newArray = {...newArray,[name]:value }
-        :
-        newArray = {...newArray,[name]:e.target.checked}
-
-        // this next line sets the newArray to the state variable new experience so as to validate that no field is empty
-        // before adding it to the experience data
-        setNewExperience(newArray)
-    }
     const handleSave = (e) =>{
         // this function runs for both the create and edit modals as such, the next line is used to check which it is for.
         // the handleSave for edit is called in another functio as such, it cannot have an e
@@ -176,7 +156,7 @@ const Experience = ()=>{
                 newArray = {...newArray,
                     id:uniqueID
                 }
-
+                setCreateBtnDisabled(false)
                 // next, we set the add the data from the newExperience to the experience data only after we've validated that no field is empty
                 // then we set the value of the newExperience state variable to the object with empty values we instantiated in the beginning
                 setExperienceData([...experienceData,newArray])
@@ -237,10 +217,12 @@ const Experience = ()=>{
                     it takes in the createData, createModal, handleModal and handleSave function as props with their corresponding names*/}
                 <CreateExperience   
                     data={newExperience} 
-                    createData={createData} 
+                    newExperience={newExperience}
+                    setNewExperience={setNewExperience}
                     createModal={createModal}
                     handleModal={handleModal}
                     handleSave={handleSave}
+                    createBtnDisabled={createBtnDisabled}
                 />
 
             </div>

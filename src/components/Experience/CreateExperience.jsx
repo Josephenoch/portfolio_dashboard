@@ -1,4 +1,4 @@
-import {React} from 'react';
+import {React, useState} from 'react';
 import { Box, IconButton, TextField, makeStyles,Switch, Button, Modal, Backdrop, FormControlLabel} from '@material-ui/core';
 import { Cancel } from '@material-ui/icons';
 
@@ -39,6 +39,51 @@ buttonStyle:{
 
 const CreateExperience = (props)=> {
   const classes = useStyles()
+  const createData =  e => {
+    // this function handles the change when the user makes click on the add icon, that is to create a new experience
+
+    // collecting the input name and value in two variables, name and value
+    const value = e.target.value
+    const name = e.target.name
+
+    // this next line collects the newExperience into an array called newArray using ES6 spread function
+    
+    var newArray ={...props.newExperience}
+    console.table(newArray )
+
+    // this line checks if the target input is a radio button or anyother type and then changes its value
+    // to  the corresponding value of the users input 
+    name!=="active"?
+    newArray = {...newArray,[name]:value }
+    :
+    newArray = {...newArray,[name]:e.target.checked}
+
+    // this next line sets the newArray to the state variable new experience so as to validate that no field is empty
+    // before adding it to the experience data
+    props.setNewExperience(newArray)
+    
+    var found 
+    for (var i in Object.values(props.newExperience)) {
+        if(Object.values(props.newExperience)[i] === ""){
+            found = true    
+            break
+            
+        }
+    }
+    if (found === false){
+
+        // as early said, this code block only runs if found is false
+        // we run the setUniqueID by incrementing its value by 1. then we add the new key of id and set its value to the new value 
+        // of the uniqueID state variable
+        props.setUniqueID(props.uniqueID+1)
+        var newArray =props.newExperience
+        newArray = {...newArray,
+            id:props.uniqueID
+        }
+        props.setCreateBtnDisabled(false)
+    }
+    
+}
   return (<div>
        <Modal
             open={props.createModal}
@@ -65,13 +110,13 @@ const CreateExperience = (props)=> {
                 <TextField 
                     placeholder="Position" 
                     variant="filled" 
-                    onChange={props.createData}
+                    onChange={createData}
                     value={props.data.position} 
                     name="position"/>
                 <TextField 
                     placeholder="Company" 
                     variant="filled" 
-                    onChange={props.createData}
+                    onChange={createData}
                     value={props.data.company} 
                     name="company"/>
             </Box>
@@ -79,14 +124,14 @@ const CreateExperience = (props)=> {
                 <TextField 
                     type="date" 
                     label="Start Date" 
-                    onChange={props.createData}
+                    onChange={createData}
                     value={props.data.startDate} 
                     name="startDate"
                     InputLabelProps={{shrink: true,}} />
                 <TextField 
                     type="date" 
                     label="End Date"
-                    onChange={props.createData}
+                    onChange={createData}
                     value={props.data.endDate}
                     name="endDate"
                     InputLabelProps={{shrink: true,}} />
@@ -95,7 +140,7 @@ const CreateExperience = (props)=> {
                 control={
                     <Switch  
                         color="primary" 
-                        onChange={props.createData}
+                        onChange={createData}
                         checked={props.data.active} 
                         name="active"
                     />
@@ -109,7 +154,7 @@ const CreateExperience = (props)=> {
                 id="outlined-basic"
                 value={props.data.experienceText} 
                 variant="outlined"
-                onChange={props.createData}
+                onChange={createData}
                 name= "experienceText"
                 multiline={true}
             />
@@ -119,6 +164,7 @@ const CreateExperience = (props)=> {
                     name="create"
                     className={classes.buttonStyle}
                     onClick={props.handleSave}
+                    disabled={props.createBtnDisabled}
                 >
                     Save
                 </Button>

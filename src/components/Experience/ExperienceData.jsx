@@ -71,16 +71,14 @@ const useStyles = makeStyles((theme) => ({
     optionsBox:{
         display:"flex",
         marginLeft:"11.3%",
-        [theme.breakpoints.down("md")]:{
-            marginLeft:"-13px", 
-              
-        }
     },
     optionsBox2:{
         display:"flex",
         marginLeft:"16%",
+    },
+    icon:{
         [theme.breakpoints.down("md")]:{
-            marginLeft:"30px",   
+            fontSize:10
         }
     }
     
@@ -156,17 +154,17 @@ const ExperienceData = (props) => {
             <Box className={!props.data.active ? classes.optionsBox : classes.optionsBox2}>
                 <Collapse in={options} timeout="auto" >
                     <IconButton onClick={props.handleDelete}>
-                        <Delete fontSize="small" />
+                        <Delete fontSize="small" className={classes.icon}/>
                     </IconButton>
                     <IconButton onClick={handleModal.bind(this, props.data)}>
-                        <Edit fontSize="small"/>
+                        <Edit fontSize="small" className={classes.icon}/>
                     </IconButton>
                     {props.data.active ? "": <IconButton>
-                        <Publish fontSize="small"/>
+                        <Publish fontSize="small" className={classes.icon}/>
                     </IconButton>}
                 </Collapse>
                 <IconButton onClick={handleOptions}>
-                    {options ? <Cancel fontSize="small"/> : <MoreHoriz fontSize="small"/> }
+                    {options ? <Cancel fontSize="small" className={classes.icon}/> : <MoreHoriz fontSize="small" className={classes.icon}/> }
                 </IconButton>
             </Box>
             <EditExperience 
