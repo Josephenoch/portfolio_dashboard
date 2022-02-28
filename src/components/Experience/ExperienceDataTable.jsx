@@ -31,6 +31,7 @@ const ExperienceDataTable = (props) => {
                             setEditExperience={props.setEditExperience}
                             handleDelete={props.handleDelete.bind(this, data.id)} 
                             handleChange={props.handleChange(index)}
+                            btnDisabled={props.btnDisabled}
                             handleSave={props.handleSave}
                         />
                     )

@@ -129,6 +129,7 @@ const EditExperience = (props)=> {
                     variant="outlined"
                     className={classes.buttonStyle}
                     name="save"
+                    disabled={props.btnDisabled}
                     onClick={props.handleModal}
                 >
                     Save

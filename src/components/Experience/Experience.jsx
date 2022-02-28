@@ -1,5 +1,5 @@
 // imports
-import {React, useState} from "react"
+import {React, useEffect, useState} from "react"
 
 //Child Component imports
 import PageHeader from "../PageHeader"
@@ -62,7 +62,7 @@ const Experience = ()=>{
     const [createModal, setCreateModal] = useState(false) //a state variable for the create new experince modal
     const [newExperience, setNewExperience] = useState(emptyDataObj) //a state variable for all the new experience data
     const [editExperience, setEditExperience] = useState(emptyDataObj) // this is a state variable that stores the concurrent value of an edit
-    const [createBtnDisabled, setCreateBtnDisabled] = useState(true)
+    const [btnDisabled, setBtnDisabled] = useState(true)
     const [experienceData, setExperienceData] = useState([{
         "position" : "CEO",
         "id" : 0,
@@ -92,7 +92,6 @@ const Experience = ()=>{
       }  
     ])// dummy data for testting the app. In productionmode, api's would be used
     const [uniqueID, setUniqueID] = useState(experienceData[experienceData.length-1].id+1) //creating a unique ID for every experienceData
-
     const handleDelete =  id => {
         // code to delete data using it's unique id
         setExperienceData(experienceData.filter(data => data.id !==id))
@@ -122,22 +121,35 @@ const Experience = ()=>{
             newArray[index] = {...newArray[index],[name]:e.target.checked}
 
             // setting the value of the experienceData to the value of the newArray
+
             setExperienceData(newArray)
     }
 
-    
+    useEffect(()=>{
+        var found = false
+        for (var i in Object.values(editExperience)) {
+            if(Object.values(editExperience)[i] === ""){
+                setBtnDisabled(true)
+                found = true    
+                break
+                
+            }
+        }
+        if (found === false){
+            setBtnDisabled(false)
+        }
+    }, [editExperience])
 
     const handleSave = (e) =>{
         // this function runs for both the create and edit modals as such, the next line is used to check which it is for.
         // the handleSave for edit is called in another functio as such, it cannot have an e
-        const name = e !== undefined ? e.target.name : ""
-        
+        const name =  e!= undefined ? e.currentTarget.name : ""
         // this variable is used to check if any field is empty. We loop through all the fields which are objects values and check
         // if any is empty. if anyone is, then, the functions ends and the value of the found becomes true 
         // the next code block after the for only runs if found is false
-        var found = false
-        
+      
         // this if else statement checks if the function is for create or edit
+        console.log(name)
         if(name==="create"){
 
             // as early said, this code block only runs if found is false
@@ -148,44 +160,34 @@ const Experience = ()=>{
             newArray = {...newArray,
                 id:uniqueID
             }
+            console.log(newArray)
             // next, we set the add the data from the newExperience to the experience data only after we've validated that no field is empty
             // then we set the value of the newExperience state variable to the object with empty values we instantiated in the beginning
+            setCreateModal(!createModal)
             setExperienceData([...experienceData,newArray])
             setNewExperience(emptyDataObj)
-
             // then we close the create modal. if the data is not validated, then the modal persists after hitting the save button
-            setCreateModal(!createModal)
 
         }
 
         // this else is for the edit modal
         else{
-            for (var i in Object.values(editExperience)) {
-                if(Object.values(editExperience)[i] === ""){
-                    found = true    
-                    break
-                    
+            var editArray =editExperience
+            
+            // everything up untill here is the same as the create 
+            // however, from here, we find the exact list item we edited, and replace it with its updated version
+            // we do this using a variable called data which we get from the experience data
+            var data = experienceData
+            for( var i in data){
+                if (data[i].id ===editArray.id){
+                    data[i] = editArray
                 }
             }
-            if (found === false){
-                var editArray =editExperience
-                
-                // everything up untill here is the same as the create 
-                // however, from here, we find the exact list item we edited, and replace it with its updated version
-                // we do this using a variable called data which we get from the experience data
-                var data = experienceData
-                for( var i in data){
-                    if (data[i].id ===editArray.id){
-                        data[i] = editArray
-                    }
-                }
+            // we lastly set the validated and updated data to the experienceData array
+            setExperienceData(data)
 
-                // we lastly set the validated and updated data to the experienceData array
-                setExperienceData(data)
-
-                // lastly we set the editExperience state variable to the object with empty values we instantiated in the beginning 
-                setEditExperience(emptyDataObj)
-            }
+            // lastly we set the editExperience state variable to the object with empty values we instantiated in the beginning 
+            setEditExperience(emptyDataObj)   
         }
         
     }
@@ -215,8 +217,8 @@ const Experience = ()=>{
                     createModal={createModal}
                     handleModal={handleModal}
                     handleSave={handleSave}
-                    createBtnDisabled={createBtnDisabled}
-                    setCreateBtnDisabled={setCreateBtnDisabled}
+                    btnDisabled={btnDisabled}
+                    setBtnDisabled={setBtnDisabled}
                 />
 
             </div>
@@ -230,6 +232,7 @@ const Experience = ()=>{
                 <ExperienceDataTable 
                     experienceData={experienceData} 
                     editExperience={editExperience}
+                    btnDisabled={btnDisabled}
                     setEditExperience={setEditExperience} 
                     handleDelete={handleDelete} 
                     handleChange={handleChange} 

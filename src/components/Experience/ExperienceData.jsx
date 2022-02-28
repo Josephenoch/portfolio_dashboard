@@ -75,6 +75,9 @@ const useStyles = makeStyles((theme) => ({
     optionsBox2:{
         display:"flex",
         marginLeft:"16%",
+        [theme.breakpoints.down("md")]:{
+        marginRight:"-3.5%"
+    }
     },
     icon:{
         [theme.breakpoints.down("md")]:{
@@ -174,6 +177,7 @@ const ExperienceData = (props) => {
                 modal={modal} 
                 handleChange={handleChange} 
                 editExperience={props.editExperience}
+                btnDisabled={props.btnDisabled}
             />
         </Box>
 

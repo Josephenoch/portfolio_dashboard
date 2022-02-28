@@ -63,14 +63,15 @@ const CreateExperience = (props)=> {
     props.setNewExperience(newArray)
     
     
+    
 }
 
   useEffect(() => {
     var found = false
-    console.log(props.createBtnDisabled)
+    console.log(props.newExperience)
     for (var i in Object.values(props.newExperience)) {
         if(Object.values(props.newExperience)[i] === ""){
-            console.log(Object.values(props.newExperience)[i])
+            props.setBtnDisabled(true)
             found = true    
             break
             
@@ -82,7 +83,7 @@ const CreateExperience = (props)=> {
         // we run the setUniqueID by incrementing its value by 1. then we add the new key of id and set its value to the new value 
         // of the uniqueID state variable
       
-        props.setCreateBtnDisabled(false)
+        props.setBtnDisabled(false)
     }
   },[props.newExperience])
   return (<div>
@@ -165,7 +166,7 @@ const CreateExperience = (props)=> {
                     name="create"
                     className={classes.buttonStyle}
                     onClick={props.handleSave}
-                    disabled={props.createBtnDisabled}
+                    disabled={props.btnDisabled}
                 >
                     {/* {console.log(props.createBtnDisabled)} */}
                     Save
