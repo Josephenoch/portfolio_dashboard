@@ -51,44 +51,46 @@ const useStyles = makeStyles((theme) =>({
 const Experience = ()=>{ 
     var emptyDataObj = {
         // initializing an object with empty values that serves as the defualt state for every new experience data
-        "position" : "",
-        "company" : "",
-        "startDate" : "",
-        "endDate" : "",
-        "experienceText":"",
-        "active" : false
+        position : "",
+        company : "",
+        startDate : "",
+        endDate : "",
+        present: false,
+        experienceText:"",
+        active : false
       }  
     
     const [createModal, setCreateModal] = useState(false) //a state variable for the create new experince modal
     const [newExperience, setNewExperience] = useState(emptyDataObj) //a state variable for all the new experience data
-    const [editExperience, setEditExperience] = useState(emptyDataObj) // this is a state variable that stores the concurrent value of an edit
-    const [btnDisabled, setBtnDisabled] = useState(true)
     const [experienceData, setExperienceData] = useState([{
-        "position" : "CEO",
-        "id" : 0,
-        "company" : "TPS",
-        "startDate" : "2022-10-20",
-        "endDate" : "2022-10-20",
-        "experienceText":"Holla",
-        "active" : false
+        position : "CEO",
+        id : 0,
+        company : "TPS",
+        startDate : "2022-10-20",
+        endDate : "2022-10-20",
+        present: true,
+        experienceText:"Holla",
+        active : false
     }, 
       {
-        "position" : "Developer",
-        "id" : 1,
-        "company" : "TPS",
-        "startDate" : "2022-10-20",
-        "endDate" : "2022-10-20",
-        "experienceText":"Hollala",
-        "active" : true
+        position : "Developer",
+        id : 1,
+        company : "TPS",
+        startDate : "2022-10-20",
+        endDate : "2022-10-20",
+        present: false,
+        experienceText:"Hollala",
+        active : true
       },
       {
-        "position" : "Course Instructor",
-        "id" : 2,
-        "company" : "HiiT",
-        "startDate" : "2022-10-20",
-        "endDate" : "2022-10-20",
-        "experienceText":"Hoe",
-        "active" : true
+        position : "Course Instructor",
+        id : 2,
+        company : "HiiT",
+        startDate : "2022-10-20",
+        endDate : "2022-10-20",
+        present: false,        
+        experienceText:"Hoe",
+        active : true
       }  
     ])// dummy data for testting the app. In productionmode, api's would be used
     const [uniqueID, setUniqueID] = useState(experienceData[experienceData.length-1].id+1) //creating a unique ID for every experienceData
@@ -101,44 +103,8 @@ const Experience = ()=>{
         // setting the modal boolean to its opposite whenever this operation runs
         setCreateModal(!createModal)
     }
-    const handleChange = index => e => {
-            // this function handles the change when the user makes an edit to an existing experience
 
-            // collecting the input name and value in two variables, name and value
-            const value = e.target.value
-            const name = e.target.name
-
-            // using the spread operator to get the values of the experienceData and put it in a list called newArray
-            var newArray = [...experienceData]
-
-            // beginning of a ternary operation that checks if the type of the input caaling this function is a radio
-            // if it is, then set the value of its corresponding active state to its opposite
-            // if it is not, then set the value of the corresponding input of the corresponding data item to its value 
-            // this change is done to the newArray 
-            name!=="active"? 
-            newArray[index] = {...newArray[index],[name]:value}
-            :
-            newArray[index] = {...newArray[index],[name]:e.target.checked}
-
-            // setting the value of the experienceData to the value of the newArray
-
-            setExperienceData(newArray)
-    }
-
-    useEffect(()=>{
-        var found = false
-        for (var i in Object.values(editExperience)) {
-            if(Object.values(editExperience)[i] === ""){
-                setBtnDisabled(true)
-                found = true    
-                break
-                
-            }
-        }
-        if (found === false){
-            setBtnDisabled(false)
-        }
-    }, [editExperience])
+    
 
     const handleSave = (e) =>{
         // this function runs for both the create and edit modals as such, the next line is used to check which it is for.
@@ -172,22 +138,7 @@ const Experience = ()=>{
 
         // this else is for the edit modal
         else{
-            var editArray =editExperience
             
-            // everything up untill here is the same as the create 
-            // however, from here, we find the exact list item we edited, and replace it with its updated version
-            // we do this using a variable called data which we get from the experience data
-            var data = experienceData
-            for( var i in data){
-                if (data[i].id ===editArray.id){
-                    data[i] = editArray
-                }
-            }
-            // we lastly set the validated and updated data to the experienceData array
-            setExperienceData(data)
-
-            // lastly we set the editExperience state variable to the object with empty values we instantiated in the beginning 
-            setEditExperience(emptyDataObj)   
         }
         
     }
@@ -217,8 +168,6 @@ const Experience = ()=>{
                     createModal={createModal}
                     handleModal={handleModal}
                     handleSave={handleSave}
-                    btnDisabled={btnDisabled}
-                    setBtnDisabled={setBtnDisabled}
                 />
 
             </div>
@@ -230,12 +179,9 @@ const Experience = ()=>{
                  {/* The ExperienceDataTable component that is used to add new experience it takes in the newExperience state variable as props called data,
                     it takes in the createData, createModal, handleModal and handleSave function as props with their corresponding names*/}
                 <ExperienceDataTable 
+                    setExperienceData={setExperienceData}
                     experienceData={experienceData} 
-                    editExperience={editExperience}
-                    btnDisabled={btnDisabled}
-                    setEditExperience={setEditExperience} 
                     handleDelete={handleDelete} 
-                    handleChange={handleChange} 
                     handleSave={handleSave}
                 />   
 

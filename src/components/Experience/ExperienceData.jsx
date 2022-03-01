@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import { Box, Grid, Typography, makeStyles, IconButton,  Collapse, Chip, Avatar} from '@material-ui/core'
 import {Event, MoreHoriz, Delete, Edit, Publish, Cancel} from "@material-ui/icons";
 import EditExperience from "./EditExperience";
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         textOverflow: "ellipsis",
         [theme.breakpoints.down("md")]:{
             marginRight:"0px",
-            marginLeft:"25px",
+            marginLeft:"35px",
         }    
       
     },
@@ -55,8 +55,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems:"center",
         [theme.breakpoints.down("md")]:{
             paddingRight:"40px",
-            marginLeft:"40px",
-            // marginRight:"20px",
+            marginLeft:"60px",
         }
     },
     statusContainer:{
@@ -70,14 +69,8 @@ const useStyles = makeStyles((theme) => ({
     },
     optionsBox:{
         display:"flex",
-        marginLeft:"11.3%",
-    },
-    optionsBox2:{
-        display:"flex",
-        marginLeft:"16%",
-        [theme.breakpoints.down("md")]:{
-        marginRight:"-3.5%"
-    }
+        position:"absolute",
+        right:"3%",
     },
     icon:{
         [theme.breakpoints.down("md")]:{
@@ -88,48 +81,96 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const ExperienceData = (props) => {
-    const classes = useStyles()
+    const emptyDataObj = {
+        position : "",
+        company : "",
+        startDate : "",
+        endDate : "",
+        present: false,
+        experienceText:"",
+        active : false
+    }
+    const [editExperience, setEditExperience] = useState(emptyDataObj) // this is a state variable that stores the concurrent value of an edit
+    const [btnDisabled, setBtnDisabled] = useState(true)
     const [options, setOptions] = useState(false)
-    
     const [modal, setModal] = useState(false);
+
+    const classes = useStyles()
 
     const handleOptions = () => {
         setOptions(!options)    
     };
     const handleModal = (data) => {
         if(!modal){
-            props.setEditExperience(data)
-            setModal(!modal)
-        }
-        else{
-            props.handleSave()
-            setModal(!modal)
-        }    
+            setEditExperience(data)
+        }  
+        setModal(!modal)
     };
 
     const handleChange = e =>{
-   // this function handles the change when the user makes an edit to an existing experience
+        // this function handles the change when the user makes an edit to an existing experience
 
-            // collecting the input name and value in two variables, name and value
-            const value = e.target.value
-            const name = e.target.name
+        // collecting the input name and value in two variables, name and value
+        const value = e.target.value
+        const name = e.target.name
 
-            // using the spread operator to get the values of the experienceData and put it in a list called newArray
-            var newArray = props.editExperience
+        // using the spread operator to get the values of the experienceData and put it in a list called newArray
+        var newArray = editExperience
 
-            // beginning of a ternary operation that checks if the type of the input caaling this function is a radio
-            // if it is, then set the value of its corresponding active state to its opposite
-            // if it is not, then set the value of the corresponding input of the corresponding data item to its value 
-            // this change is done to the newArray 
-            name!=="active"? 
-            newArray = {...newArray,[name]:value}
-            :
-            newArray = {...newArray,[name]:e.target.checked}
+        // beginning of a ternary operation that checks if the type of the input caaling this function is a radio
+        // if it is, then set the value of its corresponding active state to its opposite
+        // if it is not, then set the value of the corresponding input of the corresponding data item to its value 
+        // this change is done to the newArray 
+        name!="active" && name!="present"? 
+        newArray = {...newArray,[name]:value}
+        :
+        name ==="active" || (name==="present" && newArray.present)
+        ? newArray = {...newArray,[name]:e.target.checked}
+        :
+        newArray = {...newArray,[name]:e.target.checked,["endDate"]:""}
 
-            // setting the value of the experienceData to the value of the newArray
-            props.setEditExperience(newArray)
+        console.log(newArray)        
+
+        // setting the value of the experienceData to the value of the newArray
+        setEditExperience(newArray)
     }
+    const handleSave = () =>{
+            var editArray =editExperience
+            
+            // everything up untill here is the same as the create 
+            // however, from here, we find the exact list item we edited, and replace it with its updated version
+            // we do this using a variable called data which we get from the experience data
+            var data = [...props.experienceData]
+            console.log(data)
+            for( var i in data){
+                if (data[i].id ===editArray.id){
+                    data[i] = editArray
+                }
+            }
+            // we lastly set the validated and updated data to the experienceData array
+            props.setExperienceData(data)
+            // lastly we set the editExperience state variable to the object with empty values we instantiated in the beginning 
+            setModal(!modal)
+    }
+ 
 
+    useEffect(()=>{
+        var found = false
+        for (var i in Object.values(editExperience)) {
+            if(editExperience.present===true && Object.keys(editExperience)[i]==="endDate"){
+                continue
+            }
+            else if(Object.values(editExperience)[i] === ""){
+                setBtnDisabled(true)
+                found = true    
+                break
+                
+            }
+        }
+        if (found === false){
+            setBtnDisabled(false)
+        }
+    }, [editExperience])
     return (
         <Box className={classes.dataContainer} boxShadow={1}>
             <Grid container className={classes.avatarContainer}>
@@ -143,10 +184,10 @@ const ExperienceData = (props) => {
             <Box className={classes.date}>
                 <Event fontSize="small" />
                 <Typography variant="body1" style={{margin:"0px 0px 2px 5px",}}>
-                    {props.data.startDate+ " - "+props.data.endDate}
+                    { props.data.present ? props.data.startDate + " - " +"Present" : props.data.startDate + " - " +props.data.endDate}
                 </Typography>
             </Box>
-            <Box className={classes.companyBox}>
+            <Box className={ classes.companyBox}>
                 <Typography style={{margin:"0px 0px 2px 5px"}} variant="body1">
                     {props.data.company}
                 </Typography>
@@ -154,7 +195,7 @@ const ExperienceData = (props) => {
             <Box className={classes.statusContainer}>
                 <Chip label={props.data.active ? "active" : "inactive" } color={props.data.active ? "primary": "secondary"} />    
             </Box>
-            <Box className={!props.data.active ? classes.optionsBox : classes.optionsBox2}>
+            <Box className={classes.optionsBox}>
                 <Collapse in={options} timeout="auto" >
                     <IconButton onClick={props.handleDelete}>
                         <Delete fontSize="small" className={classes.icon}/>
@@ -170,14 +211,13 @@ const ExperienceData = (props) => {
                     {options ? <Cancel fontSize="small" className={classes.icon}/> : <MoreHoriz fontSize="small" className={classes.icon}/> }
                 </IconButton>
             </Box>
-            <EditExperience 
-                data={props.data} 
+            <EditExperience  
                 handleModal={handleModal} 
-                handleSave={props.handleSave}
+                handleSave={handleSave}
                 modal={modal} 
                 handleChange={handleChange} 
-                editExperience={props.editExperience}
-                btnDisabled={props.btnDisabled}
+                editExperience={editExperience}
+                btnDisabled={btnDisabled}
             />
         </Box>
 

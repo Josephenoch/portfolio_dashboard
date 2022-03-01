@@ -17,21 +17,19 @@ const ExperienceDataTable = (props) => {
     
     
 
-   const classes = useStyles()
+    const classes = useStyles()
     return (
         <div className={classes.rootContainer}>
             {               
-                props.experienceData.map((data, index) =>{
+                props.experienceData.map((data) =>{
 
                     return( 
                         <ExperienceData 
                             key={data.id} 
                             data={data} 
-                            editExperience={props.editExperience}
-                            setEditExperience={props.setEditExperience}
+                            experienceData={props.experienceData}
+                            setExperienceData={props.setExperienceData}
                             handleDelete={props.handleDelete.bind(this, data.id)} 
-                            handleChange={props.handleChange(index)}
-                            btnDisabled={props.btnDisabled}
                             handleSave={props.handleSave}
                         />
                     )

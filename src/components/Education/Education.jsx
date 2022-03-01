@@ -1,4 +1,4 @@
-import React from 'react';
+import {React,useState} from 'react';
 import PageHeader from '../PageHeader';
 import EducationDataTable from './EducationDataTable';
 import EducationSearchBar from './EducationSearchBar';
@@ -38,6 +38,38 @@ const useStyles = makeStyles((theme) =>({
 
 const Education = () => {
     const classes = useStyles()
+    const emptyObj ={
+        instName:"",
+        cOStudy:"",
+        degree:"",
+        grade:"",
+        startDate:"",
+        endDate:"",
+        educationText:""
+    }
+    const [educationData, setEducationData] = useState([
+        {
+            instName:"Anchor University",
+            cOStudy:"Computer Science",
+            degree:"BSc.",
+            grade:"1st Class",
+            startDate : "2022-10-20",
+            endDate: "2022-10-20",
+            educationText:"",
+            active:false
+        },
+        {
+            instName:"Anchor University",
+            cOStudy:"Computer Science",
+            degree:"BSc.",
+            grade:"1st Class",
+            startDate : "2022-10-20",
+            endDate: "2022-10-20",
+            educationText:"",
+            active:false
+        },
+        
+    ])
     return (
         <div className={classes.rootContainer} >
             <PageHeader title="Education"/>
@@ -48,7 +80,9 @@ const Education = () => {
             </div>
             <div className={classes.mainSection}>
                 <EducationSearchBar fontSize="small"/>
-                <EducationDataTable/>   
+                <EducationDataTable
+                    educationData={educationData}
+                />
             </div> 
             
 

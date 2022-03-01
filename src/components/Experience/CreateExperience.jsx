@@ -40,6 +40,7 @@ buttonStyle:{
 
 const CreateExperience = (props)=> {
   const classes = useStyles()
+  const [btnDisabled, setBtnDisabled] = useState(true)
   const createData =  e => {
     // this function handles the change when the user makes click on the add icon, that is to create a new experience
 
@@ -71,7 +72,7 @@ const CreateExperience = (props)=> {
     console.log(props.newExperience)
     for (var i in Object.values(props.newExperience)) {
         if(Object.values(props.newExperience)[i] === ""){
-            props.setBtnDisabled(true)
+            setBtnDisabled(true)
             found = true    
             break
             
@@ -83,7 +84,7 @@ const CreateExperience = (props)=> {
         // we run the setUniqueID by incrementing its value by 1. then we add the new key of id and set its value to the new value 
         // of the uniqueID state variable
       
-        props.setBtnDisabled(false)
+        setBtnDisabled(false)
     }
   },[props.newExperience])
   return (<div>
