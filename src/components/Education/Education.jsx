@@ -38,15 +38,15 @@ const useStyles = makeStyles((theme) =>({
 
 const Education = () => {
     const classes = useStyles()
-    const emptyObj ={
-        instName:"",
-        cOStudy:"",
-        degree:"",
-        grade:"",
-        startDate:"",
-        endDate:"",
-        educationText:""
-    }
+    // const emptyObj ={
+    //     instName:"",
+    //     cOStudy:"",
+    //     degree:"",
+    //     grade:"",
+    //     startDate:"",
+    //     endDate:"",
+    //     educationText:""
+    // }
     const [educationData, setEducationData] = useState([
         {
             instName:"Anchor University",
@@ -82,6 +82,7 @@ const Education = () => {
                 <EducationSearchBar fontSize="small"/>
                 <EducationDataTable
                     educationData={educationData}
+                    setEducationData={setEducationData}
                 />
             </div> 
             

@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) =>({
     padding: "20px 40px 60px",
     [theme.breakpoints.down("sm")]:{
         width: "90vw",
+        height:"70vh",
         padding: "20px 10px 30px",
     }
     // styling for the edit experience modal

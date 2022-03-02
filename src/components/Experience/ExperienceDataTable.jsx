@@ -1,4 +1,4 @@
-import {React} from "react";
+import React from "react";
 import {makeStyles} from "@material-ui/core";
 
 
@@ -28,8 +28,7 @@ const ExperienceDataTable = (props) => {
                             key={data.id} 
                             data={data} 
                             experienceData={props.experienceData}
-                            setExperienceData={props.setExperienceData}
-                            handleDelete={props.handleDelete.bind(this, data.id)} 
+                            setExperienceData={props.setExperienceData} 
                             handleSave={props.handleSave}
                         />
                     )

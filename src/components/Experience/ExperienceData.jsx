@@ -121,13 +121,13 @@ const ExperienceData = (props) => {
         // if it is, then set the value of its corresponding active state to its opposite
         // if it is not, then set the value of the corresponding input of the corresponding data item to its value 
         // this change is done to the newArray 
-        name!="active" && name!="present"? 
+        name!=="active" && name!=="present"? 
         newArray = {...newArray,[name]:value}
         :
         name ==="active" || (name==="present" && newArray.present)
         ? newArray = {...newArray,[name]:e.target.checked}
         :
-        newArray = {...newArray,[name]:e.target.checked,["endDate"]:""}
+        newArray = {...newArray,[name]:e.target.checked,"endDate":""}
 
         console.log(newArray)        
 
@@ -152,12 +152,16 @@ const ExperienceData = (props) => {
             // lastly we set the editExperience state variable to the object with empty values we instantiated in the beginning 
             setModal(!modal)
     }
- 
+    const handleDelete = () => {
+        // code to delete data using it's unique id
+    props.setExperienceData(props.experienceData.filter(data => data.id !==props.data.id))
+      
+    }
 
     useEffect(()=>{
         var found = false
         for (var i in Object.values(editExperience)) {
-            if(editExperience.present===true && Object.keys(editExperience)[i]==="endDate"){
+            if(editExperience.present && Object.keys(editExperience)[i]==="endDate"){
                 continue
             }
             else if(Object.values(editExperience)[i] === ""){
@@ -184,7 +188,7 @@ const ExperienceData = (props) => {
             <Box className={classes.date}>
                 <Event fontSize="small" />
                 <Typography variant="body1" style={{margin:"0px 0px 2px 5px",}}>
-                    { props.data.present ? props.data.startDate + " - " +"Present" : props.data.startDate + " - " +props.data.endDate}
+                    { props.data.present ? `${props.data.startDate} - present` : `${props.data.startDate} - ${props.data.endDate}`}
                 </Typography>
             </Box>
             <Box className={ classes.companyBox}>
@@ -197,7 +201,7 @@ const ExperienceData = (props) => {
             </Box>
             <Box className={classes.optionsBox}>
                 <Collapse in={options} timeout="auto" >
-                    <IconButton onClick={props.handleDelete}>
+                    <IconButton onClick={handleDelete}>
                         <Delete fontSize="small" className={classes.icon}/>
                     </IconButton>
                     <IconButton onClick={handleModal.bind(this, props.data)}>

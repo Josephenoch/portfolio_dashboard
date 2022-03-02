@@ -1,5 +1,5 @@
 // imports
-import {React, useEffect, useState} from "react"
+import {React, useState} from "react"
 
 //Child Component imports
 import PageHeader from "../PageHeader"
@@ -93,11 +93,8 @@ const Experience = ()=>{
         active : true
       }  
     ])// dummy data for testting the app. In productionmode, api's would be used
-    const [uniqueID, setUniqueID] = useState(experienceData[experienceData.length-1].id+1) //creating a unique ID for every experienceData
-    const handleDelete =  id => {
-        // code to delete data using it's unique id
-        setExperienceData(experienceData.filter(data => data.id !==id))
-    }
+    const [uniqueID, setUniqueID] = useState(()=>experienceData[experienceData.length-1].id+1 ) //creating a unique ID for every experienceData
+    
 
     const handleModal = () => {
         // setting the modal boolean to its opposite whenever this operation runs
@@ -109,7 +106,7 @@ const Experience = ()=>{
     const handleSave = (e) =>{
         // this function runs for both the create and edit modals as such, the next line is used to check which it is for.
         // the handleSave for edit is called in another functio as such, it cannot have an e
-        const name =  e!= undefined ? e.currentTarget.name : ""
+        const name =  e!== undefined ? e.currentTarget.name : ""
         // this variable is used to check if any field is empty. We loop through all the fields which are objects values and check
         // if any is empty. if anyone is, then, the functions ends and the value of the found becomes true 
         // the next code block after the for only runs if found is false
@@ -137,11 +134,9 @@ const Experience = ()=>{
         }
 
         // this else is for the edit modal
-        else{
-            
-        }
         
     }
+
         
     
     const classes= useStyles()
@@ -181,8 +176,6 @@ const Experience = ()=>{
                 <ExperienceDataTable 
                     setExperienceData={setExperienceData}
                     experienceData={experienceData} 
-                    handleDelete={handleDelete} 
-                    handleSave={handleSave}
                 />   
 
             </div> 
