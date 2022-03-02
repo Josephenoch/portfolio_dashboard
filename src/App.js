@@ -62,7 +62,7 @@ function App() {
           <div className={classes.mainContent}>
             <Header />   
             <Routes>
-                <Route index element={<Dashboard/>}/>
+                <Route path="portfolio_dashboard" element={<Dashboard/>}/>
                 <Route path="Experience" element={<Experience/>}/>
                 <Route path="Education" element={<Education/>}/>
                 <Route path="Skill" element={<SKill/>}/>
