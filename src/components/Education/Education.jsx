@@ -49,6 +49,7 @@ const Education = () => {
     // }
     const [educationData, setEducationData] = useState([
         {
+            id:0,
             instName:"Anchor University",
             cOStudy:"Computer Science",
             degree:"BSc.",
@@ -59,7 +60,8 @@ const Education = () => {
             active:false
         },
         {
-            instName:"Anchor University",
+            id:1,
+            instName:"Anchor Universit",
             cOStudy:"Computer Science",
             degree:"BSc.",
             grade:"1st Class",
@@ -79,7 +81,9 @@ const Education = () => {
                 </IconButton>   
             </div>
             <div className={classes.mainSection}>
-                <EducationSearchBar fontSize="small"/>
+                <EducationSearchBar
+                    data={educationData}
+                />
                 <EducationDataTable
                     educationData={educationData}
                     setEducationData={setEducationData}

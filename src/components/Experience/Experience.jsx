@@ -5,7 +5,7 @@ import {React, useState} from "react"
 import PageHeader from "../PageHeader"
 import ExperienceSearchBar from "./ExperienceSearchBar";
 import ExperienceDataTable from "./ExperienceDataTable";
-import CreateExperience from "./CreateExperience";
+import AddExperience from "./AddExperience";
 
 //material-ui component imports
 import { makeStyles, IconButton,} from "@material-ui/core"
@@ -93,7 +93,7 @@ const Experience = ()=>{
         active : true
       }  
     ])// dummy data for testting the app. In productionmode, api's would be used
-    const [uniqueID, setUniqueID] = useState(()=>experienceData[experienceData.length-1].id+1 ) //creating a unique ID for every experienceData
+    const [uniqueID, setUniqueID] = useState(()=>experienceData.length>0 ? experienceData[experienceData.length-1].id+1:0 ) //creating a unique ID for every experienceData
     
 
     const handleModal = () => {
@@ -154,7 +154,7 @@ const Experience = ()=>{
 
                 {/* The CreateExperience component that is used to add new experience it takes in the newExperience state variable as props called data,
                     it takes in the createData, createModal, handleModal and handleSave function as props with their corresponding names*/}
-                <CreateExperience   
+                <AddExperience   
                     data={newExperience} 
                     newExperience={newExperience}
                     setNewExperience={setNewExperience}

@@ -39,7 +39,7 @@ buttonStyle:{
 },
 }))
 
-const CreateExperience = (props)=> {
+const AddExperience = (props)=> {
   const classes = useStyles()
   const [btnDisabled, setBtnDisabled] = useState(true)
   const createData =  e => {
@@ -199,4 +199,4 @@ const CreateExperience = (props)=> {
         </Modal>
     );
 }
-export default CreateExperience
+export default AddExperience

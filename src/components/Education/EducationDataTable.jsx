@@ -19,9 +19,11 @@ const EducationDataTable = (props) => {
     return (
         <div className={classes.rootContainer}>
            {props.educationData.map(data => {
-              return( <EducationData
+              return( 
+              <EducationData
                     data={data}
-
+                    setEducationData={props.setEducationData}
+                    educationData = {props.educationData}                 
                />)
            })}
         </div>

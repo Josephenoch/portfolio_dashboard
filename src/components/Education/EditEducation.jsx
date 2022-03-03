@@ -62,29 +62,61 @@ const EditEducation = (props) => {
                 <Cancel fontSize="small"/>
             </IconButton>
             <Box className={classes.inputContainer}>
-                <TextField placeholder="Institution's Name" variant="filled" />
-                <TextField placeholder="Course of Study"  variant="filled" />
+                <TextField 
+                    placeholder="Institution's Name" 
+                    variant="filled" 
+                    name="instName"
+                    onChange={props.handleChange}
+                    value={props.editEducation.instName} 
+                />
+                <TextField 
+                    placeholder="Course of Study"  
+                    variant="filled" 
+                    name="cOStudy"
+                    onChange={props.handleChange}
+                    value={props.editEducation.cOStudy} 
+                />
             </Box>
             <Box className={classes.inputContainer}>
-                <TextField placeholder="Degree Eg. Bachelor" variant="filled" />
-                <TextField placeholder="Grade"  variant="filled" />
+                <TextField 
+                    placeholder="Degree Eg. Bachelor" 
+                    variant="filled" 
+                    name="degree"
+                    onChange={props.handleChange}
+                    value={props.editEducation.degree}     
+                />
+                <TextField 
+                    placeholder="Grade"  
+                    variant="filled" 
+                    name="grade"
+                    onChange={props.handleChange}
+                    value={props.editEducation.grade} 
+                />
             </Box>
             <Box className={classes.inputContainer}>
                 <TextField 
                     type="date" 
                     label="Start Date" 
-                    InputLabelProps={{shrink: true,}} />
-                <TextField 
-                    
+                    InputLabelProps={{shrink: true,}}
+                    name="startDate"
+                    onChange={props.handleChange}
+                    value={props.editEducation.startDate} 
+                />
+                <TextField      
                     type="date" 
                     label="End Date" 
-                    InputLabelProps={{shrink: true,}} />
+                    name="endDate"
+                    onChange={props.handleChange}
+                    InputLabelProps={{shrink: true,}} 
+                    value={props.editEducation.endDate} 
+                />
             </Box>
             <FormControlLabel 
                 control={
                     <Switch  
                         color="primary" 
-                        checked={props.data.active}  // the name is the same as the object name in the parent data
+                        checked={props.editEducation.active}  // the name is the same as the object name in the parent data
+                        onChange={props.handleChange}
                         name="active"  // the name is the same as the object name in the parent data
                     />
                 } 
@@ -95,17 +127,19 @@ const EditEducation = (props) => {
                     
                 }}
                 id="outlined-basic"
-                value={props.data.educationText} 
+                onChange={props.handleChange}
+                name="educationText"
+                value={props.editEducation.educationText} 
                 variant="outlined"
                 multiline={true}
             />
             
-                <Typography id="modal-modal-description" style={{ mt: 2 }}>
-                </Typography>
                 <Button
                     variant="outlined"
                     className={classes.buttonStyle}
+                    disabled={props.btnDisabled}
                     onClick={props.handleClose}
+                    onClick={props.handleSave}
                 >
                     Save
                 </Button>

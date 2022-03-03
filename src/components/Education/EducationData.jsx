@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import {React, useEffect, useState} from 'react'
 
 import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse} from "@material-ui/core";
 import {Event, MoreHoriz, Delete, Edit, Publish, Cancel} from "@material-ui/icons";
@@ -56,9 +56,11 @@ const useStyles = makeStyles((theme) => ({
         width:"10%",
         marginLeft:"50px",
         display:"flex",
+        overflow:"hidden",
         alignItems:"center",
-        [theme.breakpoints.down("sm")]:{
-            marginLeft:"100px",
+        [theme.breakpoints.down("md")]:{
+            paddingRight:"40px",
+            marginLeft:"60px",
         }
     },
     statusContainer:{
@@ -72,19 +74,68 @@ const useStyles = makeStyles((theme) => ({
     },
     optionsBox:{
         display:"flex",
-        marginLeft:"12%",
-        [theme.breakpoints.down("md")]:{
-            marginLeft:"0%",   
-        }
+        position:"absolute",
+        right:"3%",
     },
    
 }))
 
 const EducationData= (props) => {
+    const [btnDisabled, setBtnDisabled] = useState(true)
     const [modal, setModal] = useState(false);
-    const handleModal = () => setModal(!modal);
-    const [openOptions, setOpenOptions] = useState(false)
-    const handleClick = () => {setOpenOptions(!openOptions);};
+    const [openOptions, setOpenOptions] = useState(false);
+    const [editEducation, setEditEducation] = useState({})
+    const handleModal = () => {
+        if(!modal){
+            setEditEducation(props.data)
+        }
+        setModal(!modal)
+    }
+    const handleClick = () => {setOpenOptions(!openOptions)};
+
+    const handleChange = (e) => {
+        const name = e.target.name
+
+        var newArray =editEducation
+
+        name !== "active"
+        ?
+        newArray = {...newArray,[name]:e.target.value}
+        :
+        newArray = {...newArray,[name]:e.target.checked}
+
+        setEditEducation(newArray)
+    }
+
+    const handleSave = () =>{
+        const editArray = editEducation
+        const newArray = [...props.educationData]
+
+        for(let i in newArray){
+            if(newArray[i].id === editArray.id){
+                newArray[i]=editArray
+            }
+        }
+
+        props.setEducationData(newArray)
+        setModal(!modal)
+
+    }
+
+    useEffect(()=>{
+        var found = false
+        for(var i in Object.values(editEducation)){
+            if(Object.values(editEducation)[i]===""){
+                setBtnDisabled(true)
+                found = true
+                break
+            }
+        }
+        if(!found){
+            setBtnDisabled(false)
+        }
+    }, [editEducation])
+
     const classes = useStyles()
     return (
         <Box className={classes.dataContainer} boxShadow={1}>
@@ -130,6 +181,10 @@ const EducationData= (props) => {
                 data={props.data}
                 modal={modal}
                 handleModal={handleModal}
+                editEducation={editEducation}
+                handleChange={handleChange}
+                btnDisabled={btnDisabled}
+                handleSave={handleSave}
             />
         </Box>        
     )

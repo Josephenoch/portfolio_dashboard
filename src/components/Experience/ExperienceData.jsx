@@ -81,16 +81,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const ExperienceData = (props) => {
-    const emptyDataObj = {
-        position : "",
-        company : "",
-        startDate : "",
-        endDate : "",
-        present: false,
-        experienceText:"",
-        active : false
-    }
-    const [editExperience, setEditExperience] = useState(emptyDataObj) // this is a state variable that stores the concurrent value of an edit
+    const [editExperience, setEditExperience] = useState({}) // this is a state variable that stores the concurrent value of an edit
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [options, setOptions] = useState(false)
     const [modal, setModal] = useState(false);
@@ -128,8 +119,7 @@ const ExperienceData = (props) => {
         ? newArray = {...newArray,[name]:e.target.checked}
         :
         newArray = {...newArray,[name]:e.target.checked,"endDate":""}
-
-        console.log(newArray)        
+        
 
         // setting the value of the experienceData to the value of the newArray
         setEditExperience(newArray)
@@ -171,7 +161,7 @@ const ExperienceData = (props) => {
                 
             }
         }
-        if (found === false){
+        if (!found){
             setBtnDisabled(false)
         }
     }, [editExperience])

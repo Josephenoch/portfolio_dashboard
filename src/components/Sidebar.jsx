@@ -50,7 +50,7 @@ const Sidebar=(() =>{
                     component="nav"
                     aria-labelledby="nested-list-subheader"
                         >
-                    <ListItem button key="Dashboard" component={Link} to={'/'}>   
+                    <ListItem button key="Dashboard" component={Link} to={'/portfolio_dashboard'}>   
                         <ListItemIcon>
                             <AssessmentOutlined />
                         </ListItemIcon>
