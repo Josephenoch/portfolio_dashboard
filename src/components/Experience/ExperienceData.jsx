@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from 'react'
-import { Box, Grid, Typography, makeStyles, IconButton,  Collapse, Chip, Avatar} from '@material-ui/core'
+import { Box, Grid, Typography, makeStyles, IconButton,  Collapse, Chip, Avatar, Modal, Button, Backdrop} from '@material-ui/core'
 import {Event, MoreHoriz, Delete, Edit, Publish, Cancel} from "@material-ui/icons";
 import EditExperience from "./EditExperience";
 
@@ -76,8 +76,20 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down("md")]:{
             fontSize:10
         }
-    }
-    
+    },
+    modal:{
+        position: 'absolute',
+        top: "50%",
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: "25vw",
+        height:"25vh",
+        backgroundColor: 'white',
+        border: '1px solid #777',
+        boxShadow: 24,
+        borderRadius:20,
+        display:"flex"
+    },
 }))
 
 const ExperienceData = (props) => {
@@ -85,6 +97,7 @@ const ExperienceData = (props) => {
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [options, setOptions] = useState(false)
     const [modal, setModal] = useState(false);
+    const [deleteModal, setDeleteModal] = useState(false)
 
     const classes = useStyles()
 
@@ -146,6 +159,7 @@ const ExperienceData = (props) => {
     const handleDelete = () => {
         // code to delete data using it's unique id
     props.setExperienceData(props.experienceData.filter(data => data.id !==props.data.id))
+    setDeleteModal(!deleteModal)
       
     }
     const handleUpload = () => {
@@ -164,7 +178,7 @@ const ExperienceData = (props) => {
 
     useEffect(()=>{
         var found = false
-        for (var i in Object.values(editExperience)) {
+        for (let i in Object.values(editExperience)) {
             if(editExperience.present && Object.keys(editExperience)[i]==="endDate"){
                 continue
             }
@@ -205,7 +219,7 @@ const ExperienceData = (props) => {
             </Box>
             <Box className={classes.optionsBox}>
                 <Collapse in={options} timeout="auto" >
-                    <IconButton onClick={handleDelete}>
+                    <IconButton onClick={() => setDeleteModal(!deleteModal)}>
                         <Delete fontSize="small" className={classes.icon}/>
                     </IconButton>
                     <IconButton onClick={handleModal.bind(this, props.data)}>
@@ -218,6 +232,60 @@ const ExperienceData = (props) => {
                 <IconButton onClick={handleOptions}>
                     {options ? <Cancel fontSize="small" className={classes.icon}/> : <MoreHoriz fontSize="small" className={classes.icon}/> }
                 </IconButton>
+            </Box>
+            <Box>
+                
+                <Modal
+                    open={deleteModal}// this sets the modal to open when the data in the parent component is true
+                    onClose={() => setDeleteModal(!deleteModal)} // this runs the handleModal function in the parent component when the modal is closed
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                    BackdropComponent={Backdrop}
+                    BackdropProps={{
+                        timeout: 1000,
+                    }}
+                >
+                    <Box className={classes.modal}>
+                        
+                        <Typography
+                            variant="body1"
+                            style={{
+                                marginBottom:"50px",
+                                position:"absolute",
+                                top:20,
+                                left:30
+                            }}
+                        >
+                            Confirm delete?
+                        </Typography>
+                        <Box 
+                            style={{
+                                margin:"auto",
+                                marginTop:"100px"
+                            }}
+                        >
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                name="Delete"
+                                onClick={handleDelete}
+                                style={{
+                                    marginRight:"20px"
+                                }}
+                            >
+                                Delete
+                            </Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                name="Cancel"
+                                onClick={()=>{setDeleteModal(!deleteModal)}}
+                            >
+                                Cancel
+                            </Button>
+                        </Box>
+                    </Box>
+                </Modal>
             </Box>
             <EditExperience  
                 handleModal={handleModal} 
