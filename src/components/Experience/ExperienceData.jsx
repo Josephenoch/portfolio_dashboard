@@ -169,7 +169,7 @@ const ExperienceData = (props) => {
         <Box className={classes.dataContainer} boxShadow={1}>
             <Grid container className={classes.avatarContainer}>
                 <Grid item>
-                    <Avatar>{ props.data.position[0]}</Avatar>
+                    <Avatar>{ props.data.position[0].toUpperCase()}</Avatar>
                 </Grid >
             </Grid> 
             <Typography variant="body1" className={classes.roleText}>

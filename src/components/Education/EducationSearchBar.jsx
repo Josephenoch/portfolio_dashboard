@@ -1,7 +1,6 @@
 import {React, useState} from 'react';
 import { MenuItem, FormControl, InputLabel, Select, makeStyles, TextField } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
-import {Search} from "@material-ui/icons"
 
 const useStyles = makeStyles((theme) =>({
     rootContainer:{

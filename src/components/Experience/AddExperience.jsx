@@ -75,7 +75,6 @@ const AddExperience = (props)=> {
 
     useEffect(() => {
         var found = false
-        console.log(props.newExperience)
         for (var i in Object.values(props.newExperience)) {
             if(props.newExperience.present && Object.keys(props.newExperience)[i]==="endDate"){
                 continue
@@ -87,7 +86,7 @@ const AddExperience = (props)=> {
                 
             }
         }
-        if (found === false){
+        if (!found){
 
             // as early said, this code block only runs if found is false
             // we run the setUniqueID by incrementing its value by 1. then we add the new key of id and set its value to the new value 

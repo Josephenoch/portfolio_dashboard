@@ -122,6 +122,13 @@ const EducationData= (props) => {
 
     }
 
+    const handleDelete = () =>{
+        props.setEducationData(
+            props.educationData.filter(educationData =>
+                props.data.id!== educationData.id
+            )
+        )
+    }
     useEffect(()=>{
         var found = false
         for(var i in Object.values(editEducation)){
@@ -136,12 +143,25 @@ const EducationData= (props) => {
         }
     }, [editEducation])
 
+    const handleUpload = () =>{
+        const newArray = [...props.educationData]
+        const newObject = props.data
+        
+        newObject.active = !newObject.active
+        for(let i in newArray){
+            if(newArray[i].id===newObject.id){
+                newArray[i] = newObject
+            }
+        }
+
+        props.setEducationData(newArray)
+    }
     const classes = useStyles()
     return (
         <Box className={classes.dataContainer} boxShadow={1}>
             <Grid container className={classes.avatarContainer}>
                 <Grid item>
-                    <Avatar>AUL</Avatar>
+                    <Avatar>{props.data.instName[0].toUpperCase()}</Avatar>
                 </Grid >
             </Grid> 
             <Typography variant="body1" className={classes.schoolName}>
@@ -163,13 +183,13 @@ const EducationData= (props) => {
             </Box>
             <Box className={classes.optionsBox}>
                 <Collapse in={openOptions} timeout="auto" >
-                    <IconButton>
+                    <IconButton onClick={handleDelete}>
                         <Delete fontSize="small"/>
                     </IconButton>
                     <IconButton onClick={handleModal}>
                         <Edit fontSize="small"/>
-                    </IconButton>
-                    {props.data.active ? "": <IconButton>
+                    </IconButton >
+                    {props.data.active ? "": <IconButton onClick={handleUpload}>
                         <Publish fontSize="small"/>
                     </IconButton>}
                 </Collapse>

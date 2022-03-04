@@ -1,4 +1,5 @@
-import React from 'react'
+import {React, useState, useEffect} from 'react'
+
 import {makeStyles, Modal, TextField, Backdrop, Button, Box, IconButton, FormControlLabel, Switch} from "@material-ui/core";
 import { Cancel } from '@material-ui/icons';
 
@@ -36,8 +37,24 @@ const useStyles = makeStyles((theme) => ({
         }
     }
 }))
-const EditEducation = (props) => {
+const AddEducation = (props) => {
     const classes = useStyles()
+    const [btnDisabled, setBtnDisabled] = useState(true)
+    useEffect(() => {
+        var found = false
+        console.log(props.newEducation)
+        for(let i in Object.values(props.newEducation)){
+            if(Object.values(props.newEducation)[i]===""){
+                found = true
+                setBtnDisabled(true)
+                break
+            }
+        }
+        if(!found){
+            setBtnDisabled(false)
+        }
+    }, [props.newEducation])
+    
     return (
         <Modal
             open={props.modal}
@@ -67,14 +84,14 @@ const EditEducation = (props) => {
                     variant="filled" 
                     name="instName"
                     onChange={props.handleChange}
-                    value={props.editEducation.instName} 
+                    value={props.newEducation.instName} 
                 />
                 <TextField 
                     placeholder="Course of Study"  
                     variant="filled" 
                     name="cOStudy"
                     onChange={props.handleChange}
-                    value={props.editEducation.cOStudy} 
+                    value={props.newEducation.cOStudy} 
                 />
             </Box>
             <Box className={classes.inputContainer}>
@@ -83,14 +100,14 @@ const EditEducation = (props) => {
                     variant="filled" 
                     name="degree"
                     onChange={props.handleChange}
-                    value={props.editEducation.degree}     
+                    value={props.newEducation.degree}     
                 />
                 <TextField 
                     placeholder="Grade"  
                     variant="filled" 
                     name="grade"
                     onChange={props.handleChange}
-                    value={props.editEducation.grade} 
+                    value={props.newEducation.grade} 
                 />
             </Box>
             <Box className={classes.inputContainer}>
@@ -100,7 +117,7 @@ const EditEducation = (props) => {
                     InputLabelProps={{shrink: true,}}
                     name="startDate"
                     onChange={props.handleChange}
-                    value={props.editEducation.startDate} 
+                    value={props.newEducation.startDate} 
                 />
                 <TextField      
                     type="date" 
@@ -108,14 +125,14 @@ const EditEducation = (props) => {
                     name="endDate"
                     onChange={props.handleChange}
                     InputLabelProps={{shrink: true,}} 
-                    value={props.editEducation.endDate} 
+                    value={props.newEducation.endDate} 
                 />
             </Box>
             <FormControlLabel 
                 control={
                     <Switch  
                         color="primary" 
-                        checked={props.editEducation.active}  // the name is the same as the object name in the parent data
+                        checked={props.newEducation.active}  // the name is the same as the object name in the parent data
                         onChange={props.handleChange}
                         name="active"  // the name is the same as the object name in the parent data
                     />
@@ -129,7 +146,7 @@ const EditEducation = (props) => {
                 id="outlined-basic"
                 onChange={props.handleChange}
                 name="educationText"
-                value={props.editEducation.educationText} 
+                value={props.newEducation.educationText} 
                 variant="outlined"
                 multiline={true}
             />
@@ -137,7 +154,7 @@ const EditEducation = (props) => {
                 <Button
                     variant="outlined"
                     className={classes.buttonStyle}
-                    disabled={props.btnDisabled}    
+                    disabled={btnDisabled}
                     onClick={props.handleSave}
                 >
                     Save
@@ -146,4 +163,5 @@ const EditEducation = (props) => {
         </Modal>
     )
 }
-export default EditEducation
+
+export default AddEducation
