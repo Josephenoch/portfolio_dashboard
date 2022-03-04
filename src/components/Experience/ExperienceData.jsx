@@ -124,6 +124,7 @@ const ExperienceData = (props) => {
         // setting the value of the experienceData to the value of the newArray
         setEditExperience(newArray)
     }
+    
     const handleSave = () =>{
             var editArray =editExperience
             
@@ -146,6 +147,19 @@ const ExperienceData = (props) => {
         // code to delete data using it's unique id
     props.setExperienceData(props.experienceData.filter(data => data.id !==props.data.id))
       
+    }
+    const handleUpload = () => {
+        var newArray = [...props.experienceData]
+        const data = props.data
+
+        data.active =!data.active
+        
+        for(let i in newArray){
+            if(newArray[i]===data.id){
+                newArray[i].active = data
+            }
+        }
+        props.setExperienceData(newArray)
     }
 
     useEffect(()=>{
@@ -197,7 +211,7 @@ const ExperienceData = (props) => {
                     <IconButton onClick={handleModal.bind(this, props.data)}>
                         <Edit fontSize="small" className={classes.icon}/>
                     </IconButton>
-                    {props.data.active ? "": <IconButton>
+                    {props.data.active ? "": <IconButton onClick={handleUpload}>
                         <Publish fontSize="small" className={classes.icon}/>
                     </IconButton>}
                 </Collapse>
