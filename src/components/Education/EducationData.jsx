@@ -1,6 +1,6 @@
 import {React, useEffect, useState} from 'react'
 
-import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse} from "@material-ui/core";
+import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse, Button, Modal, Backdrop} from "@material-ui/core";
 import {Event, MoreHoriz, Delete, Edit, Publish, Cancel} from "@material-ui/icons";
 import EditEducation from './EditEducation';
 
@@ -77,7 +77,19 @@ const useStyles = makeStyles((theme) => ({
         position:"absolute",
         right:"3%",
     },
-   
+    modal:{
+        position: 'absolute',
+        top: "50%",
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: "25vw",
+        height:"25vh",
+        backgroundColor: 'white',
+        border: '1px solid #777',
+        boxShadow: 24,
+        borderRadius:20,
+        display:"flex"
+    },
 }))
 
 const EducationData= (props) => {
@@ -85,6 +97,7 @@ const EducationData= (props) => {
     const [modal, setModal] = useState(false);
     const [openOptions, setOpenOptions] = useState(false);
     const [editEducation, setEditEducation] = useState({})
+    const [deleteModal, setDeleteModal] = useState(false)
     const handleModal = () => {
         if(!modal){
             setEditEducation(props.data)
@@ -128,6 +141,7 @@ const EducationData= (props) => {
                 props.data.id!== educationData.id
             )
         )
+        setDeleteModal(!deleteModal)
     }
     useEffect(()=>{
         var found = false
@@ -183,7 +197,7 @@ const EducationData= (props) => {
             </Box>
             <Box className={classes.optionsBox}>
                 <Collapse in={openOptions} timeout="auto" >
-                    <IconButton onClick={handleDelete}>
+                    <IconButton onClick={() => setDeleteModal(!deleteModal)}>
                         <Delete fontSize="small"/>
                     </IconButton>
                     <IconButton onClick={handleModal}>
@@ -196,6 +210,60 @@ const EducationData= (props) => {
                 <IconButton onClick={handleClick}>
                     {openOptions ? <Cancel fontSize="small"/> : <MoreHoriz fontSize="small"/> }
                 </IconButton>
+            </Box>
+            <Box>
+                
+                <Modal
+                    open={deleteModal}// this sets the modal to open when the data in the parent component is true
+                    onClose={() => setDeleteModal(!deleteModal)} // this runs the handleModal function in the parent component when the modal is closed
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                    BackdropComponent={Backdrop}
+                    BackdropProps={{
+                        timeout: 1000,
+                    }}
+                >
+                    <Box className={classes.modal}>
+                        
+                        <Typography
+                            variant="body1"
+                            style={{
+                                marginBottom:"50px",
+                                position:"absolute",
+                                top:20,
+                                left:30
+                            }}
+                        >
+                            Confirm delete?
+                        </Typography>
+                        <Box 
+                            style={{
+                                margin:"auto",
+                                marginTop:"100px"
+                            }}
+                        >
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                name="Delete"
+                                onClick={handleDelete}
+                                style={{
+                                    marginRight:"20px"
+                                }}
+                            >
+                                Delete
+                            </Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                name="Cancel"
+                                onClick={()=>{setDeleteModal(!deleteModal)}}
+                            >
+                                Cancel
+                            </Button>
+                        </Box>
+                    </Box>
+                </Modal>
             </Box>
             <EditEducation
                 data={props.data}
