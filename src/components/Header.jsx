@@ -2,7 +2,7 @@ import {useState} from 'react'
 import logo from "../assets/Webfolio.jpg"
 import smallLogo from "../assets/Webfolio - Small.jpg"
 import AppMenu from "./AppMenu"
-import { IconButton, Collapse, AppBar, Toolbar, Grid, makeStyles, CssBaseline} from "@material-ui/core"
+import { IconButton, Hidden, AppBar, Toolbar, Grid, makeStyles, CssBaseline, Drawer} from "@material-ui/core"
 import { Menu, Cancel} from "@material-ui/icons"
 const useStyles = makeStyles((theme) =>({ 
     root:{
@@ -39,14 +39,16 @@ const useStyles = makeStyles((theme) =>({
         [theme.breakpoints.only("md")]: {
             marginTop:20
         }
+    },
+    drawerPaper:{
+        marginTop:50
     }
 }))
 const Header = () => {
     const [open, setOpen] = useState(false);
-    const handleClick = () => {
-        setOpen(!open);
-        
-    };
+    const handleToggle = () => {
+        setOpen(!open);   
+    }
     const classes = useStyles()
     return (
         <AppBar color="primary" className={classes.root} position="fixed" elevation={0}>
@@ -59,18 +61,30 @@ const Header = () => {
                     <Grid item xs>
                     </Grid>
                     <Grid item>
-                        <IconButton onClick={handleClick} className={classes.menuIcon}> {open ? <Cancel /> : <Menu />} </IconButton>
+                        <IconButton onClick={handleToggle} className={classes.menuIcon}> {open ? <Cancel /> : <Menu />} </IconButton>
                     </Grid>
                 </Grid>
                
            </Toolbar>
          <CssBaseline/>
-            <Grid container className={classes.appMenu} direction="row-reverse">
+            <Grid container className={classes.appMenu} >
                 <Grid item>
-
-                    <Collapse in={open} timeout="auto" unmountOnExit>
-                        <AppMenu />
-                    </Collapse>
+                    <Hidden xsDown implementation="css">
+                        <Drawer 
+                            open={open} 
+                            onClose={handleToggle}
+                            elevation={false}
+                            BackdropProps={{ invisible: true }}
+                            variant="temporary"
+                            anchor={"top"}
+                            classes={{
+                                paper: classes.drawerPaper
+                              }}
+                           
+                            >
+                            <AppMenu />
+                        </Drawer>
+                    </Hidden>   
                 </Grid>
             </Grid>
        </AppBar>

@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from 'react'
-import { Box, Grid, Typography, makeStyles, IconButton,  Collapse, Chip, Avatar, Modal, Button, Backdrop} from '@material-ui/core'
+import { Box, Grid, Typography, makeStyles, IconButton,  Collapse, Chip, Avatar, Modal, Button, Backdrop, useTheme} from '@material-ui/core'
 import {Event, MoreHoriz, Delete, Edit, Publish, Cancel} from "@material-ui/icons";
 import EditExperience from "./EditExperience";
 
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems:"center",
         [theme.breakpoints.down("md")]:{
             paddingRight:"40px",
-            marginLeft:"60px",
+            marginLeft:"30px",
         }
     },
     statusContainer:{
@@ -64,8 +64,10 @@ const useStyles = makeStyles((theme) => ({
         alignItems:"center",
         borderRadius:20,
         [theme.breakpoints.down("sm")]:{
-            display:"none"
+            display:"none",
+            
         }
+
     },
     optionsBox:{
         display:"flex",
@@ -97,6 +99,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const ExperienceData = (props) => {
+    const theme = useTheme()
     const [editExperience, setEditExperience] = useState({}) // this is a state variable that stores the concurrent value of an edit
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [options, setOptions] = useState(false)
@@ -201,7 +204,11 @@ const ExperienceData = (props) => {
         <Box className={classes.dataContainer} boxShadow={1}>
             <Grid container className={classes.avatarContainer}>
                 <Grid item>
-                    <Avatar>{ props.data.position[0].toUpperCase()}</Avatar>
+                    <Avatar
+                        style={{
+                            backgroundColor: props.data.active ? theme.palette.primary.main : theme.palette.secondary.main
+                        }}
+                    >{ props.data.position[0].toUpperCase()}</Avatar>
                 </Grid >
             </Grid> 
             <Typography variant="body1" className={classes.roleText}>
@@ -222,7 +229,12 @@ const ExperienceData = (props) => {
                 <Chip label={props.data.active ? "active" : "inactive" } color={props.data.active ? "primary": "secondary"} />    
             </Box>
             <Box className={classes.optionsBox}>
-                <Collapse in={options} timeout="auto" >
+                <Collapse 
+                    in={options} 
+                    onClose={handleOptions}
+                    timeout="auto"
+                    variant="temporary"
+                >
                     <IconButton onClick={() => setDeleteModal(!deleteModal)}>
                         <Delete fontSize="small" className={classes.icon}/>
                     </IconButton>
