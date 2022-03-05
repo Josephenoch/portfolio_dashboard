@@ -88,8 +88,12 @@ const useStyles = makeStyles((theme) => ({
         border: '1px solid #777',
         boxShadow: 24,
         borderRadius:20,
-        display:"flex"
-    },
+        display:"flex",
+        [theme.breakpoints.down("md")]:{
+            width: "70vw",
+            height:"20vh",
+        }
+    }
 }))
 
 const ExperienceData = (props) => {
@@ -104,9 +108,9 @@ const ExperienceData = (props) => {
     const handleOptions = () => {
         setOptions(!options)    
     };
-    const handleModal = (data) => {
+    const handleModal = () => {
         if(!modal){
-            setEditExperience(data)
+            setEditExperience(props.data)
         }  
         setModal(!modal)
     };
@@ -159,7 +163,7 @@ const ExperienceData = (props) => {
     const handleDelete = () => {
         // code to delete data using it's unique id
     props.setExperienceData(props.experienceData.filter(data => data.id !==props.data.id))
-    setDeleteModal(!deleteModal)
+    // setDeleteModal(!deleteModal)
       
     }
     const handleUpload = () => {
@@ -222,7 +226,7 @@ const ExperienceData = (props) => {
                     <IconButton onClick={() => setDeleteModal(!deleteModal)}>
                         <Delete fontSize="small" className={classes.icon}/>
                     </IconButton>
-                    <IconButton onClick={handleModal.bind(this, props.data)}>
+                    <IconButton onClick={handleModal}>
                         <Edit fontSize="small" className={classes.icon}/>
                     </IconButton>
                     {props.data.active ? "": <IconButton onClick={handleUpload}>

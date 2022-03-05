@@ -77,6 +77,11 @@ const useStyles = makeStyles((theme) => ({
         position:"absolute",
         right:"3%",
     },
+    icon:{
+        [theme.breakpoints.down("md")]:{
+            fontSize:10
+        }
+    },
     modal:{
         position: 'absolute',
         top: "50%",
@@ -88,7 +93,11 @@ const useStyles = makeStyles((theme) => ({
         border: '1px solid #777',
         boxShadow: 24,
         borderRadius:20,
-        display:"flex"
+        display:"flex",
+        [theme.breakpoints.down("md")]:{
+            width: "70vw",
+            height:"20vh",
+        }
     },
 }))
 
@@ -198,17 +207,17 @@ const EducationData= (props) => {
             <Box className={classes.optionsBox}>
                 <Collapse in={openOptions} timeout="auto" >
                     <IconButton onClick={() => setDeleteModal(!deleteModal)}>
-                        <Delete fontSize="small"/>
+                        <Delete fontSize="small" className={classes.icon}   />
                     </IconButton>
                     <IconButton onClick={handleModal}>
-                        <Edit fontSize="small"/>
+                        <Edit fontSize="small" className={classes.icon} />
                     </IconButton >
                     {props.data.active ? "": <IconButton onClick={handleUpload}>
-                        <Publish fontSize="small"/>
+                        <Publish fontSize="small" className={classes.icon}  />
                     </IconButton>}
                 </Collapse>
                 <IconButton onClick={handleClick}>
-                    {openOptions ? <Cancel fontSize="small"/> : <MoreHoriz fontSize="small"/> }
+                    {openOptions ? <Cancel fontSize="small" className={classes.icon}    /> : <MoreHoriz fontSize="small" className={classes.icon}   /> }
                 </IconButton>
             </Box>
             <Box>
