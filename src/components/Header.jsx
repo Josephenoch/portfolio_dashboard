@@ -82,7 +82,9 @@ const Header = () => {
                               }}
                            
                             >
-                            <AppMenu />
+                            <AppMenu 
+                                handleToggle={handleToggle}
+                            />
                         </Drawer>
                     </Hidden>   
                 </Grid>

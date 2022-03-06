@@ -1,8 +1,9 @@
 import {React, useEffect, useState} from 'react'
 
-import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse, Button, Modal, Backdrop} from "@material-ui/core";
+import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse, Button, Modal, Backdrop, useTheme} from "@material-ui/core";
 import {Event, MoreHoriz, Delete, Edit, Publish, Cancel} from "@material-ui/icons";
 import EditEducation from './EditEducation';
+
 
 const useStyles = makeStyles((theme) => ({
     buttonStyle:{
@@ -29,20 +30,22 @@ const useStyles = makeStyles((theme) => ({
     avatarContainer:{
         marginLeft:"20px",
         width:"5%",
-        // [theme.breakpoints.down("sm")]:{
-        //     display:"none"
-        // }
+        [theme.breakpoints.down("md")]:{
+            width:"10%",
+            marginLeft:"10px",
+        }  
     },
     schoolName:{
         display:"inline-block",
-        width:"10%",
+        width:"15%",
         marginRight:"50px",
         fontWeight:"bold",
-        overflow:"hidden",
+        overflow: "hidden",
         textOverflow: "ellipsis",
         [theme.breakpoints.down("md")]:{
-            display:"none"
-        }
+            marginRight:"0px",
+            marginLeft:"35px",
+        }    
     },
     date:{
         display:"flex",
@@ -60,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems:"center",
         [theme.breakpoints.down("md")]:{
             paddingRight:"40px",
-            marginLeft:"60px",
+            marginLeft:"30px",
         }
     },
     statusContainer:{
@@ -102,6 +105,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const EducationData= (props) => {
+    const theme = useTheme()
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [modal, setModal] = useState(false);
     const [openOptions, setOpenOptions] = useState(false);
@@ -184,7 +188,11 @@ const EducationData= (props) => {
         <Box className={classes.dataContainer} boxShadow={1}>
             <Grid container className={classes.avatarContainer}>
                 <Grid item>
-                    <Avatar>{props.data.instName[0].toUpperCase()}</Avatar>
+                    <Avatar
+                        style={{
+                            backgroundColor: props.data.active ? theme.palette.primary.main : theme.palette.secondary.main
+                        }}
+                    >{props.data.instName[0].toUpperCase()}</Avatar>
                 </Grid >
             </Grid> 
             <Typography variant="body1" className={classes.schoolName}>

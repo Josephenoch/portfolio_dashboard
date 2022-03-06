@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import {makeStyles, Button,TextField, Typography, Modal, Backdrop, Box, IconButton } from "@material-ui/core"
 import {Cancel, Edit} from "@material-ui/icons"
 
@@ -21,6 +21,7 @@ const useStyles= makeStyles((theme) =>({
         width: "60vw",
         backgroundColor: 'white',
         overflowY:"auto",
+        overflowX:"hidden",
         border: '1px solid #777',
         boxShadow: 24,
         padding: "20px 40px 60px",
@@ -33,9 +34,30 @@ const useStyles= makeStyles((theme) =>({
 
 const Details = (props) =>{
     const [detailsText, setDetailsText] = useState("")
+    const [editDetailsText, setEditDetailsText] = useState("")
+    const [btnDisabled, setBtnDisabled] = useState(true)
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleOpen = () => {
+        if(!open){
+            setEditDetailsText(detailsText)
+        }
+        setOpen(!open)
+    };
+
+    const handlSave = e =>{
+        setDetailsText(editDetailsText)
+        setOpen(!open)
+    }
+    
+    useEffect(()=>{
+        if(editDetailsText !== ""){
+            setBtnDisabled(false)
+        }
+        else{
+            setBtnDisabled(true)
+        }
+    },[editDetailsText])
+
     const classes = useStyles()
 
     return (
@@ -85,7 +107,7 @@ const Details = (props) =>{
             <div >
             <Modal
                 open={open}
-                onClose={handleClose}
+                onClose={handleOpen}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 closeAfterTransition
@@ -97,7 +119,7 @@ const Details = (props) =>{
                 
                 <Box className={classes.modal}>
                     <IconButton 
-                        onClick={handleClose}
+                        onClick={handleOpen}
                         style={{
                             marginLeft:"95%",
                             marginBottom:"20px"
@@ -112,14 +134,15 @@ const Details = (props) =>{
                         }}
                         id="outlined-basic" 
                         variant="outlined"
-                        value={detailsText}
+                        value={editDetailsText}
                         multiline={true}
-                        onChange={(e) =>{setDetailsText(e.target.value)}}
+                        onChange={(e) =>{setEditDetailsText(e.target.value)}}
                     />
                     <Button 
                         variant="outlined"
                         className={classes.buttonStyle}
-                        onClick={handleClose}
+                        disabled={btnDisabled}
+                        onClick={handlSave}
                         >
                             Save
                     </Button>
