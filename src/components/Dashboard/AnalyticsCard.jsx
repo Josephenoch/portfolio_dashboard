@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down("md")]:{
             marginTop:"30px",
             height:"100%",
-            width:"70%",
+            width:"100%",
         },
         '&:hover':{
             transform:"scale(1.02,1.02)"

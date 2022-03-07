@@ -67,9 +67,7 @@ function App() {
                 <Route path="Experience" element={<Experience/>}/>
                 <Route path="Education" element={<Education/>}/>
                 <Route path="Skill" element={<SKill/>}/>
-                <Route path="Graph1" element={<Graph color={"rgb(254,182,131)"}/>}/>
-                <Route path="Graph2" element={<Graph color={"rgb(104,102,233)"}/>}/>
-                <Route path="Graph3" element={<Graph color={"rgb(198,148,249)"}/>}/>
+                <Route path="Graph" element={<Graph/>}/>
             </Routes>
           </div>
         <CssBaseline /> 
