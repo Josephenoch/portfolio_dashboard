@@ -93,8 +93,7 @@ const Experience = ()=>{
         active : true
       }  
     ])// dummy data for testting the app. In productionmode, api's would be used
-    const [uniqueID, setUniqueID] = useState(()=>experienceData.length>0 ? experienceData[experienceData.length-1].id+1:0 ) //creating a unique ID for every experienceData
-    
+    const [uniqueID, setUniqueID] = useState(()=>experienceData.length>0 ? experienceData[experienceData.length-1].id+1:0 ) //creating a unique ID for every experienceData 
 
     const handleModal = () => {
         // setting the modal boolean to its opposite whenever this operation runs

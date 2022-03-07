@@ -1,18 +1,22 @@
 import React from 'react'
 import {Card, CardContent, Typography, makeStyles, Grid} from "@material-ui/core"
-import {Message, ArrowDownward, People} from "@material-ui/icons"
+
 
 const useStyles = makeStyles((theme) => ({
     root:{
-        height:"100%",
-        width:"30%",
+        height:"80%",
+        width:"100%",
         margin:"0 15px",
         borderRadius: "30px",
         minWidth:"250px",
+        transition:"transform 0.2s ease-in-out",
         [theme.breakpoints.down("md")]:{
             marginTop:"30px",
             height:"100%",
             width:"70%",
+        },
+        '&:hover':{
+            transform:"scale(1.02,1.02)"
         }
     },
     cardContent: { 
@@ -37,16 +41,7 @@ const useStyles = makeStyles((theme) => ({
             minWidth: "150px",
         }
     },
-    iconStyle:{
-        fontSize: 40, 
-        marginBottom: "10px", 
-        marginTop: "30px", 
-        color: "white",
-        [theme.breakpoints.down("sm")]: {
-            fontSize:20,
-            marginTop: "0px",
-        }
-    },
+    
     contentP:{
         color: "white", 
         fontSize: 24,
@@ -65,28 +60,12 @@ const useStyles = makeStyles((theme) => ({
 }))
 const AnalyticsCard = (props) => {
     const classes = useStyles()
-    var message, icon, color
-    if(props.type===1){
-        message = "New Message"
-        icon = <Message className={classes.iconStyle}/>
-        color = "linear-gradient(90deg, rgba(198,148,249,1) 0%, rgba(171,100,244,1) 100%)"
-    }
-    else if(props.type===2){
-        message = "CV Downloads"
-        icon = <ArrowDownward className={classes.iconStyle} />
-        color = "linear-gradient(90deg, rgba(104,102,233,1) 0%, rgba(104,102,233,1) 100%)"
-    }
-    else    {
-        message = "Weekly Visitors"
-        icon = <People className={classes.iconStyle}/>
-        color = "linear-gradient(90deg, rgba(254,182,131,1) 0%, rgba(255,137,147,1) 100%)"
-    }
     return (
-            <Card raised className={classes.root}   elevation={0}>
-                <CardContent className= {classes.cardContent}style={{ background:color, height:"100%"}}>
-                   {icon}
+            <Card raised className={classes.root} elevation={0}>
+                <CardContent className= {classes.cardContent}style={{ background:props.color, height:"100%"}}>
+                   {props.icon}
                     <Typography variant="body2" className={classes.contentP} >
-                      {message}
+                      {props.message}
                     </Typography>
                     <Typography variant="body2" className={classes.numberP}>
                         {props.number}
