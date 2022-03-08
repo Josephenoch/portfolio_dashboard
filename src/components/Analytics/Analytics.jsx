@@ -27,7 +27,7 @@ const useStyle = makeStyles((theme)=>({
     },
     graphContainer:{
         width:"98%",
-        marginTop:"20px",
+        marginTop:"40px",
         [theme.breakpoints.down("md")]:{
             width:"100%"
         }
@@ -38,7 +38,8 @@ const useStyle = makeStyles((theme)=>({
         height:"28vh",
         marginBottom:"20px",
         [theme.breakpoints.down("md")]:{
-            width:"100%"
+            width:"100%",
+            marginBottom:"0"
         }
     },
     rawDataContainer:{
