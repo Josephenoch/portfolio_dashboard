@@ -27,9 +27,9 @@ const useStyle = makeStyles((theme)=>({
     },
     graphContainer:{
         width:"98%",
-        marginTop:"40px",
+        marginTop:"20px",
         [theme.breakpoints.down("md")]:{
-            width:"100%"
+            marginTop:"40px", 
         }
     },
     showChartContainer:{
@@ -38,7 +38,7 @@ const useStyle = makeStyles((theme)=>({
         height:"28vh",
         marginBottom:"20px",
         [theme.breakpoints.down("md")]:{
-            width:"100%",
+            width:"98%",
             marginBottom:"0"
         }
     },
@@ -48,7 +48,7 @@ const useStyle = makeStyles((theme)=>({
         marginLeft:"1%",
         marginBottom:"20px",
         [theme.breakpoints.down("md")]:{
-            width:"100%"
+            width:"98%"
         }
     }
 }))
