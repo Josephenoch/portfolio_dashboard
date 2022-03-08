@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) =>({
 }))
 const ExperienceSearchBar = (props) => {
     const classes = useStyles()
-    const [status, setStatus] = useState('');
+    const [status, setStatus] = useState('all');
     const handleChange = (event) => {
         setStatus(event.target.value);
     };

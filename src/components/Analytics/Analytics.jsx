@@ -1,12 +1,12 @@
-import { Box, Paper, Typography, FormControlLabel, Switch } from '@material-ui/core'
-import React,{useState} from 'react'
+import { Box, Paper, Typography, FormControlLabel, Switch, MenuItem, FormControl, InputLabel, Select } from '@material-ui/core'
+import React,{useEffect, useState} from 'react'
 import { subDays } from 'date-fns'
 import { Graph } from './Graph'
 
 
 const data = []
 
-for(let num = 10; num>=0; num--){
+for(let num = 1000; num>=0; num--){
     data.push({
         date:subDays(new Date(), num).toISOString().slice(0,10),
         Message: Math.floor(Math.random() * 10),
@@ -14,7 +14,23 @@ for(let num = 10; num>=0; num--){
         Visitors: Math.floor(Math.random() * 10)
     })
 }
+var emptyTotal = [
+    {
+        name:"Message",
+        total:0
+    },
+    {
+        name:"CV",
+        total:0
+    },
+    {
+        name:"Visitors",
+        total:0
+    }]
+
+
 export const Analytics = () => {
+    const [noOfData, SetNoOfData] = useState(10)
     const [showChart, setShowChart] = useState([
         {
             name:"Message",
@@ -29,6 +45,8 @@ export const Analytics = () => {
             display:true
         }
     ])
+    const [dataToDisplay, setDataToDisplay] = useState(data.slice(0,noOfData))
+    const [total, setTotal] = useState([...emptyTotal])
     const handleChange = (e) => {
         const name = e.target.name
         const checked = e.target.checked
@@ -40,11 +58,34 @@ export const Analytics = () => {
                 newArray[i] = newObj
                 setShowChart(newArray)
                 break
-            }
-            
+            }   
         }
-    
     }
+    useEffect(()=>{
+        setDataToDisplay(data.slice(0,noOfData))
+        const newArray = [
+            {
+                name:"Message",
+                total:0
+            },
+            {
+                name:"CV",
+                total:0
+            },
+            {
+                name:"Visitors",
+                total:0
+            }]
+        for(let i in data.slice(0,noOfData)){
+            newArray[0].total = newArray[0].total+data[i].Message
+            newArray[1].total = newArray[1].total+data[i].CV
+            newArray[2].total=newArray[2].total+data[i].Visitors
+        }
+        console.log(newArray)
+        setTotal(newArray)
+    },[noOfData])
+
+ 
     return (
         <Box
             style={{
@@ -63,7 +104,7 @@ export const Analytics = () => {
                 }}
             >
                 <Graph
-                    data={data}
+                    data={dataToDisplay}
                     showChart={showChart}
                 />
             </Paper>
@@ -127,7 +168,54 @@ export const Analytics = () => {
                     >
                         View Raw Data
                     </Typography>
-
+                    <Box
+                        style={{
+                            display:"flex",
+                            width:"100%"
+                        }}
+                    >
+                        <Box
+                            style={{
+                                width:"30%",
+                                marginLeft:"5%"
+                            }}
+                        >
+                            {total.map(itemTot =>{
+                                return(
+                                    <Typography
+                                        variant="body1"
+                                    >
+                                        {`${itemTot.name} total ${itemTot.total}`}
+                                    </Typography>
+                                )
+                            })}
+                        </Box>
+                        <Box
+                            style={{
+                                width:"60%"
+                            }}
+                        >
+                            <FormControl variant="outlined"  style={{minWidth: "100%"}}>
+                                <InputLabel id="demo-simple-select-standard-label" shrink>Display data</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-standard-label"
+                                    id="demo-simple-select-standard"
+                                    value={noOfData}
+                                    onChange={e=>SetNoOfData(e.target.value)}
+                                    style={{
+                                        width:"100%"
+                                    }}
+                                    label="Display Data"
+                                >
+                                    <MenuItem value={10}>10 Days</MenuItem>
+                                    <MenuItem value={7}>Last Week</MenuItem>
+                                    <MenuItem value={30}>Last Month</MenuItem>
+                                    <MenuItem value={365}>Last Year</MenuItem>
+                                    <MenuItem value={data.length-1}>All Time</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </Box>
                 </Box>
             </Paper>
         </Box>

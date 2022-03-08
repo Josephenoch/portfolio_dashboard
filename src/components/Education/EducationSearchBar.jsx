@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) =>({
 }))
 const EducationSearchBar = (props) => {
     const classes = useStyles()
-    const [status, setStatus] = useState('');
+    const [status, setStatus] = useState('all');
     const handleChange = (event) => {
         setStatus(event.target.value);
     };
@@ -44,6 +44,7 @@ const EducationSearchBar = (props) => {
                         onChange={handleChange}
                         label="status" 
                     >
+                        <MenuItem value="all">All</MenuItem>
                         <MenuItem value="active">Active</MenuItem>
                         <MenuItem value="inactive">Inactive</MenuItem>
                     </Select>
