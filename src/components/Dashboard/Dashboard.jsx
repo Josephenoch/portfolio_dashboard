@@ -1,12 +1,12 @@
 import React from 'react'
-import AnalyticsCard from "./AnalyticsCard"
-import BasicTable from "./BasicTable"
+import {AnalyticsCard} from "./AnalyticsCard"
+import {BasicTable} from "./BasicTable"
 import { makeStyles} from "@material-ui/core"
 import {Link} from "react-router-dom"
-import UserImage from './UserImage'
-import Details from "./Details"
+import {UserImage} from './UserImage'
+import {Details} from "./Details"
 import {Message, ArrowDownward, People} from "@material-ui/icons"
-import { subDays, format, parseISO } from 'date-fns'
+
 
 
 
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) =>({
         }
     },
 }))
-const Dashboard = () => {
+export const Dashboard = () => {
     const classes = useStyles()
     const data = [
         {
@@ -49,7 +49,9 @@ const Dashboard = () => {
             message:"Weekly Visitors",
             number:200,
             percent:10,
-            color:"linear-gradient(90deg, rgba(254,182,131,1) 0%, rgba(255,137,147,1) 100%)",
+            color1:"rgba(136, 132, 216,1)",
+            color2:"rgb(217, 130, 207,1)",
+
             icon:<People className={classes.iconStyle}/>,
         },
         {
@@ -57,7 +59,8 @@ const Dashboard = () => {
             message:"CV Downloads",
             number:400,
             percent:25,
-            color:"linear-gradient(90deg, rgba(104,102,233,1) 0%, rgba(104,102,233,1) 100%)",
+            color1:"rgba(130, 202, 157,1)",
+            color2:"rgba(50, 97, 113, 1)",
             icon:<ArrowDownward className={classes.iconStyle}/>,
         },
         {
@@ -66,7 +69,8 @@ const Dashboard = () => {
             message:"Messages",
             number:250,
             percent:40,
-            color:"linear-gradient(90deg, rgba(198,148,249,1) 0%, rgba(171,100,244,1) 100%)",
+            color1:"rgba(198,148,249,1)",
+            color2:"rgb(255, 141, 219, 1)",
             icon:<Message className={classes.iconStyle}/>,
         }
     ]
@@ -83,12 +87,13 @@ const Dashboard = () => {
             <div className={classes.general} style={{overflow:"auto"}}> 
                 {data.map(datum =>{
                     return(
-                        <Link to={`/Graph`} className={classes.link}>
+                        <Link to={`/Analytics`} className={classes.link}>
                             <AnalyticsCard 
                                 message={datum.message}
                                 number={datum.number}
                                 percent={datum.percent}
-                                color={datum.color}
+                                color={`linear-gradient(90deg, ${datum.color1}0%, ${datum.color2} 100%)`}
+                                // color={datum.color}
                                 icon={datum.icon}
                             />
                         </Link>
@@ -105,5 +110,3 @@ const Dashboard = () => {
          </div>
     )
 }
-
-export default Dashboard

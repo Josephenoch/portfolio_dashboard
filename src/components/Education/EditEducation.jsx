@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
         }
     }
 }))
-const EditEducation = (props) => {
+export const EditEducation = (props) => {
     const classes = useStyles()
     return (
         <Modal
@@ -146,4 +146,3 @@ const EditEducation = (props) => {
         </Modal>
     )
 }
-export default EditEducation

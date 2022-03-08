@@ -37,7 +37,7 @@ const useStyles =makeStyles((theme) =>({
         fontSize: "0.8em"
     }
   }))
-const Certificate = () => {
+export const Certificate = () => {
     const classes = useStyles()
     const [newSkill, setNewSkill] = useState("")
     const [uniqueID, setUniqueID] = useState(0)
@@ -105,4 +105,3 @@ const Certificate = () => {
     )
 }
 
-export default Certificate

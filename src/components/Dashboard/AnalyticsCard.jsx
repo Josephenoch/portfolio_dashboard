@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
         transition:"transform 0.2s ease-in-out",
         [theme.breakpoints.down("md")]:{
             marginTop:"30px",
-            height:"100%",
             width:"100%",
         },
         '&:hover':{
@@ -58,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
        }
     },
 }))
-const AnalyticsCard = (props) => {
+export const AnalyticsCard = (props) => {
     const classes = useStyles()
     return (
             <Card raised className={classes.root} elevation={0}>
@@ -82,5 +81,3 @@ const AnalyticsCard = (props) => {
             </Card> 
     )
 }
-
-export default AnalyticsCard

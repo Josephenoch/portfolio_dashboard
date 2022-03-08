@@ -32,7 +32,7 @@ const useStyles= makeStyles((theme) =>({
     },
 }))
 
-const Details = (props) =>{
+export const Details = (props) =>{
     const [detailsText, setDetailsText] = useState("")
     const [editDetailsText, setEditDetailsText] = useState("")
     const [btnDisabled, setBtnDisabled] = useState(true)
@@ -151,5 +151,3 @@ const Details = (props) =>{
             </div>
         </div>)
 }
-
-export default Details

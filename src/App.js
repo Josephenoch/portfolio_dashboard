@@ -1,7 +1,7 @@
 
 import Sidebar from "./components/Sidebar"
 import WebFont from 'webfontloader';
-import Dashboard from "./components/Dashboard/Dashboard"
+import {Dashboard} from "./components/Dashboard/Dashboard"
 import Experience from "./components/Experience/Experience"
 import Education from "./components/Education/Education";
 import SKill from "./components/Skill/Skill";
@@ -12,7 +12,7 @@ import { Route, Routes} from "react-router-dom"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import Graph from "./components/Graph/Graph";
+import {Analytics} from "./components/Analytics/Analytics";
 
 library.add(fas, fab)
 
@@ -67,7 +67,7 @@ function App() {
                 <Route path="Experience" element={<Experience/>}/>
                 <Route path="Education" element={<Education/>}/>
                 <Route path="Skill" element={<SKill/>}/>
-                <Route path="Graph" element={<Graph/>}/>
+                <Route path="Analytics" element={<Analytics/>}/>
             </Routes>
           </div>
         <CssBaseline /> 

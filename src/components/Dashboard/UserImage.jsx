@@ -18,13 +18,10 @@ const useStyles = makeStyles((theme) =>({
         }
     }
 }))
-const UserImage = (() =>{
+export const UserImage = (() =>{
     const classes = useStyles()
     return(
         <div className={classes.div}>
         </div>
         )
 })
-
-
-export default UserImage

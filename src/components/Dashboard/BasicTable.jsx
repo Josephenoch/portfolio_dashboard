@@ -12,7 +12,7 @@ const rows = [
     createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-const BasicTable= ()=> {
+export const BasicTable= ()=> {
     return (
         <TableContainer component={Paper} style={{ width: "90%" }} eleevation={0}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -46,4 +46,3 @@ const BasicTable= ()=> {
     );
 }
 
-export default BasicTable

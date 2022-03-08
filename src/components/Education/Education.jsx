@@ -4,7 +4,7 @@ import EducationDataTable from './EducationDataTable';
 import EducationSearchBar from './EducationSearchBar';
 import { makeStyles, IconButton,} from "@material-ui/core"
 import {AddCircle} from "@material-ui/icons/";
-import AddEducation from './AddEducation';
+import {AddEducation} from './AddEducation';
 
 const useStyles = makeStyles((theme) =>({
     rootContainer:{

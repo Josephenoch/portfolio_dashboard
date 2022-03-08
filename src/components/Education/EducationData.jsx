@@ -2,7 +2,7 @@ import {React, useEffect, useState} from 'react'
 
 import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse, Button, Modal, Backdrop, useTheme} from "@material-ui/core";
 import {Event, MoreHoriz, Delete, Edit, Publish, Cancel} from "@material-ui/icons";
-import EditEducation from './EditEducation';
+import {EditEducation} from './EditEducation';
 
 
 const useStyles = makeStyles((theme) => ({

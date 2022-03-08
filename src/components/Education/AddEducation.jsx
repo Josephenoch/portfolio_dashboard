@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         }
     }
 }))
-const AddEducation = (props) => {
+export const AddEducation = (props) => {
     const classes = useStyles()
     const [btnDisabled, setBtnDisabled] = useState(true)
     useEffect(() => {
@@ -163,5 +163,3 @@ const AddEducation = (props) => {
         </Modal>
     )
 }
-
-export default AddEducation
