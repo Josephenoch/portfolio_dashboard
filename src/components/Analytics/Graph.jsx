@@ -7,6 +7,7 @@ import { Typography, Box, useTheme } from '@material-ui/core'
 
 const colors = ["rgb(136, 132, 216)","rgb(130, 202, 157)","rgb(198,148,249)"]
 export const Graph = (props) => {
+    var data = props.data       
     const theme = useTheme()
     return (
             <Box 
@@ -22,8 +23,8 @@ export const Graph = (props) => {
                 >
                     Analytics
                 </Typography>
-                <ResponsiveContainer width="96%" height={300}>
-                    <AreaChart data={props.data}>
+                <ResponsiveContainer width="98%" height={300}>
+                    <AreaChart data={data}>
                         <defs>
                             <linearGradient id="color0" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="0%" stopColor={colors[0]} stopOpacity={1}/>
@@ -38,9 +39,9 @@ export const Graph = (props) => {
                                 <stop offset="95%" stopColor={colors[2]} stopOpacity={0}/>
                             </linearGradient>
                         </defs>
-                        {props.showChart[0].display ? <Area type="monotone" dataKey="Message" stroke={colors[0]} fill="url(#color0)"/>:null}
-                        {props.showChart[1].display ? <Area type="monotone" dataKey="CV" stroke={colors[1]} fill="url(#color1)"/>:null}
-                        {props.showChart[2].display ? <Area type="monotone" dataKey="Visitors" stroke={colors[2]} fill="url(#color2)"/>:null}
+                        {props.showChart[0].display ? <Area type="monotone" dataKey="Message" stroke={colors[0]} fill="url(#color0)" />:null}
+                        {props.showChart[1].display ? <Area type="monotone" dataKey="CV" stroke={colors[1]} fill="url(#color1)" />:null}
+                        {props.showChart[2].display ? <Area type="monotone" dataKey="Visitors" stroke={colors[2]} fill="url(#color2)" />:null}
                         <XAxis 
                             dataKey="date"
                             tickLine={false}
