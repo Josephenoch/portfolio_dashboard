@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         minWidth:"250px",
         transition:"transform 0.2s ease-in-out",
         [theme.breakpoints.down("md")]:{
-            marginTop:"30px",
+            margin:"15px 15px",
             width:"100%",
         },
         '&:hover':{

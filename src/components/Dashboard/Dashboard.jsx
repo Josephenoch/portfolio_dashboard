@@ -1,5 +1,5 @@
 import React from 'react'
-import {AnalyticsCard} from "./AnalyticsCard"
+import {AnalyticsCard} from "../Analytics/AnalyticsCard"
 import {BasicTable} from "./BasicTable"
 import { makeStyles} from "@material-ui/core"
 import {Link} from "react-router-dom"
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) =>({
         textDecoration: 'none', 
         width:"30%",
         [theme.breakpoints.down("md")]: {
-            width:"70%",
+            width:"80%",
         }
 
     },
