@@ -1,41 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import {Paper, Box, Typography, useTheme, makeStyles} from "@material-ui/core"
-
-import userImg from "../../assets/joseph.jpg"
+import {Paper, Box, TextField, Typography, useTheme, makeStyles, Input  } from "@material-ui/core"
+import userImage from "../../assets/joseph.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const useStyles = makeStyles((theme)=>({
-    image:{
-        height:"200px",
-        width:"200px",
-        margin:"auto",
-        borderRadius:"20px",
-        background:`url(${userImg})`,
-        backgroundSize:"cover",
-        display:"flex",
-        alignItems:"center",
-        transition: "all 0.2s cubic-bezier(.25,.8,.25,1)",
-        "&:hover":{
-            opacity: 0.8,
-            background:`url(${userImg})`,
-            backgroundSize:"cover",
-        },
-        '&:hover $uploadIcon':{
-            height:50,
-        }
-    },
-    uploadIcon:{
-        transition: "all 0.2s cubic-bezier(.25,.8,.25,1)",
-        overflow: "hidden",
-        height: 0,
-        margin:"auto",
-        color:"white",
-        
-    }
-}))
+
+
 export const Settings = () => {
     const theme = useTheme()
+    const [userImg, setUserImg] = useState(userImage)
+    const handleFileChange = (e) =>{
+        setUserImg(URL.createObjectURL(e.target.files[0]))
+    }
+    const useStyles = makeStyles((theme)=>({
+        image:{
+            height:"200px",
+            width:"200px",
+            margin:"auto",
+            borderRadius:"20px",
+            background:`url(${userImg})`,
+            backgroundSize:"cover",
+            display:"flex",
+            alignItems:"center",
+            transition: "all 0.2s cubic-bezier(.25,.8,.25,1)",
+            "&:hover":{
+                opacity: 0.8,
+                background:`url(${userImg})`,
+                backgroundSize:"cover",
+            },
+            '&:hover $uploadIcon':{
+                height:50,
+            }
+        },
+        uploadIcon:{
+            transition: "all 0.2s cubic-bezier(.25,.8,.25,1)",
+            overflow: "hidden",
+            height: 0,
+            margin:"auto",
+            color:"white",
+            
+        }
+    }))
     const classes = useStyles() 
     return (
         <div
@@ -87,7 +92,6 @@ export const Settings = () => {
                     }}
                 >
                     <Paper
-                        elevation={5}
                         className='userDetails'
                         style={{
                             width:"49%",
@@ -103,10 +107,35 @@ export const Settings = () => {
                         >
                             User Details
                         </Typography>
+                        <Box 
+                            style={{
+                                width:"60%",
+                                marginLeft:"30px",
+                                marginTop:"20px"
+                            }}
+                        >
+                            <TextField 
+                                label="First Name"
+                                variant="outlined" 
+                                name="company" 
+                                style={{
+                                    width:"100%",
+                                    marginBottom:15
+                                }}
+                            />
+                            <TextField 
+                                label="Last Name"
+                                variant="outlined" 
+                                name="company" 
+                                style={{
+                                    width:"100%"
+                                }}
+                            />
+
+                        </Box>
                     </Paper>
                     <Paper
                         className='userDetails'
-                        elevation={5}
                         style={{
                             width:"49%",
                             height:"40vh"
@@ -121,7 +150,7 @@ export const Settings = () => {
                         >
                             User Image
                         </Typography>
-                        <label for="image-input">
+                        <label htmlFor="image-input">
                             <Box
                                 className={classes.image}
                             >
@@ -131,12 +160,13 @@ export const Settings = () => {
                                 />
                             </Box>
                         </label>    
-                        <input 
+                        <Input 
                             id="image-input" 
                             type="file" 
                             style={{
                                 display:"none"
                             }}
+                            onChange={handleFileChange}
                         />
                     </Paper>
                 </Box>
