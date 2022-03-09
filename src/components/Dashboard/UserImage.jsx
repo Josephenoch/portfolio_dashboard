@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) =>({
         position:"relative", 
         height:"40vh", 
         width:"100%",
-        background:"linear-gradient(0deg, rgba(111,227,255,0.3) 0%, rgba(47,199,245,0.3) 35%), url("+userImg+")",
+        background:`linear-gradient(0deg, rgba(111,227,255,0.3) 0%, rgba(47,199,245,0.3) 35%), url(${userImg})`,
         backgroundAttachment:"fixed",
         backgroundSize:"cover",
         marginBottom:50,

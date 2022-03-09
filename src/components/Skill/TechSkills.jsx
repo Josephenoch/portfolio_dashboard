@@ -56,7 +56,7 @@ const TechSkills = () => {
               >
                 <FontAwesomeIcon 
                         key={icon.unicode} 
-                        icon={"fa-brands fa-" + icon.name } 
+                        icon={`fa-brands fa- ${icon.name}` } 
                         size="2x" 
                         style={{margin:"20px 0 0 20px"}}/>
               </div>

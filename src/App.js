@@ -13,8 +13,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import {Analytics} from "./components/Analytics/Analytics";
+import { Settings } from "./components/Settings/Settings";
 
-library.add(fas, fab)
+library.add(fas, fab,)
 
 WebFont.load({  
   google: {
@@ -68,6 +69,7 @@ function App() {
                 <Route path="Education" element={<Education/>}/>
                 <Route path="Skill" element={<SKill/>}/>
                 <Route path="Analytics" element={<Analytics/>}/>
+                <Route path="Settings" element={<Settings/>}/>  
             </Routes>
           </div>
         <CssBaseline /> 
