@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
 import {Paper, Box, TextField, Typography, useTheme, makeStyles, Input  } from "@material-ui/core"
+// import {WbSunny, NightsStay} from '@material-ui/icons'
+
 import userImage from "../../assets/joseph.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -10,7 +12,9 @@ export const Settings = () => {
     const theme = useTheme()
     const [userImg, setUserImg] = useState(userImage)
     const handleFileChange = (e) =>{
-        setUserImg(URL.createObjectURL(e.target.files[0]))
+        if(e.target.files[0]){
+            setUserImg(URL.createObjectURL(e.target.files[0]))
+        }
     }
     const useStyles = makeStyles((theme)=>({
         image:{
@@ -51,10 +55,10 @@ export const Settings = () => {
                 justifyContent:"center"
             }}
         >
-            <Paper
+            <Box
                 style={{
                     display:"flex",
-                    width:"95%",
+                    width:"98%",
                     height:"95%",
                     margin:"10px 0",
                     alignItems:"center",
@@ -85,31 +89,31 @@ export const Settings = () => {
                 </Paper>
                 <Box 
                     style={{
-                        marginTop:"20px",
                         display:"flex",
                         width:"98%",
-                        
+                        marginTop:"3%"
                     }}
                 >
-                    <Paper
+                    <Box
                         className='userDetails'
                         style={{
                             width:"49%",
-                            marginRight:"2%"
+                            marginRight:"2%",
+                            
                         }}
                     >
                         <Typography
                             variant="h5"
                             style={{
                                 marginLeft:"5%",
-                                marginTop:"3%"
+                                
                             }}
                         >
-                            User Details
+                            Your Details
                         </Typography>
                         <Box 
                             style={{
-                                width:"60%",
+                                width:"100%",
                                 marginLeft:"30px",
                                 marginTop:"20px"
                             }}
@@ -117,7 +121,8 @@ export const Settings = () => {
                             <TextField 
                                 label="First Name"
                                 variant="outlined" 
-                                name="company" 
+                                name="firstName" 
+                                value="John"
                                 style={{
                                     width:"100%",
                                     marginBottom:15
@@ -126,30 +131,45 @@ export const Settings = () => {
                             <TextField 
                                 label="Last Name"
                                 variant="outlined" 
-                                name="company" 
+                                name="lastName" 
+                                value="Doe"
                                 style={{
-                                    width:"100%"
+                                    width:"100%",
+                                    marginBottom:15
                                 }}
                             />
+                            <TextField 
+                                label="Phone Number"
+                                variant="outlined" 
+                                name="phoneNumber"
+                                value="+234 901 234 5678" 
+                                style={{
+                                    width:"48%",
+                                }}
+                            />
+                            <TextField 
+                                label="Email Address"
+                                variant="outlined" 
+                                name="emailAddress" 
+                                disabled={true}
+                                value="johndoe@webfolio.com"
+                                style={{
+                                    width:"48%",
+                                    marginLeft:"4%"
+                                }}
+                            />
+                             
 
                         </Box>
-                    </Paper>
-                    <Paper
+                    </Box>
+                    <Box
                         className='userDetails'
                         style={{
                             width:"49%",
-                            height:"40vh"
+                            height:"40vh",
+                            marginTop:"4%"
                         }}
                     >
-                        <Typography
-                            variant="h5"
-                            style={{
-                                marginLeft:"5%",
-                                marginTop:"3%"
-                            }}
-                        >
-                            User Image
-                        </Typography>
                         <label htmlFor="image-input">
                             <Box
                                 className={classes.image}
@@ -168,10 +188,11 @@ export const Settings = () => {
                             }}
                             onChange={handleFileChange}
                         />
-                    </Paper>
+                    </Box>
+                    {/* <WbSunny, NightsStay/> */}
                 </Box>
 
-            </Paper>
+            </Box>
 
         </div>
     )
