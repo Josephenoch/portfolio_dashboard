@@ -15,6 +15,7 @@ const useStyles= makeStyles((theme) =>({
     },
     modal:{
         position: 'absolute',
+        minHeight:"50vh",
         top: "50%",
         left: '50%',
         transform: 'translate(-50%, -50%)',
@@ -64,6 +65,7 @@ export const Details = (props) =>{
         <div 
             style={{
                 width:"90%",
+                
                 marginBottom:40
             }}
             >
@@ -130,6 +132,7 @@ export const Details = (props) =>{
                     <TextField
                         style={{
                             width:"100%",
+                            minHeight:"70%",
                             
                         }}
                         id="outlined-basic" 

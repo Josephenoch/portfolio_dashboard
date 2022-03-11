@@ -2,8 +2,9 @@ import {useState} from 'react'
 import logo from "../assets/Webfolio.jpg"
 import smallLogo from "../assets/Webfolio - Small.jpg"
 import AppMenu from "./AppMenu"
-import { IconButton, Hidden, AppBar, Toolbar, Grid, makeStyles, CssBaseline, Drawer} from "@material-ui/core"
-import { Menu, Cancel} from "@material-ui/icons"
+import { IconButton, Hidden, AppBar, Toolbar, Grid, makeStyles, Drawer} from "@material-ui/core"
+import { Menu, Cancel, Settings} from "@material-ui/icons"
+import { Link } from 'react-router-dom'
 const useStyles = makeStyles((theme) =>({ 
     root:{
         backgroundColor: "#FFFFFF",
@@ -66,7 +67,6 @@ const Header = () => {
                 </Grid>
                
            </Toolbar>
-         <CssBaseline/>
             <Grid container className={classes.appMenu} >
                 <Grid item>
                     <Hidden xsDown implementation="css">
@@ -87,6 +87,23 @@ const Header = () => {
                             />
                         </Drawer>
                     </Hidden>   
+                </Grid>
+            </Grid>
+            <Grid container 
+                style={{
+                    position:"absolute",
+                    top:"25%",
+                    left:"95%"
+                }}
+                
+            >
+                <Grid item
+                    component={Link}
+                    to={"/Settings"}
+                >
+                    <IconButton>
+                        <Settings/>
+                    </IconButton>
                 </Grid>
             </Grid>
        </AppBar>
