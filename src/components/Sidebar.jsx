@@ -1,7 +1,7 @@
 import {WorkOutlineOutlined, DeveloperMode, VerifiedUserOutlined, AssessmentOutlined,  SchoolOutlined, SettingsOutlined} from "@material-ui/icons"
 
 import userImg from "../assets/cropped.png"
-import {Avatar, List, ListItem, ListItemIcon, ListItemText, makeStyles, Grid, Typography} from "@material-ui/core";
+import {Avatar, List, ListItem, ListItemIcon, ListItemText, makeStyles, Grid, Typography, Paper} from "@material-ui/core";
 import {Link} from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         zIndex:99,
         marginTop:"80px",
         width:"17%",
-        backgroundColor:"#fff",
+        backgroundColor:theme.palette,
         height:"90vh",
         position: "fixed",
         top: "0px",
@@ -32,7 +32,7 @@ const email = "enochjoseph01@gmail.com"
 const Sidebar=(() =>{
    const  classes = useStyles()
     return (
-        <div  className = {classes.root} direction="column">
+        <div className = {classes.root} direction="column">
             <div style={{marginTop:20}}>
                 <Grid container>
                     <Grid item>

@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from 'react'
-import { Box, Grid, Typography, makeStyles, IconButton,  Collapse, Chip, Avatar, Modal, Button, Backdrop, useTheme} from '@material-ui/core'
+import { Box, Grid, Typography, makeStyles, IconButton,  Collapse, Chip, Avatar, Modal, Button, Backdrop, useTheme, Paper} from '@material-ui/core'
 import {Event, MoreHoriz, Delete, Edit, Publish, Cancel} from "@material-ui/icons";
 import EditExperience from "./EditExperience";
 
@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems:"center",
         height: "10vh",
         width: "100%",
-        backgroundColor: 'white',
+        backgroundColor: theme.palette,
         marginTop:"20px",
         transition: "all 0.2s cubic-bezier(.25,.8,.25,1)",
         '&:hover': {
@@ -201,7 +201,7 @@ const ExperienceData = (props) => {
         }
     }, [editExperience])
     return (
-        <Box className={classes.dataContainer} boxShadow={1}>
+        <Paper className={classes.dataContainer} boxShadow={1}>
             <Grid container className={classes.avatarContainer}>
                 <Grid item>
                     <Avatar
@@ -311,7 +311,7 @@ const ExperienceData = (props) => {
                 editExperience={editExperience}
                 btnDisabled={btnDisabled}
             />
-        </Box>
+        </Paper>
 
   )
 }

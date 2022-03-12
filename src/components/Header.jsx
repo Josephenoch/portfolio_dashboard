@@ -2,13 +2,13 @@ import {useState} from 'react'
 import logo from "../assets/Webfolio.jpg"
 import smallLogo from "../assets/Webfolio - Small.jpg"
 import AppMenu from "./AppMenu"
-import { IconButton, Hidden, AppBar, Toolbar, Grid, makeStyles, Drawer} from "@material-ui/core"
+import { IconButton, Hidden, AppBar, Paper, Toolbar, Grid, makeStyles, Drawer} from "@material-ui/core"
 import {WbSunny, NightsStay, NotificationImportant} from '@material-ui/icons'
 import { Menu, Cancel, Settings} from "@material-ui/icons"
 import { Link } from 'react-router-dom'
 const useStyles = makeStyles((theme) =>({ 
     root:{
-        backgroundColor: "#FFFFFF",
+        backgroundColor: theme.palette,
         [theme.breakpoints.up("lg")]: {
             height: "80px",
         }
@@ -53,7 +53,7 @@ const Header = () => {
     }
     const classes = useStyles()
     return (
-        <AppBar color="primary" className={classes.root} position="fixed" elevation={0}>
+        <AppBar className={classes.root} position="fixed" elevation={0}>
             <Toolbar>
                 <Grid container>
                     <Grid item>
