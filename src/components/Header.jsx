@@ -3,6 +3,7 @@ import logo from "../assets/Webfolio.jpg"
 import smallLogo from "../assets/Webfolio - Small.jpg"
 import AppMenu from "./AppMenu"
 import { IconButton, Hidden, AppBar, Toolbar, Grid, makeStyles, Drawer} from "@material-ui/core"
+import {WbSunny, NightsStay, NotificationImportant} from '@material-ui/icons'
 import { Menu, Cancel, Settings} from "@material-ui/icons"
 import { Link } from 'react-router-dom'
 const useStyles = makeStyles((theme) =>({ 
@@ -93,16 +94,24 @@ const Header = () => {
                 style={{
                     position:"absolute",
                     top:"25%",
-                    left:"95%"
+                    left:"90%"
                 }}
                 
             >
                 <Grid item
-                    component={Link}
-                    to={"/Settings"}
+                    
                 >
-                    <IconButton>
+                    <IconButton
+                        component={Link}
+                        to={"/Settings"}
+                    >
                         <Settings/>
+                    </IconButton>
+                    <IconButton>
+                        <WbSunny/>
+                    </IconButton>
+                    <IconButton>
+                        <NotificationImportant/>
                     </IconButton>
                 </Grid>
             </Grid>

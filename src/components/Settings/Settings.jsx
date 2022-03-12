@@ -1,23 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import {Paper, Box, TextField, Typography, useTheme, makeStyles, } from "@material-ui/core"
-// import {WbSunny, NightsStay} from '@material-ui/icons'
+import { Box, Button, makeStyles} from "@material-ui/core"
+
 
 
 
 import { SettingsHeader } from './SettingsHeader'
 import { EditUserDetails } from './EditUserDetails'
-import { Details } from '../Dashboard/Details'
+
 
 
 
 export const Settings = () => {
-    const theme = useTheme()
     
     const useStyles = makeStyles((theme)=>({
         rootContainer:{
             width:"100%",
             display:"flex",
+            flexWrap:"wrap",
             minHeight:"89vh",
             justifyContent:"center"
         },
@@ -57,8 +57,12 @@ export const Settings = () => {
                     </Box>
                 </Box>
 
-            </Box>
+               
 
+            </Box>
+            <Button>
+                Save
+            </Button>
         </div>
     )
 }
