@@ -2,13 +2,13 @@ import {useState} from 'react'
 import logo from "../assets/Webfolio.jpg"
 import smallLogo from "../assets/Webfolio - Small.jpg"
 import AppMenu from "./AppMenu"
-import { IconButton, Hidden, AppBar, Paper, Toolbar, Grid, makeStyles, Drawer} from "@material-ui/core"
+import { IconButton, Hidden, AppBar, Toolbar, Grid, makeStyles, Drawer} from "@material-ui/core"
 import {WbSunny, NightsStay, NotificationImportant} from '@material-ui/icons'
 import { Menu, Cancel, Settings} from "@material-ui/icons"
 import { Link } from 'react-router-dom'
 const useStyles = makeStyles((theme) =>({ 
     root:{
-        backgroundColor: theme.palette,
+        backgroundColor: theme.palette.primary.appBar,
         [theme.breakpoints.up("lg")]: {
             height: "80px",
         }
@@ -46,14 +46,14 @@ const useStyles = makeStyles((theme) =>({
         marginTop:50
     }
 }))
-const Header = () => {
+const Header = (props) => {
     const [open, setOpen] = useState(false);
     const handleToggle = () => {
         setOpen(!open);   
     }
     const classes = useStyles()
     return (
-        <AppBar className={classes.root} position="fixed" elevation={0}>
+        <AppBar color="default" className={classes.root} position="fixed" elevation={0}>
             <Toolbar>
                 <Grid container>
                     <Grid item>
@@ -107,8 +107,8 @@ const Header = () => {
                     >
                         <Settings/>
                     </IconButton>
-                    <IconButton>
-                        <WbSunny/>
+                    <IconButton onClick={() => props.setDarkTheme(!props.darkTheme)}>
+                        {props.darkTheme ? <WbSunny/> : <NightsStay/>}
                     </IconButton>
                     <IconButton>
                         <NotificationImportant/>

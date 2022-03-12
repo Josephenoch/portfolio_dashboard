@@ -1,5 +1,5 @@
 import {React, useState} from 'react';
-import { Box, IconButton, TextField, makeStyles,Switch, Button, Modal, Backdrop, FormControlLabel} from '@material-ui/core';
+import { Box, IconButton, TextField, makeStyles,Switch, Button, Modal, Backdrop, FormControlLabel, Paper} from '@material-ui/core';
 import { Cancel } from '@material-ui/icons';
 import { useEffect } from 'react';
 
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) =>({
     width: "60vw",
     height:"80vh",
     overflowY:"scroll",
-    backgroundColor: 'white',
+    backgroundColor: theme.palette,
     border: '1px solid #777',
     boxShadow: 24,
     padding: "20px 40px 60px",
@@ -30,7 +30,7 @@ inputContainer:{
 buttonStyle:{
     top:"17%",
     left:"80%",
-    backgroundColor:"rgb(47,199,245)",
+    backgroundColor:theme.palette.primary.main,
     color:"white",
     borderColor:"white",
     [theme.breakpoints.down("sm")]: {
@@ -108,7 +108,7 @@ const AddExperience = (props)=> {
                     timeout: 500,
                 }}
                 >
-            <Box className={classes.modal}>
+            <Paper className={classes.modal}>
                 <IconButton 
                     onClick={props.handleModal}
                     style={{
@@ -194,7 +194,7 @@ const AddExperience = (props)=> {
                     {/* {console.log(props.createBtnDisabled)} */}
                     Save
                 </Button>
-            </Box>
+            </Paper>
         </Modal>
     );
 }

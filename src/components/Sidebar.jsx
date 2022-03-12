@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         zIndex:99,
         marginTop:"80px",
         width:"17%",
-        backgroundColor:theme.palette,
+        backgroundColor:theme.palette.primary.sideBar,
         height:"90vh",
         position: "fixed",
         top: "0px",

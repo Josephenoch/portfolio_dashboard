@@ -1,11 +1,11 @@
 import {React, useState} from 'react'
-import {TextField, Button, makeStyles, IconButton, Typography} from '@material-ui/core'
+import {TextField, Button, makeStyles, IconButton, Typography, Paper} from '@material-ui/core'
 import {CancelOutlined} from "@material-ui/icons"
 
 const useStyles = makeStyles((theme) => ({
     workflowContainer:{
         width:"40%",
-        backgroundColor:"white",
+        backgroundColor:theme.palette,
         padding:"20px",
         borderRadius:"30px",
         marginTop:"5vh",
@@ -14,6 +14,10 @@ const useStyles = makeStyles((theme) => ({
             width:"80%",  
             marginTop:"30px"
         }
+    },
+    buttonStyle:{
+        backgroundColor:theme.palette.primary.main,
+        color:"white"
     },
     workflow:{
         padding:"20px",
@@ -38,7 +42,7 @@ const WorkFlow = () => {
         } 
     }
   return (
-    <div className={classes.workflowContainer}>
+    <Paper className={classes.workflowContainer}>
         <TextField
             variant="outlined"
             id="Workflow"
@@ -52,10 +56,7 @@ const WorkFlow = () => {
             InputProps={{endAdornment: <Button
                                             onClick={handleClick}
                                             disabled={workflow.length >= 6 ? true : false}
-                                            style={{
-                                                backgroundColor:"rgb(47,199,245)",
-                                                color:"white"
-                                            }}
+                                            className={classes.buttonStyle}
                                         >
                                             Add
                                         </Button>}}
@@ -79,7 +80,7 @@ const WorkFlow = () => {
                 )
             }
         </ul>
-    </div>
+    </Paper>
   )
 }
 export default  WorkFlow 

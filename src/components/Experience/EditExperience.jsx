@@ -2,7 +2,7 @@
 import {React} from 'react';
 
 //material-ui imports
-import { Box, IconButton, TextField, makeStyles,Switch, Button, Modal, Backdrop, FormControlLabel} from '@material-ui/core';
+import { Box, IconButton, TextField, makeStyles,Switch, Button, Modal, Backdrop, FormControlLabel, Paper} from '@material-ui/core';
 import { Cancel } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) =>({
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) =>({
     width: "60vw",
     height:"80vh",
     overflowY:"scroll",
-    backgroundColor: 'white',
+    backgroundColor: theme.palette,
     borderRadius:20,
     border: '1px solid #777',
     boxShadow: 24,
@@ -62,7 +62,7 @@ const EditExperience = (props)=> {
             }}
             >
         
-            <Box className={classes.modal}>
+            <Paper className={classes.modal}>
                 <IconButton 
                     onClick={props.handleModal}// this runs the handleModal function in the parent component when the cancle button is clicked
                     style={{
@@ -151,7 +151,7 @@ const EditExperience = (props)=> {
                 >
                     Save
                 </Button>
-            </Box>
+            </Paper>
         </Modal>
   );
 }

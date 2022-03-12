@@ -1,6 +1,6 @@
 import {React, useState} from 'react'
 import raw from "../../assets/fa.json"
-import { makeStyles, TextField } from '@material-ui/core'
+import { makeStyles, Paper, TextField } from '@material-ui/core'
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,13 +8,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const useStyles = makeStyles((theme) => ({
     techSkills:{
         width:"40%",
-        backgroundColor: "white",
+        backgroundColor: theme.palette,
         height:"49vh",
         padding:"20px",
         borderRadius:"30px",
         [theme.breakpoints.down("sm")]:{
             width:"80%",
           }
+    },
+    icon:{
+      color:theme.palette
     }
   
 }))
@@ -29,7 +32,7 @@ const TechSkills = () => {
         }
     }
   return (
-    <div className={classes.techSkills}>
+    <Paper className={classes.techSkills}>
         <Autocomplete
         id="techSkills"
         disabled={usedIcons.length >=5 ? true : false}
@@ -55,16 +58,18 @@ const TechSkills = () => {
                 }}
               >
                 <FontAwesomeIcon 
-                        key={icon.unicode} 
-                        icon={`fa-brands fa- ${icon.name}` } 
-                        size="2x" 
-                        style={{margin:"20px 0 0 20px"}}/>
+                  className={classes.icon}
+                  key={icon.unicode} 
+                  icon={`fa-brands fa-${icon.name}` } 
+                  size="2x" 
+                  style={{margin:"20px 0 0 20px"}}
+                />
               </div>
             )
           })
           )
         }
-    </div>
+    </Paper>
   )
 }
 export default TechSkills

@@ -14,6 +14,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import {Analytics} from "./components/Analytics/Analytics";
 import { Settings } from "./components/Settings/Settings";
+import { useState } from "react";
 
 library.add(fas, fab,)
 
@@ -25,9 +26,17 @@ WebFont.load({
 
 
 let LightTheme = createTheme({
-  // palette:{
-  //   type:"dark",
-  // },
+  
+  palette:{
+    // type:"dark",
+    
+    primary:{
+      main:"rgb(47,199,245)",
+      light:"rgb(111,227,255)",
+      appBar:"#fff",
+      sideBar:"#fff",
+    },
+  },
   typography: {
     
     fontFamily: [
@@ -36,7 +45,25 @@ let LightTheme = createTheme({
   },
 });
 
-LightTheme = responsiveFontSizes(LightTheme)
+let DarkTheme = createTheme({
+  palette:{
+    type:"dark",
+    primary:{
+      main:"rgb(47,199,245)",
+      light:"rgb(111,227,255)",
+      appBar:"rgba(60,60,60,1)",
+      sideBar:"rgba(60,60,60,1)",
+    }
+  },
+  typography: {
+    
+    fontFamily: [
+      'Playfair Display'
+    ].join(','),
+  },
+  
+})
+
 
 const useStyles = makeStyles((theme) =>({
   mainContent:{
@@ -46,7 +73,7 @@ const useStyles = makeStyles((theme) =>({
     marginTop: "65px",
     paddingTop: "2vh",
     width: "100%",
-    backgroundColor:"#F5F5F5",
+    backgroundColor:theme.palette.action.hover,
     zIndex: "-1",
     overflowX: "hidden",
     [theme.breakpoints.down("md")]:{
@@ -61,13 +88,18 @@ const useStyles = makeStyles((theme) =>({
 
 function App() {
   const classes = useStyles()
+  const [darkTheme, setDarkTheme] = useState(false)
   return (
     <div styles={{display:"flex"}}> 
-      <ThemeProvider theme={LightTheme}> 
+      <ThemeProvider theme={darkTheme ? DarkTheme : LightTheme}> 
         <Paper>
           <Sidebar />
-          <div className={classes.mainContent}>
-            <Header />   
+          <Header 
+            darkTheme={darkTheme}
+            setDarkTheme={setDarkTheme}
+          />    
+          <Paper className={classes.mainContent}>
+            
             <Routes>
                 <Route path="portfolio_dashboard" element={<Dashboard/>}/>
                 <Route path="Experience" element={<Experience/>}/>
@@ -76,7 +108,7 @@ function App() {
                 <Route path="Analytics" element={<Analytics/>}/>
                 <Route path="Settings" element={<Settings/>}/>  
             </Routes>
-          </div>
+          </Paper>
           <CssBaseline /> 
         </Paper>
       </ThemeProvider>       

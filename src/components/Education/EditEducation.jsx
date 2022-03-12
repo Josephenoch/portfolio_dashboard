@@ -1,5 +1,5 @@
 import React from 'react'
-import {makeStyles, Modal, TextField, Backdrop, Button, Box, IconButton, FormControlLabel, Switch} from "@material-ui/core";
+import {makeStyles, Modal, TextField, Backdrop, Button, Box, IconButton, FormControlLabel, Switch, Paper} from "@material-ui/core";
 import { Cancel } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         width: "60vw",
         height:"70vh",
         overflowY:"scroll",
-        backgroundColor: 'white',
+        backgroundColor: theme.palette,
         border: '1px solid #777',
         boxShadow: 24,
         padding: "20px 40px 60px",
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     buttonStyle:{
         top:"10%",
         left:"92%",
-        backgroundColor:"rgb(47,199,245)",
+        backgroundColor:theme.palette.primary.main,
         color:"white",
         borderColor:"white",
         [theme.breakpoints.down("sm")]: {
@@ -51,7 +51,7 @@ export const EditEducation = (props) => {
             }}
         >
 
-        <Box className={classes.modal}>
+        <Paper className={classes.modal}>
             <IconButton 
                 onClick={props.handleModal}
                 style={{
@@ -142,7 +142,7 @@ export const EditEducation = (props) => {
                 >
                     Save
                 </Button>
-            </Box>
+            </Paper>
         </Modal>
     )
 }

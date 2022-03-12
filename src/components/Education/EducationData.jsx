@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems:"center",
         height: "10vh",
         width: "100%",
-        backgroundColor: 'white',
+        backgroundColor: theme.palette,
         marginTop:"20px",
         transition: "all 0.2s cubic-bezier(.25,.8,.25,1)",
         '&:hover': {

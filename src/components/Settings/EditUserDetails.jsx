@@ -35,7 +35,8 @@ export const EditUserDetails = () => {
             margin:"auto",
             color:"white",
             
-        }
+        },
+        
     }))
 
     const classes = useStyles()

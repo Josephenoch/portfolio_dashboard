@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Box, Button, makeStyles} from "@material-ui/core"
+import { Box, Button, makeStyles, Paper} from "@material-ui/core"
 
 
 
@@ -19,7 +19,7 @@ export const Settings = () => {
             display:"flex",
             flexWrap:"wrap",
             minHeight:"89vh",
-            justifyContent:"center"
+            justifyContent:"space-around"
         },
         contentContainer:{
             display:"flex",
@@ -29,11 +29,21 @@ export const Settings = () => {
             alignItems:"center",
             flexDirection:"column"
         },
+        buttonStyle:{
+            marginTop:"20px",
+            // left:"20%",
+            backgroundColor:theme.palette.primary.main,
+            color:"white",
+            borderColor:"white",
+            [theme.breakpoints.down("sm")]: {
+                left:"80%"
+            }
+        },
         
     }))
     const classes = useStyles() 
     return (
-        <div className={classes.rootContainer}>
+        <Paper className={classes.rootContainer}>
             <Box
                 className={classes.contentContainer}
                 elevation={10}
@@ -60,9 +70,11 @@ export const Settings = () => {
                
 
             </Box>
-            <Button>
+            <Button
+                className={classes.buttonStyle}
+            >
                 Save
             </Button>
-        </div>
+        </Paper>
     )
 }

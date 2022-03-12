@@ -1,11 +1,11 @@
 import {React, useState} from 'react'
-import { makeStyles, TextField, Button, Typography, IconButton } from '@material-ui/core'
+import { makeStyles, TextField, Button, Typography, IconButton, Paper } from '@material-ui/core'
 import { CancelOutlined } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) =>({
     container:{
         width:"40%",
-        backgroundColor: "white",
+        backgroundColor: theme.palette,
         padding:"30px",
         borderRadius:"30px",
         height:"49vh",
@@ -27,7 +27,11 @@ const useStyles = makeStyles((theme) =>({
     },
     skillText:{
         fontSize: "0.8em"
-    }
+    },
+    buttonStyle:{
+        backgroundColor:theme.palette.primary.main,
+        color:"white"
+    },
 }))
 const OtherSkills = () => {
     const classes = useStyles()
@@ -49,7 +53,7 @@ const OtherSkills = () => {
     }
     
   return (
-    <div className={classes.container}>
+    <Paper className={classes.container}>
         <TextField
             variant="outlined"
             id="Other SKills"
@@ -63,10 +67,7 @@ const OtherSkills = () => {
             InputProps={{endAdornment: <Button
                                             onClick={handleClick}
                                             disabled={skills.length >= 15 ? true : false}
-                                            style={{
-                                                backgroundColor:"rgb(47,199,245)",
-                                                color:"white"
-                                            }}
+                                            className={classes.buttonStyle}
                                         >
                                             Add
                                         </Button>}}
@@ -92,7 +93,7 @@ const OtherSkills = () => {
                 )
             }
         </div>
-    </div>
+    </Paper>
   )
 }
 export default  OtherSkills

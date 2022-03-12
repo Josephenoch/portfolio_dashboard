@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react"
-import {makeStyles, Button,TextField, Typography, Modal, Backdrop, Box, IconButton } from "@material-ui/core"
+import {makeStyles, Button,TextField, Typography, Modal, Backdrop, Box, IconButton, Paper } from "@material-ui/core"
 import {Cancel, Edit} from "@material-ui/icons"
 
 const useStyles= makeStyles((theme) =>({
     buttonStyle:{
         marginTop:"20px",
         left:"90%",
-        backgroundColor:"rgb(47,199,245)",
+        backgroundColor:theme.palette.primary.main,
         color:"white",
         borderColor:"white",
         [theme.breakpoints.down("sm")]: {
@@ -20,7 +20,7 @@ const useStyles= makeStyles((theme) =>({
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: "60vw",
-        backgroundColor: 'white',
+        backgroundColor: theme.palette,
         overflowY:"auto",
         overflowX:"hidden",
         border: '1px solid #777',
@@ -119,7 +119,7 @@ export const Details = (props) =>{
                 }}
                 >
                 
-                <Box className={classes.modal}>
+                <Paper className={classes.modal}>
                     <IconButton 
                         onClick={handleOpen}
                         style={{
@@ -149,7 +149,7 @@ export const Details = (props) =>{
                         >
                             Save
                     </Button>
-                </Box>
+                </Paper>
             </Modal>
             </div>
         </div>)
