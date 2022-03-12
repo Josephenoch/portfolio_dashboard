@@ -44,6 +44,15 @@ const useStyles = makeStyles((theme) =>({
     },
     drawerPaper:{
         marginTop:50
+    },
+    iconContainer:{
+        position:"absolute",
+        top:"25%",
+        left:"90%",
+        [theme.breakpoints.down("md")]:{
+            left:"60%",
+            top:"10%",
+        }
     }
 }))
 const Header = (props) => {
@@ -91,11 +100,7 @@ const Header = (props) => {
                 </Grid>
             </Grid>
             <Grid container 
-                style={{
-                    position:"absolute",
-                    top:"25%",
-                    left:"90%"
-                }}
+                className={classes.iconContainer}
                 
             >
                 <Grid item
