@@ -92,6 +92,7 @@ function App() {
   return (
     <div styles={{display:"flex"}}> 
       <ThemeProvider theme={darkTheme ? DarkTheme : LightTheme}> 
+        <CssBaseline />
         <Paper>
           <Sidebar />
           <Header 

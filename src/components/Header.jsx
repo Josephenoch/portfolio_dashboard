@@ -46,12 +46,8 @@ const useStyles = makeStyles((theme) =>({
         marginTop:50
     },
     iconContainer:{
-        position:"absolute",
-        top:"25%",
-        left:"90%",
-        [theme.breakpoints.down("md")]:{
-            left:"50%",
-            top:"10%",
+        [theme.breakpoints.up("lg")]:{
+            marginTop:"1.7%",
         }
     }
 }))
@@ -61,7 +57,8 @@ const Header = (props) => {
         setOpen(!open);   
     }
     const handleThemeMode = () =>{
-        props.setDarkTheme(window.localStorage.setItem("theme", !props.darkTheme),!props.darkTheme)
+        props.setDarkTheme(!props.darkTheme)
+        window.localStorage.setItem("theme", !props.darkTheme)
           
     }
     const classes = useStyles()
@@ -74,6 +71,22 @@ const Header = (props) => {
                         <img src={logo} alt="logo" className={classes.logo} />
                     </Grid>
                     <Grid item xs>
+                    </Grid>
+                    <Grid item
+                        className={classes.iconContainer}
+                    >
+                        <IconButton
+                            component={Link}
+                            to={"/Settings"}
+                        >
+                            <Settings/>
+                        </IconButton>
+                        <IconButton onClick={handleThemeMode}>
+                            {props.darkTheme ? <WbSunny/> : <NightsStay/>}
+                        </IconButton>
+                        <IconButton>
+                            <NotificationImportant/>
+                        </IconButton>
                     </Grid>
                     <Grid item>
                         <IconButton onClick={handleToggle} className={classes.menuIcon}> {open ? <Cancel /> : <Menu />} </IconButton>
@@ -101,27 +114,6 @@ const Header = (props) => {
                             />
                         </Drawer>
                     </Hidden>   
-                </Grid>
-            </Grid>
-            <Grid container 
-                className={classes.iconContainer}
-                
-            >
-                <Grid item
-                    
-                >
-                    <IconButton
-                        component={Link}
-                        to={"/Settings"}
-                    >
-                        <Settings/>
-                    </IconButton>
-                    <IconButton onClick={handleThemeMode}>
-                        {props.darkTheme ? <WbSunny/> : <NightsStay/>}
-                    </IconButton>
-                    <IconButton>
-                        <NotificationImportant/>
-                    </IconButton>
                 </Grid>
             </Grid>
        </AppBar>
