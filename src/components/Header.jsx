@@ -60,6 +60,10 @@ const Header = (props) => {
     const handleToggle = () => {
         setOpen(!open);   
     }
+    const handleThemeMode = () =>{
+        props.setDarkTheme(window.localStorage.setItem("theme", !props.darkTheme),!props.darkTheme)
+          
+    }
     const classes = useStyles()
     return (
         <AppBar color="default" className={classes.root} position="fixed" elevation={0}>
@@ -112,7 +116,7 @@ const Header = (props) => {
                     >
                         <Settings/>
                     </IconButton>
-                    <IconButton onClick={() => props.setDarkTheme(!props.darkTheme)}>
+                    <IconButton onClick={handleThemeMode}>
                         {props.darkTheme ? <WbSunny/> : <NightsStay/>}
                     </IconButton>
                     <IconButton>
