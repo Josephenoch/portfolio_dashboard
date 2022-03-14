@@ -20,8 +20,9 @@ const useStyles= makeStyles((theme) =>({
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: "60vw",
+        height:"30vh",
         backgroundColor: theme.palette,
-        overflowY:"auto",
+        overflowY:"scroll",
         overflowX:"hidden",
         border: '1px solid #777',
         boxShadow: 24,
@@ -29,7 +30,8 @@ const useStyles= makeStyles((theme) =>({
         [theme.breakpoints.down("sm")]:{
             width: "100vw",
             padding: "20px 10px 30px",
-        }
+        },
+        
     },
 }))
 
