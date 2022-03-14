@@ -51,7 +51,7 @@ const Education = () => {
     const [educationData, setEducationData] = useState([
         {
             id:0,
-            instName:"Anchor University",
+            instName:"MIT",
             cOStudy:"Computer Science",
             degree:"BSc.",
             grade:"1st Class",
@@ -62,9 +62,9 @@ const Education = () => {
         },
         {
             id:1,
-            instName:"Anchor Universit",
+            instName:"Harvard",
             cOStudy:"Computer Science",
-            degree:"BSc.",
+            degree:"MSc.",
             grade:"1st Class",
             startDate : "2022-10-20",
             endDate: "2022-10-20",

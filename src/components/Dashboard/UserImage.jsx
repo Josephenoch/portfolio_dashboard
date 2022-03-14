@@ -1,12 +1,12 @@
 import React from "react";
 
-import userImg from "../../assets/joseph.jpg"
+import userImg from "../../assets/cropped-user.jpg"
 
 import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles((theme) =>({
     div:{
         position:"relative", 
-        height:"40vh", 
+        height:"60vh", 
         width:"100%",
         background:`linear-gradient(0deg, rgba(111,227,255,0.3) 0%, rgba(47,199,245,0.3) 35%), url(${userImg})`,
         backgroundAttachment:"fixed",

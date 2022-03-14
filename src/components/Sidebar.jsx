@@ -1,6 +1,6 @@
 import {WorkOutlineOutlined, DeveloperMode, VerifiedUserOutlined, AssessmentOutlined,  SchoolOutlined, SettingsOutlined} from "@material-ui/icons"
 
-import userImg from "../assets/cropped.png"
+import userImg from "../assets/user.jpg"
 import {Avatar, List, ListItem, ListItemIcon, ListItemText, makeStyles, Grid, Typography, Paper} from "@material-ui/core";
 import {Link} from "react-router-dom"
 

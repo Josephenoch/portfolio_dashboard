@@ -4,7 +4,7 @@ import { Box, Typography, TextField, makeStyles, Input } from '@material-ui/core
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import userImage from "../../assets/joseph.jpg"
+import userImage from "../../assets/user.jpg"
 
 export const EditUserDetails = () => {
     const [userImg, setUserImg] = useState(userImage)

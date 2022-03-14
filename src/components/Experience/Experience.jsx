@@ -75,7 +75,7 @@ const Experience = ()=>{
       {
         position : "Developer",
         id : 1,
-        company : "TPS",
+        company : "Twitter",
         startDate : "2022-10-20",
         endDate : "2022-10-20",
         present: false,
@@ -85,11 +85,11 @@ const Experience = ()=>{
       {
         position : "Course Instructor",
         id : 2,
-        company : "HiiT",
+        company : "Edureka",
         startDate : "2022-10-20",
         endDate : "2022-10-20",
         present: false,        
-        experienceText:"Hoe",
+        experienceText:"Hoemcml",
         active : true
       }  
     ])// dummy data for testting the app. In productionmode, api's would be used
