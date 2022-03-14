@@ -1,5 +1,5 @@
 import React from "react"
-import {makeStyles, Typography} from "@material-ui/core"
+import {makeStyles, Typography, Paper} from "@material-ui/core"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
         width:"100%",
         height:80,
         maxHeight:"10vh",
-        backgroundColor:theme.palette,
+        backgroundColor:theme.palette.primary.appBar,
         overflow:"visible",
         [theme.breakpoints.down("md")]:{
             marginTop:"1.4vh",
@@ -26,7 +26,7 @@ const PageHeader = (props) =>{
     const styles = useStyles()
     return (
         <div>
-            <div className = {styles.headerDiv}>
+            <Paper className = {styles.headerDiv}>
                 <Typography
                     variant="h3"
                     className = {styles.text}
@@ -34,7 +34,7 @@ const PageHeader = (props) =>{
                     List of {props.title}
                 </Typography>
                 
-            </div>
+            </Paper>
         </div>
     )
 }
