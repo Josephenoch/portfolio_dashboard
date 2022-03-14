@@ -26,9 +26,9 @@ const useStyles = makeStyles((theme) => ({
        marginLeft:5
    } 
 }))
-const fname = "Joseph"
-const lname = "Enoch"
-const email = "enochjoseph01@gmail.com"
+const fname = "John"
+const lname = "Doe"
+const email = "johndoe@gmail.com"
 const Sidebar=(() =>{
    const  classes = useStyles()
     return (
@@ -39,9 +39,26 @@ const Sidebar=(() =>{
                         <Avatar alt="Joseph Enoch" src={userImg} />
                     </Grid >
                     <Grid item className={classes.userDetails}>
-                        <Typography variant="body2" display="inline">{fname}</Typography>
-                        <Typography variant="body2" display="inline"> {lname}</Typography>
-                        <Typography variant="body2">{email}</Typography>
+                        <Typography 
+                            variant="body2"  
+                            style={{
+                                width:"200px",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                            }}
+                        >
+                                {`${fname} ${lname}`}
+                        </Typography>
+                        <Typography 
+                            variant="body2"
+                            style={{
+                                width:"200px",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                            }}
+                        >
+                                {email}
+                        </Typography>
                     </Grid >
                 </Grid>
             </div>
