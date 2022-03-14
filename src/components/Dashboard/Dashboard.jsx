@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) =>({
         alignItems:"center", 
         width: "100%",
         [theme.breakpoints.up("lg")]: {
-        height: "300px",
+        height: "100%",
     }
     },
     link:{
