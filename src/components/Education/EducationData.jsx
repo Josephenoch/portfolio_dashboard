@@ -1,6 +1,6 @@
 import {React, useEffect, useState} from 'react'
 
-import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse, Button, Modal, Backdrop, useTheme} from "@material-ui/core";
+import {makeStyles, Box, Typography, Grid, Avatar, Chip, IconButton, Collapse, Button, Modal, Backdrop, useTheme, Paper} from "@material-ui/core";
 import {Event, MoreHoriz, Delete, Edit, Publish, Cancel} from "@material-ui/icons";
 import {EditEducation} from './EditEducation';
 
@@ -92,7 +92,6 @@ const useStyles = makeStyles((theme) => ({
         transform: 'translate(-50%, -50%)',
         width: "25vw",
         height:"25vh",
-        backgroundColor: 'white',
         border: '1px solid #777',
         boxShadow: 24,
         borderRadius:20,
@@ -185,7 +184,7 @@ const EducationData= (props) => {
     }
     const classes = useStyles()
     return (
-        <Box className={classes.dataContainer} boxShadow={1}>
+        <Paper className={classes.dataContainer} boxShadow={1}>
             <Grid container className={classes.avatarContainer}>
                 <Grid item>
                     <Avatar
@@ -240,7 +239,7 @@ const EducationData= (props) => {
                         timeout: 1000,
                     }}
                 >
-                    <Box className={classes.modal}>
+                    <Paper className={classes.modal}>
                         
                         <Typography
                             variant="body1"
@@ -279,7 +278,7 @@ const EducationData= (props) => {
                                 Cancel
                             </Button>
                         </Box>
-                    </Box>
+                    </Paper>
                 </Modal>
             </Box>
             <EditEducation
@@ -291,7 +290,7 @@ const EducationData= (props) => {
                 btnDisabled={btnDisabled}
                 handleSave={handleSave}
             />
-        </Box>        
+        </Paper>        
     )
 }
 export default EducationData

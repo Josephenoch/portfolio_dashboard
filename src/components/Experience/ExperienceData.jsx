@@ -86,7 +86,6 @@ const useStyles = makeStyles((theme) => ({
         transform: 'translate(-50%, -50%)',
         width: "25vw",
         height:"25vh",
-        backgroundColor: 'white',
         border: '1px solid #777',
         boxShadow: 24,
         borderRadius:20,
@@ -261,7 +260,7 @@ const ExperienceData = (props) => {
                         timeout: 1000,
                     }}
                 >
-                    <Box className={classes.modal}>
+                    <Paper className={classes.modal}>
                         
                         <Typography
                             variant="body1"
@@ -300,7 +299,7 @@ const ExperienceData = (props) => {
                                 Cancel
                             </Button>
                         </Box>
-                    </Box>
+                    </Paper>
                 </Modal>
             </Box>
             <EditExperience  

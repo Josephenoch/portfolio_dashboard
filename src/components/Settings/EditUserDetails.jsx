@@ -36,6 +36,32 @@ export const EditUserDetails = () => {
             color:"white",
             
         },
+        detailsBox:{
+            width:"49%",
+            marginRight:"2%",
+            [theme.breakpoints.down("md")]:{
+                width:"100%",
+                marginRight:"0",
+            }
+            
+        },
+        textFieldBox:{
+            width:"100%",
+            marginLeft:"30px",
+            marginTop:"20px",
+            [theme.breakpoints.down("md")]:{
+                marginLeft:"0px",  
+            }
+        },
+        imageContainer:{
+            width:"49%",
+            height:"40vh",
+            marginTop:"4%",
+            [theme.breakpoints.down("md")]:{
+                width:"100%",
+                order:"-1"
+            }
+        }
         
     }))
 
@@ -64,15 +90,11 @@ export const EditUserDetails = () => {
             style={{
                 display:"flex",
                 width:"100%",
+                flexWrap:"wrap"
             }}
         >
-            <Box
-                
-                style={{
-                    width:"49%",
-                    marginRight:"2%",
-                    
-                }}
+            <Box  
+                className={classes.detailsBox}
             >
                 <Typography
                     variant="h5"
@@ -84,11 +106,7 @@ export const EditUserDetails = () => {
                     Your Details
                 </Typography>
                 <Box 
-                    style={{
-                        width:"100%",
-                        marginLeft:"30px",
-                        marginTop:"20px"
-                    }}
+                    className={classes.textFieldBox}
                 >
                     <TextField 
                         label="First Name"
@@ -139,12 +157,7 @@ export const EditUserDetails = () => {
                 </Box>
             </Box>
             <Box
-                className='userDetails'
-                style={{
-                    width:"49%",
-                    height:"40vh",
-                    marginTop:"4%"
-                }}
+                className={classes.imageContainer}
             >
                 <label htmlFor="image-input">
                     <Box

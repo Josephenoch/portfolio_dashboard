@@ -53,9 +53,9 @@ export const Graph = (props) => {
                                 return ""
                             }}
                         />
-                        <YAxis datakey="value" tickCount={5}/>
+                        <YAxis datakey="value" tickCount={5} />
                         <Tooltip/>
-                        <CartesianGrid  strokeDasharray="3 3"/>
+                        <CartesianGrid  strokeDasharray="3"/>
                         <Legend verticalAlign="bottom" height={36}/>
                     </AreaChart>   
                 </ResponsiveContainer>

@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) =>({
         alignItems:"center", 
         width: "100%",
         [theme.breakpoints.up("lg")]: {
-
         height: "300px",
     }
     },
@@ -93,7 +92,6 @@ export const Dashboard = () => {
                                 number={datum.number}
                                 percent={datum.percent}
                                 color={`linear-gradient(90deg, ${datum.color1}0%, ${datum.color2} 100%)`}
-                                // color={datum.color}
                                 icon={datum.icon}
                             />
                         </Link>

@@ -6,7 +6,7 @@ import Experience from "./components/Experience/Experience"
 import Education from "./components/Education/Education";
 import SKill from "./components/Skill/Skill";
 import Header from "./components/Header"
-import {CssBaseline, makeStyles, createTheme, ThemeProvider, responsiveFontSizes, Paper} from "@material-ui/core"
+import {CssBaseline, makeStyles, createTheme, ThemeProvider, responsiveFontSizes,  Paper} from "@material-ui/core"
 import { Route, Routes} from "react-router-dom"
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -28,8 +28,6 @@ WebFont.load({
 let LightTheme = createTheme({
   
   palette:{
-    // type:"dark",
-    
     primary:{
       main:"rgb(47,199,245)",
       light:"rgb(111,227,255)",
@@ -64,6 +62,8 @@ let DarkTheme = createTheme({
   
 })
 
+LightTheme = responsiveFontSizes(LightTheme)
+DarkTheme = responsiveFontSizes(DarkTheme)
 
 const useStyles = makeStyles((theme) =>({
   mainContent:{

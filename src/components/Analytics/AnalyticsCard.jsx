@@ -6,12 +6,11 @@ const useStyles = makeStyles((theme) => ({
     root:{
         height:"80%",
         width:"100%",
-        margin:"0 15px",
         borderRadius: "30px",
         minWidth:"250px",
         transition:"transform 0.2s ease-in-out",
         [theme.breakpoints.down("md")]:{
-            margin:"15px 15px",
+            margin:"15px 0",
             width:"100%",
         },
         '&:hover':{
