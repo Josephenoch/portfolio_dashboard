@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-import { Box, Typography, TextField, makeStyles, Input } from '@material-ui/core'
+import { Box, Typography, TextField, makeStyles, Input, Paper, Button } from '@material-ui/core'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -9,6 +9,14 @@ import userImage from "../../assets/user.jpg"
 export const EditUserDetails = () => {
     const [userImg, setUserImg] = useState(userImage)
     const useStyles = makeStyles((theme)=>({
+        rootContainer:{
+            display:"flex",
+            width:"100%",
+            flexWrap:"wrap",
+            [theme.breakpoints.down("md")]:{
+                height:"90vh"
+            }
+        },
         image:{
             height:"200px",
             width:"200px",
@@ -26,7 +34,8 @@ export const EditUserDetails = () => {
             },
             '&:hover $uploadIcon':{
                 height:50,
-            }
+            },
+            
         },
         uploadIcon:{
             transition: "all 0.2s cubic-bezier(.25,.8,.25,1)",
@@ -50,7 +59,8 @@ export const EditUserDetails = () => {
             marginLeft:"30px",
             marginTop:"20px",
             [theme.breakpoints.down("md")]:{
-                marginLeft:"0px",  
+                marginLeft:"0px",
+                marginTop:"20px",  
             }
         },
         imageContainer:{
@@ -59,9 +69,21 @@ export const EditUserDetails = () => {
             marginTop:"4%",
             [theme.breakpoints.down("md")]:{
                 width:"100%",
+                height:"250px",
                 order:"-1"
             }
-        }
+        },
+        buttonStyle:{
+            marginBottom:"20px",
+            left:"90%",
+            backgroundColor:theme.palette.primary.main,
+            color:"white",
+            borderColor:"white",
+            [theme.breakpoints.down("md")]: {
+                marginTop:"20px",
+                left:"80%"
+            }
+        },
         
     }))
 
@@ -86,12 +108,8 @@ export const EditUserDetails = () => {
         }
     }
     return (
-        <Box
-            style={{
-                display:"flex",
-                width:"100%",
-                flexWrap:"wrap"
-            }}
+        <Paper
+            className={classes.rootContainer}
         >
             <Box  
                 className={classes.detailsBox}
@@ -177,7 +195,13 @@ export const EditUserDetails = () => {
                     }}
                     onChange={handleFileChange}
                 />
+
             </Box>
-        </Box>
+            <Button
+                className={classes.buttonStyle}
+            >
+                Save
+            </Button>
+        </Paper>
     )
 }

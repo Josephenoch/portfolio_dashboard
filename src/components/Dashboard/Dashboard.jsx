@@ -1,6 +1,6 @@
 import React from 'react'
 import {AnalyticsCard} from "../Analytics/AnalyticsCard"
-import {BasicTable} from "./BasicTable"
+import {MessageComponent} from "./MessageComponent"
 import { makeStyles} from "@material-ui/core"
 import {Link} from "react-router-dom"
 import {UserImage} from './UserImage'
@@ -103,7 +103,7 @@ export const Dashboard = () => {
             </div>
 
             <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop: "94px" }} elevation={0}>
-                <BasicTable/>
+                <MessageComponent/>
             </div>
          </div>
     )
