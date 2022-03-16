@@ -1,9 +1,10 @@
-import { Box, Paper, makeStyles } from '@material-ui/core'
+import { Box, Paper, makeStyles, Typography } from '@material-ui/core'
 import React,{useEffect, useState} from 'react'
 import { subDays } from 'date-fns'
 import { Graph } from './Graph'
 import { ShowChart } from './ShowChart'
 import { RawData } from './RawData'
+import { AnalyticsDuration } from './AnalyticsDuration'
 
 
 const data = []
@@ -126,8 +127,21 @@ export const Analytics = () => {
  
     return (
         <Box className={classes.parentContainer}>
+            
             <Paper elevation={10} className={classes.graphContainer}
             >
+                <Typography
+                    variant="h3"
+                    style={{
+                        margin:"0 0 20px 20px "
+                    }}
+                >
+                    Analytics
+                </Typography>
+                <AnalyticsDuration
+                    setNoOfData={setNoOfData}
+                    noOfData={noOfData}
+                />
                 <Graph
                     data={dataToDisplay}
                     showChart={showChart}

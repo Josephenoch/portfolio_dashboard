@@ -16,7 +16,7 @@ export const MessageComponent= ()=> {
     return (
         <TableContainer component={Paper} style={{ width: "90%" }} elevation={5}>
 
-            <Table sx={{ minWidth: 400, borderBottom:"none" }} aria-label="simple table">
+            <Table sx={{ minWidth: 400 }} aria-label="simple table">
                 <TableBody>
                     {rows.map((row) => (
                         <TableRow

@@ -30,35 +30,26 @@ export const RawData = (props) => {
                             <Typography
                                 variant="body1"
                             >
-                                {`${itemTot.name} total ${itemTot.total}`}
+                                {itemTot.name}
                             </Typography>
                         )
                     })}
                 </Box>
                 <Box
                     style={{
-                        width:"60%"
+                        width:"30%",
+                        marginLeft:"5%"
                     }}
                 >
-                    <FormControl variant="outlined"  style={{minWidth: "100%"}}>
-                        <InputLabel id="demo-simple-select-standard-label" shrink>Display data</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-standard-label"
-                            id="demo-simple-select-standard"
-                            value={props.noOfData}
-                            onChange={e=>props.setNoOfData(e.target.value)}
-                            style={{
-                                width:"100%"
-                            }}
-                            label="Display Data"
-                        >
-                            <MenuItem value={10}>10 Days</MenuItem>
-                            <MenuItem value={7}>Last Week</MenuItem>
-                            <MenuItem value={30}>Last Month</MenuItem>
-                            <MenuItem value={365}>Last Year</MenuItem>
-                            <MenuItem value={props.data.length-1}>All Time</MenuItem>
-                        </Select>
-                    </FormControl>
+                    {props.total.map(itemTot =>{
+                        return(
+                            <Typography
+                                variant="body1"
+                            >
+                                {itemTot.total}
+                            </Typography>
+                        )
+                    })}
                 </Box>
             </Box>
         </Box>

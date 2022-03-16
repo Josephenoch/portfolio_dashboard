@@ -15,15 +15,8 @@ export const Graph = (props) => {
                     backgroundColor:theme.palette.background.paper,
                 }}
             >
-                <Typography
-                    variant="h3"
-                    style={{
-                        margin:"0 0 20px 20px "
-                    }}
-                >
-                    Analytics
-                </Typography>
-                <ResponsiveContainer width="98%" height={300}>
+                
+                <ResponsiveContainer width="98%" height={300} style={{padding:0}}>
                     <AreaChart margin={{ top: 0, left: -30, right: 0, bottom: 0 }} data={data}>
                         <defs>
                             <linearGradient id="color0" x1="0" y1="0" x2="0" y2="1">
