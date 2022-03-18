@@ -47,7 +47,7 @@ export const ShowChart = (props) => {
                                 name={chart.name}
                             />
                         } 
-                        label={`Show ${chart.name}`}  
+                        label={`${chart.name}`}  
                     />   
                 )
             })}
