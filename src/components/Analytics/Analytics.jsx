@@ -3,7 +3,7 @@ import React,{useEffect, useState} from 'react'
 import { subDays } from 'date-fns'
 import { Graph } from './Graph'
 import { ShowChart } from './ShowChart'
-import { RawData } from './RawData'
+
 import { AnalyticsDuration } from './AnalyticsDuration'
 import { AnalyticsCard } from './AnalyticsCard'
 import { People, ArrowDownward, Message } from '@material-ui/icons'
@@ -33,6 +33,7 @@ const useStyle = makeStyles((theme)=>({
         marginTop:"20px",
         [theme.breakpoints.down("md")]:{
             marginTop:"40px", 
+            width:"100%"
         }
     },
     showChartContainer:{
@@ -59,6 +60,12 @@ const useStyle = makeStyles((theme)=>({
         flexWrap: "wrap",
         justifyContent: "space-around",
         alignItems:"center", 
+        width: "100%",
+        [theme.breakpoints.up("lg")]: {
+            height: "100%",
+        }
+    },
+    card:{
         width:"30%",
         [theme.breakpoints.down("md")]: {
             width:"80%",
@@ -68,37 +75,7 @@ const useStyle = makeStyles((theme)=>({
 
 export const Analytics = () => {
     const classes = useStyle()
-    const analyticsData = [
-        {
-            id:1,
-            message:"Weekly Visitors",
-            number:200,
-            percent:10,
-            color1:"rgba(136, 132, 216,1)",
-            color2:"rgb(217, 130, 207,1)",
     
-            icon:<People className={classes.iconStyle}/>,
-        },
-        {
-            id:2,
-            message:"CV Downloads",
-            number:400,
-            percent:25,
-            color1:"rgba(130, 202, 157,1)",
-            color2:"rgba(50, 97, 113, 1)",
-            icon:<ArrowDownward className={classes.iconStyle}/>,
-        },
-        {
-    
-            id:3,
-            message:"Messages",
-            number:250,
-            percent:40,
-            color1:"rgba(198,148,249,1)",
-            color2:"rgb(255, 141, 219, 1)",
-            icon:<Message className={classes.iconStyle}/>,
-        }
-    ]
     
     
     const [noOfData, setNoOfData] = useState(10)
@@ -131,6 +108,37 @@ export const Analytics = () => {
             total:0
         }
     ])
+    const analyticsData = [
+        {
+            id:1,
+            message:"Weekly Visitors",
+            number:total[0].total,
+            percent:10,
+            color1:"rgba(136, 132, 216,1)",
+            color2:"rgb(217, 130, 207,1)",
+    
+            icon:<People className={classes.iconStyle}/>,
+        },
+        {
+            id:2,
+            message:"CV Downloads",
+            number:total[1].total,
+            percent:25,
+            color1:"rgba(130, 202, 157,1)",
+            color2:"rgba(50, 97, 113, 1)",
+            icon:<ArrowDownward className={classes.iconStyle}/>,
+        },
+        {
+    
+            id:3,
+            message:"Messages",
+            number:total[2].total,
+            percent:40,
+            color1:"rgba(198,148,249,1)",
+            color2:"rgb(255, 141, 219, 1)",
+            icon:<Message className={classes.iconStyle}/>,
+        }
+    ]
     const handleChange = (e) => {
         const name = e.target.name
         const checked = e.target.checked
@@ -195,30 +203,23 @@ export const Analytics = () => {
             <Paper elevation={10} className={classes.showChartContainer}
             >  
                 <ShowChart
-                    total={total}
                     showChart={showChart}
                     handleChange={handleChange}
                     
                 />
             </Paper>
-            <Paper elevation={10} className={classes.rawDataContainer}
-            >
-                <RawData
-                    data={data}
-                    total={total}
-                    noOfData={noOfData}
-                    setNoOfData={setNoOfData}
-                />   
-            </Paper>
             <Box className={classes.cardContainer}>
                     {analyticsData.map(datum=>{
-                        return <AnalyticsCard
-                                message={datum.message}
-                                number={datum.number}
-                                percent={datum.percent}
-                                color={`linear-gradient(90deg, ${datum.color1}0%, ${datum.color2} 100%)`}
-                                icon={datum.icon}
-                        />
+                        return <Box className={classes.card}>
+                                <AnalyticsCard
+                                    message={datum.message}
+                                    number={datum.number}
+                                    percent={datum.percent}
+                                    color={`linear-gradient(90deg, ${datum.color1}0%, ${datum.color2} 100%)`}
+                                    icon={datum.icon}
+                            
+                                />
+                            </Box>
                     })}
             </Box>
         </Box>
