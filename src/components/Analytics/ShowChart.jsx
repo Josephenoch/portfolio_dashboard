@@ -1,42 +1,56 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 
-import  {Box, Typography, FormControlLabel, Switch} from "@material-ui/core"
+import  {Box, FormControlLabel, Checkbox, makeStyles} from "@material-ui/core"
+
+const useStyles = makeStyles((theme)=>({
+    container:{
+        marginTop:20,
+        marginBottom:20,
+        display:"flex",
+        justifyContent:"center",
+        width:"100%"
+    },
+}))
 
 export const ShowChart = (props) => {
-return (
-    <Box>
-        <Typography
-            variant="h4"
-            style={{
-                margin:"20px 0 20px 20px "
-            }}
-        >
-            Edit Graph
-        </Typography>
-        <Box
-            style={{
-                marginLeft:"50px"
-            }}
-        >
-            {props.showChart.map(chart =>{
-                return(
-                    <Box>
-                        <FormControlLabel 
-                            control={
-                                <Switch  
-                                    color="primary" 
-                                    checked={chart.display}  // the name is the same as the object name in the parent data
-                                    onChange={props.handleChange}
-                                    name={chart.name}  // the name is the same as the object name in the parent data
-                                />
-                            } 
-                        label={`Show ${chart.name}`} />   
-                    </Box>
-                )
-            })
+    const classes = useStyles()
+    const [checkedFor, setCheckedFor] = useState([false,false,false])
+
+    useEffect(()=>{
+        var found  =0
+        var arr = [...checkedFor]
+        for(let i in props.showChart){
+            if (props.showChart[i].display===false){
+                found++
+                arr[i] = true
+            }
         }
-        
+        if(found>1){
+            arr = arr.map(item=> !item)
+        }
+        else{
+            arr = [false, false, false]
+        }
+        setCheckedFor(arr)
+    },[props.showChart])
+
+    return (
+        <Box className={classes.container}>
+            {props.showChart.map((chart,i) =>{
+                return(
+                    <FormControlLabel 
+                        control={
+                            <Checkbox 
+                                checked={chart.display}
+                                disabled={checkedFor[i]}
+                                onChange={props.handleChange}
+                                name={chart.name}
+                            />
+                        } 
+                        label={`Show ${chart.name}`}  
+                    />   
+                )
+            })}
         </Box>
-    </Box>
-)
+    )
 }

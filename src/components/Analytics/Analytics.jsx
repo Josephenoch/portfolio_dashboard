@@ -31,28 +31,10 @@ const useStyle = makeStyles((theme)=>({
     graphContainer:{
         width:"98%",
         marginTop:"20px",
+        marginBottom:"50px",
         [theme.breakpoints.down("md")]:{
             marginTop:"40px", 
             width:"100%"
-        }
-    },
-    showChartContainer:{
-        width:"37.5%",
-        marginTop:"20px",
-        height:"28vh",
-        marginBottom:"20px",
-        [theme.breakpoints.down("md")]:{
-            width:"98%",
-            marginBottom:"0"
-        }
-    },
-    rawDataContainer:{
-        width:"59.5%",
-        marginTop:"20px",
-        marginLeft:"1%",
-        marginBottom:"20px",
-        [theme.breakpoints.down("md")]:{
-            width:"98%"
         }
     },
     cardContainer:{
@@ -173,7 +155,6 @@ export const Analytics = () => {
             newArray[1].total = newArray[1].total+data[i].CV
             newArray[2].total=newArray[2].total+data[i].Visitors
         }
-        console.log(newArray)
         setTotal(newArray)
     },[noOfData])
 
@@ -195,17 +176,14 @@ export const Analytics = () => {
                     setNoOfData={setNoOfData}
                     noOfData={noOfData}
                 />
-                <Graph
-                    data={dataToDisplay}
-                    showChart={showChart}
-                />
-            </Paper>
-            <Paper elevation={10} className={classes.showChartContainer}
-            >  
                 <ShowChart
                     showChart={showChart}
                     handleChange={handleChange}
                     
+                />
+                <Graph
+                    data={dataToDisplay}
+                    showChart={showChart}
                 />
             </Paper>
             <Box className={classes.cardContainer}>
