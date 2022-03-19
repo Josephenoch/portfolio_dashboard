@@ -1,7 +1,7 @@
 import { format, parseISO } from 'date-fns'
 import React from 'react'
 import { ResponsiveContainer, AreaChart, YAxis, XAxis, Area, Tooltip, CartesianGrid, Legend } from 'recharts'
-import { Typography, Box, useTheme } from '@material-ui/core'
+import { Box, useTheme } from '@material-ui/core'
 
 
 

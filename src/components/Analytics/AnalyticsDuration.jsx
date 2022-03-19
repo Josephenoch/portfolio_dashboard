@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import { useTheme, makeStyles, Button } from '@material-ui/core'
 
 
@@ -50,7 +50,6 @@ export const AnalyticsDuration = (props) => {
             value:365
         },
     ]
-    const [duration, setDuration] = useState(props.noOfData)
     const handleClick = (value) =>{
         console.log(value)
         props.setNoOfData(value)
