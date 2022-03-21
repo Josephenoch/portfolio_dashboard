@@ -1,13 +1,12 @@
 import {WorkOutlineOutlined, DeveloperMode, VerifiedUserOutlined, AssessmentOutlined, SchoolOutlined } from "@material-ui/icons"
-import {List, ListItemIcon, ListItemText, ListItem, } from "@material-ui/core/"
+import {List, ListItemIcon, ListItemText, ListItem, Box } from "@material-ui/core/"
 import { Link } from "react-router-dom"
 
 
 const AppMenu = (props) => {
-   
     return (
-           <div> 
-                <List style={{ width: '100%', bgcolor: 'background.paper' }}
+           <Box> 
+                <List style={{ width: '100%', }}
                     component="nav"
                     aria-labelledby="nested-list-subheader"
                 >
@@ -42,7 +41,7 @@ const AppMenu = (props) => {
                         <ListItemText secondary="Certificates" />
                     </ListItem>
                 </List>
-           </div>
+           </Box>
     )
 }
 

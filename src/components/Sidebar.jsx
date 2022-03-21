@@ -1,8 +1,9 @@
 import {WorkOutlineOutlined, DeveloperMode, VerifiedUserOutlined, AssessmentOutlined,  SchoolOutlined, SettingsOutlined} from "@material-ui/icons"
 
 import userImg from "../assets/user.jpg"
-import {Avatar, List, ListItem, ListItemIcon, ListItemText, makeStyles, Grid, Typography} from "@material-ui/core";
+import {Avatar, List, ListItem, ListItemIcon, ListItemText, makeStyles, Grid, Typography, Box} from "@material-ui/core";
 import {Link} from "react-router-dom"
+import { useEffect, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
    root:{
@@ -22,70 +23,107 @@ const useStyles = makeStyles((theme) => ({
         }
    },
    
+   
    userDetails:{
-       marginLeft:5
-   } 
+       marginLeft:5,
+       marginTop:20, 
+       textDecoration:"none", 
+       color:theme.palette.type ==="dark" ? "white" : "black",
+       whiteSpace:"no-wrap"
+   },
+    userDetailsText:{
+        marginLeft:"10px",
+        width:"200px",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+    } 
 }))
-const fname = "John"
-const lname = "Doe"
-const email = "johndoe@gmail.com"
-const Sidebar=(() =>{
-   const  classes = useStyles()
+
+const data = {
+    fName:"John",
+    lName : "Doe",
+    email : "johndoe@gmail.com"
+}
+const Sidebar=((props) =>{
+    const  classes = useStyles()
+    const [clicked, setClicked] = useState(false)
+    const handleLocation = ()=>{
+        setClicked(!clicked)
+    }
+    useEffect(()=>{
+        props.setLocation(window.location.pathname)
+    },[clicked, props])
     return (
-        <div className = {classes.root} direction="column">
-            <div style={{marginTop:20}}>
+        <Box className = {classes.root} direction="column">
+            <Box className={classes.userDetails} component={Link} to="/settings">
                 <Grid container>
                     <Grid item>
                         <Avatar alt="Joseph Enoch" src={userImg} />
                     </Grid >
-                    <Grid item className={classes.userDetails}>
+                    <Grid item>
                         <Typography 
                             variant="body2"  
-                            style={{
-                                width:"200px",
-                                overflow: "hidden",
-                                textOverflow: "ellipsis",
-                            }}
+                            className={classes.userDetailsText}
                         >
-                                {`${fname} ${lname}`}
+                                {`${data.fName} ${data.lName}`}
                         </Typography>
                         <Typography 
                             variant="body2"
-                            style={{
-                                width:"200px",
-                                overflow: "hidden",
-                                textOverflow: "ellipsis",
-                            }}
+                            className={classes.userDetailsText}
                         >
-                                {email}
+                                {data.email}
                         </Typography>
                     </Grid >
                 </Grid>
-            </div>
-            <div style={{marginTop:"30px"}}>
+            </Box>
+            <Box style={{marginTop:"30px"}}>
                 <List style={{ width: '120%', bgcolor: 'background.paper', marginLeft:-20}}
                     component="nav"
                     aria-labelledby="nested-list-subheader"
                         >
-                    <ListItem button key="Dashboard" component={Link} to={'/portfolio_dashboard'}>   
+                    <ListItem 
+                        button 
+                        key="Dashboard" 
+                        component={Link} 
+                        to={'/portfolio_dashboard'}
+                        onClick={handleLocation}
+                    >   
                         <ListItemIcon>
                             <AssessmentOutlined />
                         </ListItemIcon>
                         <ListItemText primary="Dashboard" />
                     </ListItem>
-                    <ListItem button key="Experience" component={Link} to={'/Experience'}>
+                    <ListItem 
+                        button 
+                        key="Experience" 
+                        component={Link} 
+                        to={'/Experience'}
+                        onClick={handleLocation}
+                    >
                         <ListItemIcon>
                             <WorkOutlineOutlined />
                         </ListItemIcon>
                         <ListItemText primary="Experience" />
                     </ListItem>
-                    <ListItem button key="Education" component={Link} to={'/Education'}>
+                    <ListItem 
+                        button 
+                        key="Education" 
+                        component={Link} 
+                        to={'/Education'}
+                        onClick={handleLocation}
+                    >
                         <ListItemIcon>
                             <SchoolOutlined />
                         </ListItemIcon>
                         <ListItemText primary="Education" />
                     </ListItem>
-                    <ListItem button key="Skill" component={Link} to={'/Skill'}>
+                    <ListItem 
+                        button 
+                        key="Skill" 
+                        component={Link} 
+                        to={'/Skill'} 
+                        onClick={handleLocation}
+                    >
                         <ListItemIcon>
                             <DeveloperMode />
                         </ListItemIcon>
@@ -106,6 +144,7 @@ const Sidebar=(() =>{
                             marginTop:50,
                         }}
                         component={Link} 
+                        onClick={handleLocation}
                         to={'/Settings'}
                     >
                         <ListItemIcon>
@@ -114,8 +153,8 @@ const Sidebar=(() =>{
                         <ListItemText primary="Settings" />
                     </ListItem>
                 </List> 
-            </div>
-        </div>
+            </Box>
+        </Box>
     )
 })
 export default Sidebar

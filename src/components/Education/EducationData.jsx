@@ -184,7 +184,7 @@ const EducationData= (props) => {
     }
     const classes = useStyles()
     return (
-        <Paper className={classes.dataContainer} boxShadow={1}>
+        <Paper className={classes.dataContainer} boxshadow={1}>
             <Grid container className={classes.avatarContainer}>
                 <Grid item>
                     <Avatar

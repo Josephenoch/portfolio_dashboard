@@ -178,6 +178,7 @@ export const Analytics = () => {
                 />
                 <ShowChart
                     showChart={showChart}
+                    setShowChart={setShowChart}
                     handleChange={handleChange}
                     
                 />
@@ -188,7 +189,11 @@ export const Analytics = () => {
             </Paper>
             <Box className={classes.cardContainer}>
                     {analyticsData.map(datum=>{
-                        return <Box className={classes.card}>
+                        return (
+                            <Box 
+                                className={classes.card}
+                                key={datum.id}
+                            >
                                 <AnalyticsCard
                                     message={datum.message}
                                     number={datum.number}
@@ -198,6 +203,7 @@ export const Analytics = () => {
                             
                                 />
                             </Box>
+                        )
                     })}
             </Box>
         </Box>

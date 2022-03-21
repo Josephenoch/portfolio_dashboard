@@ -31,9 +31,9 @@ export const MessageComponent= ()=> {
                     {rows.map((row) => (
                         <TableRow
                             key={row.name}
-                            style={{ '&:last-child td, &:last-child th': { border: 0}}}>
+                            >
                         <TableCell style={{paddingRight:0, width:"10px"}}>
-                                <Avatar>
+                                <Avatar component={Paper}>
                                     {row.name[0]}
                                 </Avatar>
                             </TableCell >

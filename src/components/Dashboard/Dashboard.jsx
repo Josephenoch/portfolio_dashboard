@@ -97,7 +97,7 @@ export const Dashboard = () => {
             <Box className={classes.card}  style={{overflow:"auto"}}> 
                 {data.map(datum =>{
                     return(
-                        <Link to={`/Analytics`} className={classes.link}>
+                        <Link key={datum.id} to={`/Analytics`} className={classes.link}>
                             <AnalyticsCard 
                                 message={datum.message}
                                 number={datum.number}

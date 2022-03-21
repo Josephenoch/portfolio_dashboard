@@ -21,6 +21,7 @@ const EducationDataTable = (props) => {
            {props.educationData.map(data => {
               return( 
               <EducationData
+                    key={data.id}
                     data={data}
                     setEducationData={props.setEducationData}
                     educationData = {props.educationData}                 

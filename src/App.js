@@ -89,15 +89,21 @@ const useStyles = makeStyles((theme) =>({
 function App() {
   const classes = useStyles()
   const [darkTheme, setDarkTheme] = useState(window.localStorage.getItem("theme") || false)
+  const [location, setLocation] = useState(window.location.pathname)
   return (
     <div styles={{display:"flex"}}> 
       <ThemeProvider theme={darkTheme ? DarkTheme : LightTheme}> 
         <CssBaseline />
         <Paper>
-          <Sidebar />
+          <Sidebar 
+            location={location}
+            setLocation={setLocation}
+          />
           <Header 
             darkTheme={darkTheme}
             setDarkTheme={setDarkTheme}
+            location={location}
+            setLocation={setLocation}
           />    
           <Paper className={classes.mainContent}>
             

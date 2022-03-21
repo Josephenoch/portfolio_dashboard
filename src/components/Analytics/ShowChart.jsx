@@ -28,7 +28,7 @@ export const ShowChart = (props) => {
         if(found>1){
             arr = arr.map(item=> !item)
         }
-        else{
+        else{   
             arr = [false, false, false]
         }
         setCheckedFor(arr)
@@ -38,9 +38,10 @@ export const ShowChart = (props) => {
         <Box className={classes.container}>
             {props.showChart.map((chart,i) =>{
                 return(
-                    <FormControlLabel 
+                    <FormControlLabel
+                        key={chart.id} 
                         control={
-                            <Checkbox 
+                            <Checkbox
                                 checked={chart.display}
                                 disabled={checkedFor[i]}
                                 onChange={props.handleChange}

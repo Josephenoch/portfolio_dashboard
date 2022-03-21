@@ -42,7 +42,6 @@ export const AddEducation = (props) => {
     const [btnDisabled, setBtnDisabled] = useState(true)
     useEffect(() => {
         var found = false
-        console.log(props.newEducation)
         for(let i in Object.values(props.newEducation)){
             if(Object.values(props.newEducation)[i]===""){
                 found = true

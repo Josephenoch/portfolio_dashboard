@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import logo from "../assets/Webfolio.jpg"
 import smallLogo from "../assets/Webfolio - Small.jpg"
 import AppMenu from "./AppMenu"
@@ -44,7 +44,9 @@ const useStyles = makeStyles((theme) =>({
         }
     },
     drawerPaper:{
-        marginTop:50
+        marginTop:50,
+        boxShadow:"0 0",
+        backgroundColor: theme.palette.primary.appBar,
     },
     iconContainer:{
         [theme.breakpoints.up("lg")]:{
@@ -54,12 +56,17 @@ const useStyles = makeStyles((theme) =>({
 }))
 const Header = (props) => {
     const [open, setOpen] = useState(false);
+    const [clicked, setClicked] = useState(true)
     const handleToggle = () => {
         setOpen(!open);   
     }
+    useEffect(()=>{
+        props.setLocation(window.location.pathname)
+    },[open,clicked, props])
     const handleThemeMode = () =>{
-        props.setDarkTheme(!props.darkTheme)
         window.localStorage.setItem("theme", !props.darkTheme)
+        props.setDarkTheme(!props.darkTheme)
+        
           
     }
     const classes = useStyles()
@@ -79,26 +86,27 @@ const Header = (props) => {
                         <IconButton
                             component={Link}
                             to={"/Analytics"}
+                            onClick={()=>setClicked(!clicked)}
                         >
                             <Equalizer/>
                         </IconButton>
                         <IconButton
                             component={Link}
                             to={"/Settings"}
+                            onClick={()=>setClicked(!clicked)}
                         >
                             <Settings/>
                         </IconButton>
                         <IconButton onClick={handleThemeMode}>
                             {props.darkTheme ? <WbSunny/> : <NightsStay/>}
                         </IconButton>
-                        <Scroll to="messageComponent" smooth={true}>
+                        { props.location ==="/portfolio_dashboard" ? <Scroll to="messageComponent" smooth={true}>
                             <IconButton
-                                component={Link}
                                 to={'/portfolio_dashboard'}
                             >
                                 <Message/>
                             </IconButton>
-                        </Scroll>
+                        </Scroll>:null}
                     </Grid>
                     <Grid item>
                         <IconButton onClick={handleToggle} className={classes.menuIcon}> {open ? <Cancel /> : <Menu />} </IconButton>
@@ -112,7 +120,6 @@ const Header = (props) => {
                         <Drawer 
                             open={open} 
                             onClose={handleToggle}
-                            elevation={false}
                             BackdropProps={{ invisible: true }}
                             variant="temporary"
                             anchor={"top"}
@@ -123,6 +130,8 @@ const Header = (props) => {
                             >
                             <AppMenu 
                                 handleToggle={handleToggle}
+                                setLocation={props.setLocation}
+
                             />
                         </Drawer>
                     </Hidden>   

@@ -59,8 +59,10 @@ export const AnalyticsDuration = (props) => {
         <div className={classes.container}>
             {timeFrame.map(time=>{
                 return <Button
+                            key={time.value}
                             style={{
-                                background:time.value===props.noOfData? theme.palette.primary.main:""}}
+                                background:time.value===props.noOfData? theme.palette.primary.main:""
+                            }}
                             value={time.value}
                             className={classes.item}
                             onClick={handleClick.bind(this, time.value)}
