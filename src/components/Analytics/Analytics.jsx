@@ -44,7 +44,7 @@ const useStyle = makeStyles((theme)=>({
         alignItems:"center", 
         width: "100%",
         [theme.breakpoints.up("lg")]: {
-            height: "100%",
+            height: "300px",
         }
     },
     card:{

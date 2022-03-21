@@ -38,7 +38,8 @@ export const MessageComponent= ()=> {
                                 </Typography>
                                 <Typography 
                                     variant="body2" 
-                                    color="textSecondary"> 
+                                    color="textSecondary"
+                                    > 
                                     {row.message}
                                 </Typography>
                             </TableCell>

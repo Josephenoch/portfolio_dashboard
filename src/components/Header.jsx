@@ -2,6 +2,7 @@ import {useState} from 'react'
 import logo from "../assets/Webfolio.jpg"
 import smallLogo from "../assets/Webfolio - Small.jpg"
 import AppMenu from "./AppMenu"
+import {Link as Scroll} from 'react-scroll'
 import { IconButton, Hidden, AppBar, Toolbar, Grid, makeStyles, Drawer} from "@material-ui/core"
 import { Menu, Cancel, Settings, Message, WbSunny, NightsStay, Equalizer} from "@material-ui/icons"
 
@@ -90,9 +91,14 @@ const Header = (props) => {
                         <IconButton onClick={handleThemeMode}>
                             {props.darkTheme ? <WbSunny/> : <NightsStay/>}
                         </IconButton>
-                        <IconButton>
-                            <Message/>
-                        </IconButton>
+                        <Scroll to="messageComponent" smooth={true}>
+                            <IconButton
+                                component={Link}
+                                to={'/portfolio_dashboard'}
+                            >
+                                <Message/>
+                            </IconButton>
+                        </Scroll>
                     </Grid>
                     <Grid item>
                         <IconButton onClick={handleToggle} className={classes.menuIcon}> {open ? <Cancel /> : <Menu />} </IconButton>

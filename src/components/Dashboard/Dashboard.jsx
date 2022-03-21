@@ -5,7 +5,8 @@ import { makeStyles} from "@material-ui/core"
 import {Link} from "react-router-dom"
 import {UserImage} from './UserImage'
 import {Details} from "./Details"
-import {Message, ArrowDownward, People} from "@material-ui/icons"
+import {Message, ArrowDownward, People} from "@material-ui/icons" 
+import {Box} from "@material-ui/core"
 
 
 
@@ -18,8 +19,18 @@ const useStyles = makeStyles((theme) =>({
         alignItems:"center", 
         width: "100%",
         [theme.breakpoints.up("lg")]: {
-        height: "100%",
-    }
+            height: "100%",
+        },   
+    },
+    card:{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "space-around",
+        alignItems:"center", 
+        width: "100%",
+        [theme.breakpoints.up("lg")]: {
+            height: "300px",
+        },   
     },
     link:{
         textDecoration: 'none', 
@@ -75,15 +86,15 @@ export const Dashboard = () => {
     ]
    
     return (
-        <div>
-            <div style={{marginTop:-10}}></div>
-            <div>
+        <Box>
+            <Box style={{marginTop:-10}}></Box>
+            <Box>
                 <UserImage/>        
-            </div>
-            <div className={classes.general}> 
+            </Box>
+            <Box className={classes.general}> 
                 <Details name="About"/>
-            </div>
-            <div className={classes.general} style={{overflow:"auto"}}> 
+            </Box>
+            <Box className={classes.card}  style={{overflow:"auto"}}> 
                 {data.map(datum =>{
                     return(
                         <Link to={`/Analytics`} className={classes.link}>
@@ -97,14 +108,25 @@ export const Dashboard = () => {
                         </Link>
                     )
                 })}
-                </div>
-            <div className={classes.general} style={{ marginTop:"10vh",}}> 
+            </Box>
+            <Box className={classes.general} style={{ marginTop:"10vh",}}> 
                 <Details name="Interest"/>
-            </div>
+            </Box>
 
-            <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop: "94px" }} elevation={0}>
-                <MessageComponent/>
-            </div>
-         </div>
+           
+            <Box 
+                style={{ 
+                    width: "100%", 
+                    display: "flex", 
+                    justifyContent: "center", 
+                    marginTop: "94px" 
+                }} 
+                elevation={0}
+                id="messageComponent"
+                >
+                <MessageComponent />
+            </Box>
+        
+         </Box>
     )
 }
