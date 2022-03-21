@@ -1,5 +1,12 @@
-import {Table, TableBody, TableCell, TableContainer,TableRow, Paper, Avatar, Typography} from '@material-ui/core';
+import {Table, TableBody, TableCell, TableContainer,TableRow, Paper, Avatar, Typography, makeStyles} from '@material-ui/core';
 
+const useStyles = makeStyles((theme) =>({
+    messageText:{
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
+        overflow: "hidden",
+    }
+})) 
 function createData(name, email, message, timeStamp ) {
     return { name, email, message, timeStamp};
 }
@@ -14,7 +21,7 @@ const rows = [
 
 
 export const MessageComponent= ()=> {
-
+    const classes = useStyles() 
     return (
         
         <TableContainer component={Paper} style={{ width: "90%" }} elevation={5}>
@@ -30,15 +37,23 @@ export const MessageComponent= ()=> {
                                     {row.name[0]}
                                 </Avatar>
                             </TableCell >
-                            <TableCell>
+                            <TableCell
+                                style={{
+                                    maxWidth:"300px",
+                                }}
+                                >
                                 <Typography 
                                     variant="body1" 
-                                    color="textPrimary"> 
+                                    color="textPrimary"
+                                    className={classes.messageText}
+                                    style={{maxWidth:"200px"}}
+                                    > 
                                     {row.name}
                                 </Typography>
                                 <Typography 
                                     variant="body2" 
                                     color="textSecondary"
+                                    className={classes.messageText}
                                     > 
                                     {row.message}
                                 </Typography>
