@@ -3,8 +3,8 @@ import logo from "../assets/Webfolio.jpg"
 import smallLogo from "../assets/Webfolio - Small.jpg"
 import AppMenu from "./AppMenu"
 import { IconButton, Hidden, AppBar, Toolbar, Grid, makeStyles, Drawer} from "@material-ui/core"
-import {WbSunny, NightsStay, NotificationImportant, Equalizer} from '@material-ui/icons'
-import { Menu, Cancel, Settings} from "@material-ui/icons"
+import { Menu, Cancel, Settings, Message, WbSunny, NightsStay, Equalizer} from "@material-ui/icons"
+
 import { Link } from 'react-router-dom'
 const useStyles = makeStyles((theme) =>({ 
     root:{
@@ -91,7 +91,7 @@ const Header = (props) => {
                             {props.darkTheme ? <WbSunny/> : <NightsStay/>}
                         </IconButton>
                         <IconButton>
-                            <NotificationImportant/>
+                            <Message/>
                         </IconButton>
                     </Grid>
                     <Grid item>

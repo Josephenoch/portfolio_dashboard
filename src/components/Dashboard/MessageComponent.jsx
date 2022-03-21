@@ -1,19 +1,22 @@
-import {Table, TableBody, TableCell, TableContainer,TableRow, Paper, Avatar} from '@material-ui/core';
+import {Table, TableBody, TableCell, TableContainer,TableRow, Paper, Avatar, Typography} from '@material-ui/core';
 
 function createData(name, email, message, timeStamp ) {
     return { name, email, message, timeStamp};
 }
 
 const rows = [
-    createData('John Doe',"janedoe@webfolio.com", "Hello this is a greeting", "9:50AM" ),
-    createData('Jane Doe',),
-    createData('Eclair', ),
-    createData('Cupcake', ),
-    createData('Gingerbread',),
+    createData('Jameson Isreal',"jamesonisreal@webfolio.com", "Hi I am Jameson! I've got interesting news", "3:20AM" ),
+    createData('Jane Doe', "janedoe@webfolio.com", "Hello this is a greeting", "9:50AM"),
+    createData('Theresa Mayweather',"theresamayweather@webfolio.com", "Welcome to Webfolio" , "10:50AM"),
+    createData('Lupita Nyongo',"lupitanyongo@webfolio.com", "12 Years a slave was amazing!", "3/19/2020" ),
+    createData('Leonardo Dicaprio', "leonardodicaprio@webfolio.com", "The Great Gatsby was a blast", "Yesterday"),
 ];
 
+
 export const MessageComponent= ()=> {
+
     return (
+        
         <TableContainer component={Paper} style={{ width: "90%" }} elevation={5}>
 
             <Table sx={{ minWidth: 400 }} aria-label="simple table">
@@ -22,14 +25,22 @@ export const MessageComponent= ()=> {
                         <TableRow
                             key={row.name}
                             style={{ '&:last-child td, &:last-child th': { border: 0}}}>
-                            <TableCell>
+                        <TableCell style={{paddingRight:0, width:"10px"}}>
                                 <Avatar>
                                     {row.name[0]}
                                 </Avatar>
-                            </TableCell>
+                            </TableCell >
                             <TableCell>
-                                {row.name}<br/>
-                                {row.message}
+                                <Typography 
+                                    variant="body1" 
+                                    color="textPrimary"> 
+                                    {row.name}
+                                </Typography>
+                                <Typography 
+                                    variant="body2" 
+                                    color="textSecondary"> 
+                                    {row.message}
+                                </Typography>
                             </TableCell>
                             <TableCell align="right">
                                 {row.timeStamp}
