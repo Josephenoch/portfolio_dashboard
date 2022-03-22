@@ -5,6 +5,7 @@ const useStyles = makeStyles((theme) =>({
         textOverflow: "ellipsis",
         whiteSpace: "nowrap",
         overflow: "hidden",
+        maxWidth:"300px"
     }
 })) 
 function createData(name, email, message, timeStamp ) {
@@ -33,20 +34,19 @@ export const MessageComponent= ()=> {
                             key={row.name}
                             >
                         <TableCell style={{paddingRight:0, width:"10px"}}>
-                                <Avatar component={Paper}>
+                                <Avatar>
                                     {row.name[0]}
                                 </Avatar>
                             </TableCell >
                             <TableCell
                                 style={{
-                                    maxWidth:"300px",
+                                    maxWidth:"200px",
                                 }}
                                 >
                                 <Typography 
                                     variant="body1" 
                                     color="textPrimary"
                                     className={classes.messageText}
-                                    style={{maxWidth:"200px"}}
                                     > 
                                     {row.name}
                                 </Typography>
@@ -54,7 +54,7 @@ export const MessageComponent= ()=> {
                                     variant="body2" 
                                     color="textSecondary"
                                     className={classes.messageText}
-                                    > 
+                                > 
                                     {row.message}
                                 </Typography>
                             </TableCell>
