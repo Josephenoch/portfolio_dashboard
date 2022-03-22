@@ -59,7 +59,7 @@ export const Analytics = () => {
     const classes = useStyle()
     
     
-    
+    const [checkedFor, setCheckedFor] = useState([false,false,false])
     const [noOfData, setNoOfData] = useState(10)
     const [showChart, setShowChart] = useState([
         {
@@ -130,10 +130,26 @@ export const Analytics = () => {
             if (newArray[i].name===name){
                 const newObj = {...newArray[i],"display":checked}
                 newArray[i] = newObj
+                var found  =0
+                var arr = [...checkedFor]
+                for(let i in newArray){
+                    if (newArray[i].display===false){
+                        found++
+                        arr[i] = true
+                    }
+                }
+                if(found>1){
+                    arr = arr.map(item=> !item)
+                }
+                else{   
+                    arr = [false, false, false]
+                }
+                setCheckedFor(arr)
                 setShowChart(newArray)
                 break
             }   
         }
+       
     }
     useEffect(()=>{
         setDataToDisplay(data.slice(0,noOfData))
@@ -178,6 +194,7 @@ export const Analytics = () => {
                 />
                 <ShowChart
                     showChart={showChart}
+                    checkedFor={checkedFor}
                     setShowChart={setShowChart}
                     handleChange={handleChange}
                     

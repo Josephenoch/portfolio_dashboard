@@ -64,6 +64,7 @@ const Header = (props) => {
         props.setLocation(window.location.pathname)
     },[open,clicked, props])
     const handleThemeMode = () =>{
+        
         window.localStorage.setItem("theme", !props.darkTheme)
         props.setDarkTheme(!props.darkTheme)
         

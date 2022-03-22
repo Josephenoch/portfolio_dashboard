@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) =>({
 
 function App() {
   const classes = useStyles()
-  const [darkTheme, setDarkTheme] = useState(window.localStorage.getItem("theme") || false)
+  const [darkTheme, setDarkTheme] = useState(JSON.parse(window.localStorage.getItem("theme")) || false)
   const [location, setLocation] = useState(window.location.pathname)
   return (
     <div styles={{display:"flex"}}> 
