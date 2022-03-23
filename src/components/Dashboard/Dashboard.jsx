@@ -1,12 +1,12 @@
 import React from 'react'
 import {AnalyticsCard} from "../Analytics/AnalyticsCard"
-import {MessageComponent} from "./MessageComponent"
+import {MessageComponent} from "../Messages/MessageComponent"
 import { makeStyles} from "@material-ui/core"
 import {Link} from "react-router-dom"
 import {UserImage} from './UserImage'
 import {Details} from "./Details"
 import {Message, ArrowDownward, People} from "@material-ui/icons" 
-import {Box} from "@material-ui/core"
+import {Box, Paper} from "@material-ui/core"
 
 
 
@@ -114,17 +114,23 @@ export const Dashboard = () => {
             </Box>
 
            
-            <Box 
+            <Box
+                
                 style={{ 
                     width: "100%", 
                     display: "flex", 
                     justifyContent: "center", 
-                    marginTop: "94px" 
+                    marginTop: "94px",
+                    maxHeight:"50vh",
+                    overflowY:"auto"
                 }} 
                 elevation={0}
                 id="messageComponent"
                 >
-                <MessageComponent />
+                <MessageComponent 
+                    width={95}
+                    component={Paper} 
+                />
             </Box>
         
          </Box>

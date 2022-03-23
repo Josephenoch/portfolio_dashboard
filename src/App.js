@@ -14,6 +14,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import {Analytics} from "./components/Analytics/Analytics";
 import { Settings } from "./components/Settings/Settings";
+import { Messages } from "./components/Messages/Messages";
 import { useState } from "react";
 
 library.add(fas, fab,)
@@ -114,6 +115,7 @@ function App() {
                 <Route path="Skill" element={<SKill/>}/>
                 <Route path="Analytics" element={<Analytics/>}/>
                 <Route path="Settings" element={<Settings/>}/>  
+                <Route path="Messages" element={<Messages/>}/>  
             </Routes>
           </Paper>
           <CssBaseline /> 

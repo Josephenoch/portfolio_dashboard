@@ -1,4 +1,4 @@
-import {Table, TableBody, TableCell, TableContainer,TableRow, Paper, Avatar, Typography, makeStyles} from '@material-ui/core';
+import {Table, TableBody, TableCell, TableContainer,TableRow, Avatar, Typography, makeStyles} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) =>({
     messageText:{
@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) =>({
         maxWidth:"300px"
     }
 })) 
-function createData(name, email, message, timeStamp ) {
+const createData = (name, email, message, timeStamp ) => {
     return { name, email, message, timeStamp};
 }
 
@@ -17,17 +17,20 @@ const rows = [
     createData('Jane Doe', "janedoe@webfolio.com", "Hello this is a greeting", "9:50AM"),
     createData('Theresa Mayweather',"theresamayweather@webfolio.com", "Welcome to Webfolio" , "10:50AM"),
     createData('Lupita Nyongo',"lupitanyongo@webfolio.com", "12 Years a slave was amazing!", "3/19/2020" ),
-    createData('Leonardo Dicaprio', "leonardodicaprio@webfolio.com", "The Great Gatsby was a blast", "Yesterday"),
+    createData('Don Corleone', "thedon@webfolio.com", "The Great Gatsby was a blast", "Yesterday"),
+    createData('Joey Zasa', "joeyzas@webfolio.com", "The Great Gatsby was a blast", "Yesterday"),
+    createData('Micheal Corleone', "michealcorleone@webfolio.com", "The Great Gatsby was a blast", "Yesterday"),
+    createData('Sean Connery', "jamesbond@webfolio.com", "A martini. Shaken, not stirred.", "Yesterday"),
 ];
 
 
-export const MessageComponent= ()=> {
+export const MessageComponent= (props)=> {
     const classes = useStyles() 
     return (
         
-        <TableContainer component={Paper} style={{ width: "95%" }} elevation={5}>
+        <TableContainer component={props.component} style={{ width: `${props.width}%` }} elevation={5}>
 
-            <Table style={{ minWidth: 400 }} aria-label="simple table">
+            <Table style={{ minWidth: 300 }} aria-label="simple table">
                 <TableBody>
                     {rows.map((row) => (
                         <TableRow

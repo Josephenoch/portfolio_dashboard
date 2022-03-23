@@ -32,7 +32,7 @@ const ExperienceSearchBar = (props) => {
                 getOptionLabel={(option) => option.position + " at " + option.company}
                 // onChange={handleChange }
                 renderInput={(params) => (
-                <TextField {...params} label="Search Experiences" margin="normal" variant="outlined"  />
+                <TextField {...params} label="Search Experiences" margin="normal" variant="outlined"/>
                 )}
             />
             <div style={{position:"absolute",right:"3.2%"}}>
