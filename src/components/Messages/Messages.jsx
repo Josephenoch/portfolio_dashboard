@@ -20,7 +20,7 @@ const useStyles = makeStyles(() =>({
       overflowY:"auto",
     }
 }))
-export const Messages = () => {
+export const Messages = (props) => {
   const classes = useStyles()
   return (
     <Box
@@ -31,7 +31,7 @@ export const Messages = () => {
       >
         <MessageComponent
           width={100}
-          
+          rows={props.rows}
         />
       </Box>
       <Box 

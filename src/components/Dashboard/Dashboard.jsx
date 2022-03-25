@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) =>({
         }
     },
 }))
-export const Dashboard = () => {
+export const Dashboard = (props) => {
     const classes = useStyles()
     const data = [
         {
@@ -130,6 +130,7 @@ export const Dashboard = () => {
                 <MessageComponent 
                     width={95}
                     component={Paper} 
+                    rows={props.rows}
                 />
             </Box>
         
