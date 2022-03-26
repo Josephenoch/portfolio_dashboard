@@ -11,7 +11,7 @@ import { EditUserDetails } from './EditUserDetails'
 
 
 
-export const Settings = () => {
+export const Settings = (props) => {
     
     const useStyles = makeStyles((theme)=>({
         rootContainer:{
@@ -49,7 +49,10 @@ export const Settings = () => {
                         flexWrap:"wrap"
                     }}
                 >
-                    <EditUserDetails/>
+                    <EditUserDetails
+                        user={props.user}
+                        setUser={props.setUser}
+                    />
                     <Box
                         style={{
                             width:"100%",

@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Box, makeStyles, Paper } from '@material-ui/core'
 import { MessageComponent } from './MessageComponent'
+import { MessageInbox } from './MessageInbox'
 
 const useStyles = makeStyles(() =>({
     messageContainer:{
@@ -9,7 +10,7 @@ const useStyles = makeStyles(() =>({
       display:"flex",
       justifyContent:"space-around",
       height:"88.9vh",
-      // overflow:"clip"
+
     },
     messageList:{
       width:"32%",
@@ -31,15 +32,17 @@ export const Messages = (props) => {
       >
         <MessageComponent
           width={100}
-          rows={props.rows}
+          messages={props.messages}
+          setActiveMessage={props.setActiveMessage}
         />
       </Box>
       <Box 
         component={Paper}
         className={classes.messageContent}
       >
-      
-
+      <MessageInbox
+        user={props.activeMessage}
+      />
       </Box>
     </Box>
   )

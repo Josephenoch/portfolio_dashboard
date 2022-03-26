@@ -89,7 +89,9 @@ export const Dashboard = (props) => {
         <Box>
             <Box style={{marginTop:-10}}></Box>
             <Box>
-                <UserImage/>        
+                <UserImage 
+                    userImg={props.user.avatar}
+                />        
             </Box>
             <Box className={classes.general}> 
                 <Details name="About"/>
@@ -130,7 +132,8 @@ export const Dashboard = (props) => {
                 <MessageComponent 
                     width={95}
                     component={Paper} 
-                    rows={props.rows}
+                    messages={props.messages}
+                    setActiveMessage={props.setActiveMessage}
                 />
             </Box>
         

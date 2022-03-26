@@ -16,6 +16,8 @@ import {Analytics} from "./components/Analytics/Analytics";
 import { Settings } from "./components/Settings/Settings";
 import { Messages } from "./components/Messages/Messages";
 import { useState } from "react";
+import { mainUser, fakeUsers } from "./fakeData";
+
 
 library.add(fas, fab,)
 
@@ -86,24 +88,12 @@ const useStyles = makeStyles((theme) =>({
     }
   }
 }))
-const createData = (name, email, message, timeStamp ) => {
-  return { id,name, email, message, timeStamp};
-}
-
-const rows = [
-  createData(1,'Jameson Isreal',"jamesonisreal@webfolio.com", "Hi I am Jameson! I've got interesting news", "3:20AM" ),
-  createData(2,'Jane Doe', "janedoe@webfolio.com", "Hello this is a greeting", "9:50AM"),
-  createData(3,'Theresa Mayweather',"theresamayweather@webfolio.com", "Welcome to Webfolio" , "10:50AM"),
-  createData(4,'Lupita Nyongo',"lupitanyongo@webfolio.com", "12 Years a slave was amazing!", "3/19/2020" ),
-  createData(5,'Don Corleone', "thedon@webfolio.com", "The Great Gatsby was a blast", "Yesterday"),
-  createData(6,'Joey Zasa', "joeyzas@webfolio.com", "The Great Gatsby was a blast", "Yesterday"),
-  createData(7,'Micheal Corleone', "michealcorleone@webfolio.com", "The Great Gatsby was a blast", "Yesterday"),
-  createData(8,'Sean Connery', "jamesbond@webfolio.com", "A martini. Shaken, not stirred.", "Yesterday"),
-];
-function App() {
+const App = () => {
   const classes = useStyles()
+  const [activeMessage, setActiveMessage] = useState()
   const [darkTheme, setDarkTheme] = useState(JSON.parse(window.localStorage.getItem("theme")) || false)
   const [location, setLocation] = useState(window.location.pathname)
+  const [user, setUser] = useState(mainUser)
   return (
     <div styles={{display:"flex"}}> 
       <ThemeProvider theme={darkTheme ? DarkTheme : LightTheme}> 
@@ -112,6 +102,7 @@ function App() {
           <Sidebar 
             location={location}
             setLocation={setLocation}
+            user={user}
           />
           <Header 
             darkTheme={darkTheme}
@@ -122,13 +113,53 @@ function App() {
           <Paper className={classes.mainContent}>
             
             <Routes>
-                <Route path="portfolio_dashboard" element={<Dashboard rows={rows}/>}/>
-                <Route path="Experience" element={<Experience/>}/>
-                <Route path="Education" element={<Education/>}/>
-                <Route path="Skill" element={<SKill/>}/>
-                <Route path="Analytics" element={<Analytics/>}/>
-                <Route path="Settings" element={<Settings/>}/>  
-                <Route path="Messages" element={<Messages rows={rows}/>}/>  
+                <Route 
+                  path="portfolio_dashboard" 
+                  element={
+                    <Dashboard 
+                        user={mainUser} 
+                        messages={fakeUsers}
+                        setActiveMessage={setActiveMessage} 
+                    />
+                  }
+                />
+                <Route 
+                  path="Experience" 
+                  element={
+                    <Experience/>
+                  }/>
+                <Route 
+                  path="Education" 
+                  element={
+                    <Education/>
+                  }/>
+                <Route 
+                  path="Skill" 
+                  element={
+                    <SKill/>
+                  }/>
+                <Route 
+                  path="Analytics" 
+                  element={
+                    <Analytics/>
+                  }/>
+                <Route 
+                  path="Settings" 
+                  element={
+                    <Settings 
+                      user={user} 
+                      setUser={setUser}
+                    />
+                  }/>  
+                <Route 
+                  path="Messages" 
+                  element={
+                    <Messages 
+                      messages={fakeUsers}
+                      activeMessage={activeMessage}
+                      setActiveMessage={setActiveMessage} 
+                    />
+                  }/>  
             </Routes>
           </Paper>
           <CssBaseline /> 

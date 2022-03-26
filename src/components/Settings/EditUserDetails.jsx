@@ -4,10 +4,10 @@ import { Box, Typography, TextField, makeStyles, Input, Paper, Button } from '@m
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import userImage from "../../assets/user.jpg"
 
-export const EditUserDetails = () => {
-    const [userImg, setUserImg] = useState(userImage)
+
+export const EditUserDetails = (props) => {
+    const [userDetails, setUserDetails] = useState(props.user)
     const useStyles = makeStyles((theme)=>({
         rootContainer:{
             display:"flex",
@@ -22,14 +22,14 @@ export const EditUserDetails = () => {
             width:"200px",
             margin:"auto",
             borderRadius:"20px",
-            background:`url(${userImg})`,
+            background:`url(${userDetails.avatar})`,
             backgroundSize:"cover",
             display:"flex",
             alignItems:"center",
             transition: "all 0.2s cubic-bezier(.25,.8,.25,1)",
             "&:hover":{
                 opacity: 0.8,
-                background:`url(${userImg})`,
+                background:`url(${userDetails.avatar})`,
                 backgroundSize:"cover",
             },
             '&:hover $uploadIcon':{
@@ -88,24 +88,31 @@ export const EditUserDetails = () => {
     }))
 
     const classes = useStyles()
-    const [userDetails, setUserDetails] = useState({
-        firstName:"John",
-        lastName:"Doe",
-        phoneNumber:"+234 901 234 5678",
-        emailAddress:"johndoe@webfolio.com",
-    })
+    
     const handleChange = (e) =>{
         const name = e.target.name
         const value = e.target.value
 
         var newObj = {...userDetails}
-        newObj = {...newObj,[name]:value}
-        setUserDetails(newObj)
-    }
-    const handleFileChange = (e) =>{
-        if(e.target.files[0]){
-            setUserImg(URL.createObjectURL(e.target.files[0]))
+        if (e.target.type!=="file"){
+            
+            newObj = {...newObj,[name]:value}
         }
+        else{
+            if(e.target.files[0]){
+                newObj = {...newObj,"avatar":URL.createObjectURL(e.target.files[0])}
+            }
+        }
+        setUserDetails(newObj)
+
+    }
+    // const handleFileChange = (e) =>{
+    //     if(e.target.files[0]){
+    //         setUserImg(URL.createObjectURL(e.target.files[0]))
+    //     }
+    // }
+    const handleSave = () => {
+        props.setUser(userDetails)
     }
     return (
         <Paper
@@ -163,7 +170,7 @@ export const EditUserDetails = () => {
                         variant="outlined" 
                         name="emailAddress" 
                         disabled={true}
-                        value={userDetails.emailAddress}
+                        value={userDetails.email}
                         onChange={handleChange}
                         style={{
                             width:"48%",
@@ -193,12 +200,13 @@ export const EditUserDetails = () => {
                     style={{
                         display:"none"
                     }}
-                    onChange={handleFileChange}
+                    onChange={handleChange}
                 />
 
             </Box>
             <Button
                 className={classes.buttonStyle}
+                onClick={handleSave}
             >
                 Save
             </Button>

@@ -1,6 +1,5 @@
 import {WorkOutlineOutlined, DeveloperMode, VerifiedUserOutlined, AssessmentOutlined,  SchoolOutlined, SettingsOutlined} from "@material-ui/icons"
 
-import userImg from "../assets/user.jpg"
 import {Avatar, List, ListItem, ListItemIcon, ListItemText, makeStyles, Grid, Typography, Box} from "@material-ui/core";
 import {Link} from "react-router-dom"
 import { useEffect, useState } from "react";
@@ -39,11 +38,6 @@ const useStyles = makeStyles((theme) => ({
     } 
 }))
 
-const data = {
-    fName:"John",
-    lName : "Doe",
-    email : "johndoe@gmail.com"
-}
 const Sidebar=((props) =>{
     const  classes = useStyles()
     const [clicked, setClicked] = useState(false)
@@ -58,20 +52,20 @@ const Sidebar=((props) =>{
             <Box className={classes.userDetails} component={Link} to="/settings">
                 <Grid container>
                     <Grid item>
-                        <Avatar alt="Joseph Enoch" src={userImg} />
+                        <Avatar alt={`${props.user.firstName} ${props.user.lastName}`} src={props.user.avatar} />
                     </Grid >
                     <Grid item>
                         <Typography 
                             variant="body2"  
                             className={classes.userDetailsText}
                         >
-                                {`${data.fName} ${data.lName}`}
+                                {`${props.user.firstName} ${props.user.lastName}`}
                         </Typography>
                         <Typography 
                             variant="body2"
                             className={classes.userDetailsText}
                         >
-                                {data.email}
+                                {props.user.email}
                         </Typography>
                     </Grid >
                 </Grid>

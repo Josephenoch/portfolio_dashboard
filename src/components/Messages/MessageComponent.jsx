@@ -14,25 +14,26 @@ const useStyles = makeStyles((theme) =>({
 
 export const MessageComponent= (props)=> {
     const classes = useStyles() 
+    console.log(props.messages)
     return (
         
         <TableContainer component={props.component} style={{ width: `${props.width}%` }} elevation={5}>
 
             <Table style={{ minWidth: 300 }} aria-label="simple table">
                 <TableBody>
-                    {props.rows.map((row) => (
+                    {props.messages.map((row) => (
                         <TableRow
                             component={Link}
-                            to={"#"}
+                            to={"/messages"}
+                            onClick={()=> props.setActiveMessage(row)}
                             key={row.id}
                             style={{
                                 textDecoration:"none"
                             }}
                             >
                             <TableCell style={{paddingRight:0, width:"10px"}}>
-                                <Avatar>
-                                    {row.name[0]}
-                                </Avatar>
+                                <Avatar src={row.avatar}/>
+                                    
                             </TableCell >
                             <TableCell
                                 style={{
@@ -44,18 +45,18 @@ export const MessageComponent= (props)=> {
                                     color="textPrimary"
                                     className={classes.messageText}
                                     > 
-                                    {row.name}
+                                    {`${row.firstName} ${row.lastName}`}
                                 </Typography>
                                 <Typography 
                                     variant="body2" 
                                     color="textSecondary"
                                     className={classes.messageText}
                                 > 
-                                    {row.message}
+                                    {row.message[0].content}
                                 </Typography>
                             </TableCell>
                             <TableCell align="right">
-                                {row.timeStamp}
+                                {String(row.message[0].date).slice(0,3)}
                             </TableCell>
                         </TableRow>
                     ))}
