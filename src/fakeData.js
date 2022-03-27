@@ -21,7 +21,7 @@ const getMessage = (num) => {
         messages.push(
             {
                 title:faker.lorem.text().slice(0,15),
-                content:faker.lorem.words(100),
+                content:faker.lorem.words(500),
                 date:faker.date.past()   
             }
         )

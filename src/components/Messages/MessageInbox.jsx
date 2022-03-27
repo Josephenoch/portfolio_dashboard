@@ -1,6 +1,6 @@
-import { Avatar, Box, Grid, Typography, makeStyles } from '@material-ui/core'
-import { DateRange } from '@material-ui/icons'
+import { Box, makeStyles, Divider, Typography } from '@material-ui/core'
 import React from 'react'
+import { InboxHeader } from './InboxHeader'
 
 const useStyles = makeStyles((theme) => ({
   userDetailsText:{
@@ -15,43 +15,41 @@ export const MessageInbox = (props) => {
   return (
     <Box 
       style={{
-        marginTop:"30px"
+        margin:"30px",
       }}
     >
-      <Grid container>
-        <Grid item>
-            <Avatar alt={`${props.user.firstName} ${props.user.lastName}`} src={props.user.avatar} />
-        </Grid >
-        <Grid item>
-            <Typography 
-                variant="body2"  
-                className={classes.userDetailsText}
+      <Box style={{marginBottom:30}}>
+        <InboxHeader user={props.user}/>
+      </Box>
+      <Divider/>
+      <Box>
+        <Box
+          style={{
+            margin:"20px 0 0 20px",
+          }}
+        >
+            <Typography
+              variant="h4"
             >
-                    {`${props.user.firstName} ${props.user.lastName}`}
+              {props.user.message[0].title.toUpperCase()}
             </Typography>
-            <Typography 
-                variant="body2"
-                className={classes.userDetailsText}
-            >
-                    {props.user.email}
-            </Typography>
-        </Grid >
-        <Grid item xs></Grid>
-        <Grid item>
-          <DateRange
-            style={{
-              marginTop:"12px"
-            }}
-          />
+        </Box>
+        <Box 
+          style={{
+            margin:"20px 20px 0 20px",
+          }}
+        >
           <Typography
-            style={{
-              display:"inline-block"
-            }}
-          >
-            - { String(props.user.message[0].date).slice(4,25)}
-          </Typography>
-        </Grid>
-      </Grid>
+              color="textSecondary"
+              variant="body1"
+              style={{
+                textAlign:"justify"
+              }}
+            >
+            {props.user.message[0].content}
+            </Typography>
+        </Box>
+      </Box>
     </Box>
   )
 }

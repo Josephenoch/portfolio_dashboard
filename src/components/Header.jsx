@@ -107,7 +107,14 @@ const Header = (props) => {
                             >
                                 <Message/>
                             </IconButton>
-                        </Scroll>:null}
+                        </Scroll>:
+                            <IconButton
+                                component={Link}
+                                to={'/messages'}
+                            >
+                                <Message/>
+                            </IconButton>
+                        }
                     </Grid>
                     <Grid item>
                         <IconButton onClick={handleToggle} className={classes.menuIcon}> {open ? <Cancel /> : <Menu />} </IconButton>

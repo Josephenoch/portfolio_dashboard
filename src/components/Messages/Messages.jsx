@@ -17,7 +17,7 @@ const useStyles = makeStyles(() =>({
       overflowY:"auto",
     },
     messageContent:{
-      width:"68%",
+      maxWidth:"68%",
       overflowY:"auto",
     }
 }))
