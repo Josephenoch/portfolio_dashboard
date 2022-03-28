@@ -76,7 +76,8 @@ export const Messages = (props) => {
           setUser={props.setActiveMessage}
         />
       :
-        <EmptyMessage/>
+
+         window.innerWidth>600? <EmptyMessage/>:null
       }
       </Box>
     </Box>
