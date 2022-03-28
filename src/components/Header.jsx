@@ -3,7 +3,7 @@ import logo from "../assets/Webfolio.jpg"
 import smallLogo from "../assets/Webfolio - Small.jpg"
 import AppMenu from "./AppMenu"
 import {Link as Scroll} from 'react-scroll'
-import { IconButton, Hidden, AppBar, Toolbar, Grid, makeStyles, Drawer} from "@material-ui/core"
+import { IconButton, Hidden, AppBar, Toolbar, Grid, makeStyles, Drawer, Badge} from "@material-ui/core"
 import { Menu, Cancel, Settings, Message, WbSunny, NightsStay, Equalizer} from "@material-ui/icons"
 
 import { Link } from 'react-router-dom'
@@ -102,10 +102,13 @@ const Header = (props) => {
                             {props.darkTheme ? <WbSunny/> : <NightsStay/>}
                         </IconButton>
                         { props.location ==="/portfolio_dashboard" ? <Scroll to="messageComponent" smooth={true}>
+                       
                             <IconButton
                                 to={'/portfolio_dashboard'}
-                            >
-                                <Message/>
+                            > 
+                                <Badge badgeContent={15} color="secondary">
+                                    <Message/>
+                                </Badge>
                             </IconButton>
                         </Scroll>:
                             <IconButton

@@ -45,16 +45,16 @@ export const InboxHeader = (props) => {
               </Typography>
           </Grid >
           <Grid item xs></Grid>
-          <Grid item  >
+          {window.innerWidth>600?<Grid item  >
             <DateRange/>
-          </Grid>
+          </Grid>:null}
           <Grid item style={{marginRight:"10px"}}>
             <Typography
               style={{
                 display:"inline-block"
               }}
             >
-              - { `${String(props.user.message[0].date).slice(4,15)} | ${String(props.user.message[0].date).slice(16,25)}`}
+              { `${String(props.user.message[0].date).slice(4,15)} | ${String(props.user.message[0].date).slice(16,25)}`}
             </Typography>
           </Grid>
       </Grid>

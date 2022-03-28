@@ -4,7 +4,6 @@ import {Cancel, Edit} from "@material-ui/icons"
 
 const useStyles= makeStyles((theme) =>({
     buttonStyle:{
-        marginTop:"20px",
         left:"90%",
         backgroundColor:theme.palette.primary.main,
         color:"white",
@@ -22,13 +21,14 @@ const useStyles= makeStyles((theme) =>({
         width: "60vw",
         height:"30vh",
         backgroundColor: theme.palette,
-        overflowY:"scroll",
+        overflowY:"auto",
         overflowX:"hidden",
         border: '1px solid #777',
+        borderRadius:20,
         boxShadow: 24,
         padding: "20px 40px 60px",
         [theme.breakpoints.down("sm")]:{
-            width: "100vw",
+            width: "95vw",
             padding: "20px 10px 30px",
         },
         
@@ -105,8 +105,11 @@ export const Details = (props) =>{
                 variant="outlined"
                 className={classes.buttonStyle}
                 onClick={handleOpen}
+                style={{
+                    marginTop:"20px"
+                }}
                 >
-                    Edit <Edit style={{color:"white", fontSize:"15px"}}/>
+                    Edit <Edit style={{color:"white", fontSize:"15px" ,}}/>
             </Button>
             <div >
             <Modal
@@ -125,16 +128,22 @@ export const Details = (props) =>{
                     <IconButton 
                         onClick={handleOpen}
                         style={{
-                            marginLeft:"95%",
+                            marginLeft:"90%",
                             marginBottom:"20px"
                         }}
                         >
                         <Cancel fontSize="small"/>
                     </IconButton> 
+                    <Typography
+                        variant="h4"
+                    >
+                        {props.name}
+                    </Typography>
                     <TextField
                         style={{
+                            marginTop:"20px",
                             width:"100%",
-                            minHeight:"70%",
+                            minHeight:"35%",
                             
                         }}
                         id="outlined-basic" 
