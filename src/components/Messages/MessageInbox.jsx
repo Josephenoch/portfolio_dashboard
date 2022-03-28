@@ -3,42 +3,37 @@ import React from 'react'
 import { InboxHeader } from './InboxHeader'
 
 const useStyles = makeStyles((theme) => ({
-  userDetailsText:{
-    marginLeft:"10px",
-    width:"200px",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-} 
+  rootContainer:{
+    margin:"30px",
+  },
+  titleContainer:{
+    [theme.breakpoints.up("md")]:{
+      margin:"20px 0 0 20px",
+    }
+  },
+  contentContainer:{
+    [theme.breakpoints.up("md")]:{
+      margin:"20px 20px 0 20px",
+    }
+  }
 }))
 export const MessageInbox = (props) => {
   const classes = useStyles()
   return (
-    <Box 
-      style={{
-        margin:"30px",
-      }}
-    >
+    <Box className={classes.rootContainer}>
       <Box style={{marginBottom:30}}>
-        <InboxHeader user={props.user}/>
+        <InboxHeader user={props.user} setUser={props.setUser}/>
       </Box>
       <Divider/>
       <Box>
-        <Box
-          style={{
-            margin:"20px 0 0 20px",
-          }}
-        >
+        <Box className={classes.titleContainer}>
             <Typography
               variant="h4"
             >
               {props.user.message[0].title.toUpperCase()}
             </Typography>
         </Box>
-        <Box 
-          style={{
-            margin:"20px 20px 0 20px",
-          }}
-        >
+        <Box className={classes.contentContainer}>
           <Typography
               color="textSecondary"
               variant="body1"
