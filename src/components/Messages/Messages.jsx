@@ -70,14 +70,19 @@ export const Messages = (props) => {
         component={Paper}
         className={classes.messageContent}
       >
-      {props.activeMessage ? 
-        <MessageInbox
-          user={props.activeMessage}
-          setUser={props.setActiveMessage}
-        />
+      {
+        props.activeMessage   
+        ? 
+          <MessageInbox
+            user={props.activeMessage}
+            setUser={props.setActiveMessage}
+          />
       :
-
-         window.innerWidth>600? <EmptyMessage/>:null
+        window.innerWidth>600
+        ?
+          <EmptyMessage/>
+        :
+          null
       }
       </Box>
     </Box>

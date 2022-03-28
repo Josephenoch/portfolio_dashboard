@@ -4,7 +4,7 @@ const fakeUser = (num) =>{
     var firstName = faker.name.firstName()
     var lastName = faker.name.lastName()
     return {
-        id:faker.random.uuid(),
+        id:faker.datatype.uuid(),
         firstName : firstName,
         lastName : lastName,
         email: faker.internet.email(firstName,lastName),

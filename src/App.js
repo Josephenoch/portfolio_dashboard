@@ -92,7 +92,6 @@ const App = () => {
   const classes = useStyles()
   const [activeMessage, setActiveMessage] = useState()
   const [darkTheme, setDarkTheme] = useState(JSON.parse(window.localStorage.getItem("theme")) || false)
-  const [location, setLocation] = useState(window.location.pathname)
   const [user, setUser] = useState(mainUser)
   return (
     <div styles={{display:"flex"}}> 
@@ -100,15 +99,12 @@ const App = () => {
         <CssBaseline />
         <Paper>
           <Sidebar 
-            location={location}
-            setLocation={setLocation}
             user={user}
           />
           <Header 
             darkTheme={darkTheme}
             setDarkTheme={setDarkTheme}
-            location={location}
-            setLocation={setLocation}
+
           />    
           <Paper className={classes.mainContent}>
             
@@ -157,7 +153,7 @@ const App = () => {
                     <Messages 
                       messages={fakeUsers}
                       activeMessage={activeMessage}
-                      setActiveMessage={setActiveMessage} 
+                      setActiveMessage={setActiveMessage}
                     />
                   }/>  
             </Routes>

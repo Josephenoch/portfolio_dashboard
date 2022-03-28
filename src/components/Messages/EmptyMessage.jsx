@@ -2,11 +2,17 @@ import { Box } from '@material-ui/core'
 import React from 'react'
 import Message from "../../assets/message.svg"
 
+
 export const EmptyMessage = () => {
+
   return (
     <Box
         style={{
             width:"100%",
+            height:"100%",
+            display:"flex",
+            alignItems:"center",
+            justifyContent:"center"
         }}
     >
         <img 
@@ -14,8 +20,6 @@ export const EmptyMessage = () => {
             alt="message svg" 
             style={{
                 display:"block",
-                margin:"auto",
-                marginTop:"25%",
                 width:"300px"
             }}
         />

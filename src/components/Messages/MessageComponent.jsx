@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) =>({
 
 export const MessageComponent= (props)=> {
     const classes = useStyles() 
-    console.log(props.messages)
     return (
         
         <TableContainer component={props.component} style={{ width: `${props.width}%` }} elevation={5}>

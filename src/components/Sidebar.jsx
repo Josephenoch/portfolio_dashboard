@@ -2,7 +2,6 @@ import {WorkOutlineOutlined, DeveloperMode, VerifiedUserOutlined, AssessmentOutl
 
 import {Avatar, List, ListItem, ListItemIcon, ListItemText, makeStyles, Grid, Typography, Box} from "@material-ui/core";
 import {Link} from "react-router-dom"
-import { useEffect, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
    root:{
@@ -40,13 +39,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Sidebar=((props) =>{
     const  classes = useStyles()
-    const [clicked, setClicked] = useState(false)
-    const handleLocation = ()=>{
-        setClicked(!clicked)
-    }
-    useEffect(()=>{
-        props.setLocation(window.location.pathname)
-    },[clicked, props])
     return (
         <Box className = {classes.root} direction="column">
             <Box className={classes.userDetails} component={Link} to="/settings">
@@ -80,7 +72,6 @@ const Sidebar=((props) =>{
                         key="Dashboard" 
                         component={Link} 
                         to={'/portfolio_dashboard'}
-                        onClick={handleLocation}
                     >   
                         <ListItemIcon>
                             <AssessmentOutlined />
@@ -92,7 +83,6 @@ const Sidebar=((props) =>{
                         key="Experience" 
                         component={Link} 
                         to={'/Experience'}
-                        onClick={handleLocation}
                     >
                         <ListItemIcon>
                             <WorkOutlineOutlined />
@@ -104,7 +94,6 @@ const Sidebar=((props) =>{
                         key="Education" 
                         component={Link} 
                         to={'/Education'}
-                        onClick={handleLocation}
                     >
                         <ListItemIcon>
                             <SchoolOutlined />
@@ -116,7 +105,6 @@ const Sidebar=((props) =>{
                         key="Skill" 
                         component={Link} 
                         to={'/Skill'} 
-                        onClick={handleLocation}
                     >
                         <ListItemIcon>
                             <DeveloperMode />
@@ -138,7 +126,6 @@ const Sidebar=((props) =>{
                             marginTop:50,
                         }}
                         component={Link} 
-                        onClick={handleLocation}
                         to={'/Settings'}
                     >
                         <ListItemIcon>

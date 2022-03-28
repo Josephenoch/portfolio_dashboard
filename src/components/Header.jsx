@@ -1,8 +1,7 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import logo from "../assets/Webfolio.jpg"
 import smallLogo from "../assets/Webfolio - Small.jpg"
 import AppMenu from "./AppMenu"
-import {Link as Scroll} from 'react-scroll'
 import { IconButton, Hidden, AppBar, Toolbar, Grid, makeStyles, Drawer, Badge} from "@material-ui/core"
 import { Menu, Cancel, Settings, Message, WbSunny, NightsStay, Equalizer} from "@material-ui/icons"
 
@@ -60,9 +59,6 @@ const Header = (props) => {
     const handleToggle = () => {
         setOpen(!open);   
     }
-    useEffect(()=>{
-        props.setLocation(window.location.pathname)
-    },[open,clicked, props])
     const handleThemeMode = () =>{
         
         window.localStorage.setItem("theme", !props.darkTheme)
@@ -101,23 +97,15 @@ const Header = (props) => {
                         <IconButton onClick={handleThemeMode}>
                             {props.darkTheme ? <WbSunny/> : <NightsStay/>}
                         </IconButton>
-                        { props.location ==="/portfolio_dashboard" ? <Scroll to="messageComponent" smooth={true}>
-                       
-                            <IconButton
-                                to={'/portfolio_dashboard'}
-                            > 
-                                <Badge badgeContent={15} color="secondary">
-                                    <Message/>
-                                </Badge>
-                            </IconButton>
-                        </Scroll>:
-                            <IconButton
-                                component={Link}
-                                to={'/messages'}
-                            >
+
+                        <IconButton
+                            component={Link}
+                            to={'/messages'}
+                        >
+                            <Badge badgeContent={15} color="secondary">
                                 <Message/>
-                            </IconButton>
-                        }
+                            </Badge>
+                        </IconButton>
                     </Grid>
                     <Grid item>
                         <IconButton onClick={handleToggle} className={classes.menuIcon}> {open ? <Cancel /> : <Menu />} </IconButton>
@@ -141,7 +129,6 @@ const Header = (props) => {
                             >
                             <AppMenu 
                                 handleToggle={handleToggle}
-                                setLocation={props.setLocation}
 
                             />
                         </Drawer>
