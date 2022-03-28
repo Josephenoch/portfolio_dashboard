@@ -8,6 +8,23 @@ The Webfolio Dashboard is a part of the Webfolio Application. Here, Users can ed
 
 ---
 
+## Dependencies
+
+- Fontawesome for react
+    - fontawesome-svg-core
+    - free-brands-svg-icons
+    - free-solid-svg-icons
+- material-ui
+    - core
+    - icons
+    - lab
+- axios
+- firebase
+- recharts
+- date-fns
+- babel-plugin-macros
+- webfontloader
+
 ## Contributors
 
 [Joseph Enoch](https://github.com/josephenoch)
