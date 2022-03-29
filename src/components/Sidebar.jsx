@@ -71,7 +71,7 @@ const Sidebar=((props) =>{
                         button 
                         key="Dashboard" 
                         component={Link} 
-                        to={'/portfolio_dashboard'}
+                        to={''}
                     >   
                         <ListItemIcon>
                             <AssessmentOutlined />

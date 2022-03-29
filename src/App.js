@@ -110,7 +110,7 @@ const App = () => {
             
             <Routes>
                 <Route 
-                  path="portfolio_dashboard" 
+                  index
                   element={
                     <Dashboard 
                         user={mainUser} 

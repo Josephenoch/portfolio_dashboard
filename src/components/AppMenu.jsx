@@ -10,7 +10,7 @@ const AppMenu = (props) => {
                     component="nav"
                     aria-labelledby="nested-list-subheader"
                 >
-                    <ListItem onClick={props.handleToggle} button key="Dashboard" component={Link} to={'/portfolio_dashboard'}>
+                    <ListItem onClick={props.handleToggle} button key="Dashboard" component={Link} to={''}>
                         <ListItemIcon>
                             <AssessmentOutlined />
                         </ListItemIcon>
