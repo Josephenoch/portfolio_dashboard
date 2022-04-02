@@ -7,7 +7,7 @@ const fakeUser = (num) =>{
         id:faker.datatype.uuid(),
         firstName : firstName,
         lastName : lastName,
-        email: faker.internet.email(firstName,lastName),
+        email: faker.internet.email(firstName,lastName, "webfolio.com"),
         avatar: faker.internet.avatar(),
         message:getMessage(num),
         phoneNumber:faker.phone.phoneNumber(),
