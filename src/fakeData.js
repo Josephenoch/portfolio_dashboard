@@ -33,7 +33,7 @@ export const mainUser = fakeUser();
 const otherUsers = () => {
     const fakeUsers = []
     for(let i=0; i<15; i++){
-        fakeUsers.push(fakeUser(Math.floor(Math.random()*(3)+1)))
+        fakeUsers.push(fakeUser(Math.floor(Math.random()*3+1)))
     }
     return fakeUsers
 }
